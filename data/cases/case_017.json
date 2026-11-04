@@ -1,0 +1,11 @@
+{
+  "case_id": "case_017",
+  "policy_id": "care_supreme",
+  "letter_text": "Dear Ms. B. Rao, We regret to inform you that claim CLM-32431 for post-hospitalization medical expenses is not covered by your policy. For further details, please contact our claims department. Sincerely, [Insurer Name]",
+  "reason": "Claim for post-hospitalization expenses not covered.",
+  "gold_clause_ids": [
+    "care_supreme-0033"
+  ],
+  "gold_verdict": "NOT_SUPPORTED",
+  "source": "synthetic"
+}

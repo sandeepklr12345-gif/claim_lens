@@ -1,0 +1,11 @@
+{
+  "case_id": "case_005",
+  "policy_id": "hdfc_optima_secure",
+  "letter_text": "Dear Mr. A. Kumar, We regret to inform you that the claim for orthopedic treatment in the U.S. is not covered under your policy. Please refer to your policy document for details. Sincerely, [Insurer Name]",
+  "reason": "Claim for orthopedic treatment in the U.S. not covered.",
+  "gold_clause_ids": [
+    "hdfc_optima_secure-0038"
+  ],
+  "gold_verdict": "SUPPORTED",
+  "source": "synthetic"
+}

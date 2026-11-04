@@ -1,0 +1,11 @@
+{
+  "case_id": "case_009",
+  "policy_id": "care_supreme",
+  "letter_text": "Dear Mr. A. Kumar, We regret to inform you that your claim for the annual health check-up is not covered under your policy. For further details, please contact our claims department. Sincerely, [Insurer Name]",
+  "reason": "Annual health check-up not within policy benefits.",
+  "gold_clause_ids": [
+    "care_supreme-0055"
+  ],
+  "gold_verdict": "SUPPORTED",
+  "source": "synthetic"
+}

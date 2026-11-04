@@ -1,0 +1,11 @@
+{
+  "case_id": "case_010",
+  "policy_id": "care_supreme",
+  "letter_text": "Dear Mr. A. Kumar, We regret to inform you that the claim for fitness center services is not covered under your policy. Please refer to your policy document for details. Sincerely, [Insurer Name]",
+  "reason": "Claim for fitness center services not covered under policy for individuals above 12 years.",
+  "gold_clause_ids": [
+    "care_supreme-0056"
+  ],
+  "gold_verdict": "SUPPORTED",
+  "source": "synthetic"
+}

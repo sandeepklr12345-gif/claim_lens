@@ -1,0 +1,11 @@
+{
+  "case_id": "case_007",
+  "policy_id": "care_supreme",
+  "letter_text": "Dear Mr. A. Kumar, We regret to inform you that the claim (CLM-58520) for dental expenses is not admissible as it does not fall under the 'Hospitalization Expenses' benefit. Best regards, [Insurer Name]",
+  "reason": "Claim for dental expenses not covered under Hospitalization Expenses benefit.",
+  "gold_clause_ids": [
+    "care_supreme-0044"
+  ],
+  "gold_verdict": "SUPPORTED",
+  "source": "synthetic"
+}

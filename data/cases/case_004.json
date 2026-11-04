@@ -1,0 +1,11 @@
+{
+  "case_id": "case_004",
+  "policy_id": "care_supreme",
+  "letter_text": "Dear Mr. A. Kumar, We regret to inform you that CLM-93320 has been denied as the claim exceeds the policy year limits, despite unlimited recharge within the year. Best regards, [Insurer Name]",
+  "reason": "Claim exceeds policy year limits; unlimited recharge applies only within year.",
+  "gold_clause_ids": [
+    "care_supreme-0043"
+  ],
+  "gold_verdict": "SUPPORTED",
+  "source": "synthetic"
+}

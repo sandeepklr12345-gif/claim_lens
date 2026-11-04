@@ -1,0 +1,11 @@
+{
+  "case_id": "case_013",
+  "policy_id": "care_supreme",
+  "letter_text": "Dear Ms. B. Rao, We regret to inform you that the claim for road ambulance services (CLM-94939) is not covered under your policy. For further details, please contact our claims department. Sincerely, [Insurer Name]",
+  "reason": "Claim for road ambulance not covered under policy.",
+  "gold_clause_ids": [
+    "care_supreme-0039"
+  ],
+  "gold_verdict": "NOT_SUPPORTED",
+  "source": "synthetic"
+}

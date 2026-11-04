@@ -1,0 +1,11 @@
+{
+  "case_id": "case_020",
+  "policy_id": "care_supreme",
+  "letter_text": "To Ms. B. Rao (CLM-31417): This letter informs you that your claim for inpatient care expenses is being rejected as the treatment was deemed not medically necessary. For further details, contact our claims department.",
+  "reason": "Claim for inpatient care not medically necessary.",
+  "gold_clause_ids": [
+    "care_supreme-0030"
+  ],
+  "gold_verdict": "NOT_SUPPORTED",
+  "source": "synthetic"
+}

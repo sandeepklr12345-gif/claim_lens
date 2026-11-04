@@ -1,0 +1,11 @@
+{
+  "case_id": "case_003",
+  "policy_id": "hdfc_optima_secure",
+  "letter_text": "Dear Mr. A. Kumar, Unfortunately, your claim for CLM-69429 has been denied as the Pre-existing Condition waiting period cannot be modified after policy inception. Best regards, [Insurer Name]",
+  "reason": "Pre-existing condition waiting period cannot be modified after policy inception.",
+  "gold_clause_ids": [
+    "hdfc_optima_secure-0043"
+  ],
+  "gold_verdict": "SUPPORTED",
+  "source": "synthetic"
+}

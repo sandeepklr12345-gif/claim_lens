@@ -1,0 +1,11 @@
+{
+  "case_id": "case_011",
+  "policy_id": "care_supreme",
+  "letter_text": "Dear Mr. A. Kumar, Unfortunately, your claim (CLM-44993) for treatment within 30 days of policy commencement is excluded under our policy terms. Kindly refer to your policy document for details. Sincerely, [Insurer Name]",
+  "reason": "Claim for treatment within 30 days of policy start excluded.",
+  "gold_clause_ids": [
+    "care_supreme-0064"
+  ],
+  "gold_verdict": "SUPPORTED",
+  "source": "synthetic"
+}
