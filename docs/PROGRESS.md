@@ -74,3 +74,13 @@
 - Faithfulness (core question): mean AAS 0.200 initial -> 0.233 after reflection (improved in 4/20 cases, unchanged in 16, worse in 0 by construction since the best is kept). Random spans of the same size score 0.171, so initial AAS is only slightly above chance and the reflection gain (+0.033) is small. No significance test; the 7B model often returns the same spans when asked to revise.
 
 **Known issues:** end-to-end verdicts differ slightly from `tau.json` because the reason is re-extracted by the LLM each run. A `streamlit run` dev server on port 8599 was left running by the build (kill-by-pattern was denied); stop it with Task Manager or ignore. Comprehensiveness / sufficiency (SPEC "Should") not built.
+
+## M4 (2026-11-04 ~23:55 IST, about 5 hours before the 05:00 hard stop)
+**Objective:** README with real numbers, demo steps, final push.
+
+**Files:** `README.md`. Every number in it was checked against `eval/results/` (retrieval.json, matcher.json, e2e.json, faithfulness.json, tau.json, summary.md).
+
+**Acceptance:** a fresh `git clone` of GitHub `main` (commit `e7ce6b0`) ran `python -m claimlens.agent.run --case data\cases\case_001.json` and printed verdict, initial and final explanation, and AAS before and after; `claimlens.rag.search` worked; 31 unit tests and ruff passed in the clone. The clone reused the existing venv (torch CUDA is a 2.7 GB wheel, so a full reinstall was not repeated); `pip install --dry-run -r requirements.txt` resolved cleanly. PASS.
+
+**Open items for the owner (not done by the build):** name and USN in the README header (`[TODO]`); hand-check all 20 case labels (`data/QA.md`); verify the two policy PDFs against the insurers' sites; `MASTER_PROMPT.md` has an uncommitted local edit that the build left alone; a `streamlit run` dev server on port 8599 may still be running.
+**Cut / deferred:** comprehensiveness and sufficiency metrics (SPEC "Should"); everything in SPEC section 12 (Phase 2).
