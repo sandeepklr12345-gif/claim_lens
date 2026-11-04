@@ -19,3 +19,5 @@
 
 **Tests:** `ruff check .` pass; `pytest -q -m "not model"` 12 passed; `pytest -q -m model` 1 passed (bge-small dense + hybrid on HDFC).
 **Search check:** `python -m claimlens.rag.search "waiting period" --doc care_supreme` returns the Named Ailment waiting-period clause first, with section path and page.
+
+**CI note:** the owner added `.github/workflows/blank.yml` on GitHub (commit `3ea0db4`, same job as SPEC 7.10 plus concurrency, read-only permissions, timeout). It is the project's CI workflow; the duplicate `ci.yml` written by the build was removed. SPEC/CLAUDE.md say `ci.yml`: read that as `blank.yml`. The remote history was also rewritten once before M0 (initial commit amended to `e178315`); not done by the build.
