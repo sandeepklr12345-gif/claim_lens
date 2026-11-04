@@ -1,0 +1,456 @@
+{
+  "n_cases": 20,
+  "mean_aas_initial": 0.20004606803622588,
+  "mean_aas_final": 0.23328073977276884,
+  "mean_random_span_aas": 0.1705191943558502,
+  "n_improved": 4,
+  "n_unchanged": 16,
+  "n_worse": 0,
+  "n_reflection_triggered": 20,
+  "mean_aas_initial_triggered": 0.20004606803622588,
+  "mean_aas_final_triggered": 0.23328073977276884,
+  "caveat": "AAS can be raised by quoting top-attributed words; compare with the random-span baseline. Small synthetic set (20 cases); no significance test.",
+  "source": "synthetic",
+  "per_case": [
+    {
+      "case_id": "case_001",
+      "aas_initial": 0.1330639866360122,
+      "aas_final": 0.1330639866360122,
+      "revisions_run": 2,
+      "history": [
+        [
+          "initial",
+          0.1330639866360122
+        ],
+        [
+          "revision_1",
+          0.1330639866360122
+        ],
+        [
+          "revision_2",
+          0.015289180829411504
+        ]
+      ],
+      "random_span_aas": 0.15101806574371912,
+      "n_unmatched_final_spans": 0
+    },
+    {
+      "case_id": "case_002",
+      "aas_initial": 0.0783083799328391,
+      "aas_final": 0.0783083799328391,
+      "revisions_run": 2,
+      "history": [
+        [
+          "initial",
+          0.0783083799328391
+        ],
+        [
+          "revision_1",
+          0.013009920002931576
+        ],
+        [
+          "revision_2",
+          0.025229491786105823
+        ]
+      ],
+      "random_span_aas": 0.02315312442073855,
+      "n_unmatched_final_spans": 0
+    },
+    {
+      "case_id": "case_003",
+      "aas_initial": 0.1462501467435267,
+      "aas_final": 0.33361912593223525,
+      "revisions_run": 2,
+      "history": [
+        [
+          "initial",
+          0.1462501467435267
+        ],
+        [
+          "revision_1",
+          0.1462501467435267
+        ],
+        [
+          "revision_2",
+          0.33361912593223525
+        ]
+      ],
+      "random_span_aas": 0.16565517498916432,
+      "n_unmatched_final_spans": 0
+    },
+    {
+      "case_id": "case_004",
+      "aas_initial": 0.08697863326925014,
+      "aas_final": 0.08697863326925014,
+      "revisions_run": 2,
+      "history": [
+        [
+          "initial",
+          0.08697863326925014
+        ],
+        [
+          "revision_1",
+          0.08697863326925014
+        ],
+        [
+          "revision_2",
+          0.08697863326925014
+        ]
+      ],
+      "random_span_aas": 0.053327426709591494,
+      "n_unmatched_final_spans": 0
+    },
+    {
+      "case_id": "case_005",
+      "aas_initial": 0.22135768317719043,
+      "aas_final": 0.22135768317719043,
+      "revisions_run": 2,
+      "history": [
+        [
+          "initial",
+          0.22135768317719043
+        ],
+        [
+          "revision_1",
+          0.0
+        ],
+        [
+          "revision_2",
+          0.0
+        ]
+      ],
+      "random_span_aas": 0.2935553070036242,
+      "n_unmatched_final_spans": 0
+    },
+    {
+      "case_id": "case_006",
+      "aas_initial": 0.0,
+      "aas_final": 0.0,
+      "revisions_run": 2,
+      "history": [
+        [
+          "initial",
+          0.0
+        ],
+        [
+          "revision_1",
+          0.0
+        ],
+        [
+          "revision_2",
+          0.0
+        ]
+      ],
+      "random_span_aas": 0.06484217030551963,
+      "n_unmatched_final_spans": 1
+    },
+    {
+      "case_id": "case_007",
+      "aas_initial": 0.32277429500951543,
+      "aas_final": 0.32277429500951543,
+      "revisions_run": 2,
+      "history": [
+        [
+          "initial",
+          0.32277429500951543
+        ],
+        [
+          "revision_1",
+          0.32277429500951543
+        ],
+        [
+          "revision_2",
+          0.32277429500951543
+        ]
+      ],
+      "random_span_aas": 0.2677615178978748,
+      "n_unmatched_final_spans": 0
+    },
+    {
+      "case_id": "case_008",
+      "aas_initial": 0.26531953938354225,
+      "aas_final": 0.5949460961483557,
+      "revisions_run": 2,
+      "history": [
+        [
+          "initial",
+          0.26531953938354225
+        ],
+        [
+          "revision_1",
+          0.16788554233694752
+        ],
+        [
+          "revision_2",
+          0.5949460961483557
+        ]
+      ],
+      "random_span_aas": 0.42963933391972925,
+      "n_unmatched_final_spans": 0
+    },
+    {
+      "case_id": "case_009",
+      "aas_initial": 0.05105751909147286,
+      "aas_final": 0.05105751909147286,
+      "revisions_run": 2,
+      "history": [
+        [
+          "initial",
+          0.05105751909147286
+        ],
+        [
+          "revision_1",
+          0.050895780195781434
+        ],
+        [
+          "revision_2",
+          0.03228149752562261
+        ]
+      ],
+      "random_span_aas": 0.14029316535794512,
+      "n_unmatched_final_spans": 0
+    },
+    {
+      "case_id": "case_010",
+      "aas_initial": 0.24856270295659721,
+      "aas_final": 0.24856270295659721,
+      "revisions_run": 2,
+      "history": [
+        [
+          "initial",
+          0.24856270295659721
+        ],
+        [
+          "revision_1",
+          0.17613002912346806
+        ],
+        [
+          "revision_2",
+          0.17613002912346806
+        ]
+      ],
+      "random_span_aas": 0.08999271110916585,
+      "n_unmatched_final_spans": 0
+    },
+    {
+      "case_id": "case_011",
+      "aas_initial": 0.21800381704780003,
+      "aas_final": 0.32194659921383706,
+      "revisions_run": 2,
+      "history": [
+        [
+          "initial",
+          0.21800381704780003
+        ],
+        [
+          "revision_1",
+          0.21800381704780003
+        ],
+        [
+          "revision_2",
+          0.32194659921383706
+        ]
+      ],
+      "random_span_aas": 0.08347922785288932,
+      "n_unmatched_final_spans": 0
+    },
+    {
+      "case_id": "case_012",
+      "aas_initial": 0.3945105318842963,
+      "aas_final": 0.3945105318842963,
+      "revisions_run": 2,
+      "history": [
+        [
+          "initial",
+          0.3945105318842963
+        ],
+        [
+          "revision_1",
+          0.022441972505303883
+        ],
+        [
+          "revision_2",
+          0.022441972505303883
+        ]
+      ],
+      "random_span_aas": 0.06050350272840056,
+      "n_unmatched_final_spans": 0
+    },
+    {
+      "case_id": "case_013",
+      "aas_initial": 0.498832529594217,
+      "aas_final": 0.498832529594217,
+      "revisions_run": 2,
+      "history": [
+        [
+          "initial",
+          0.498832529594217
+        ],
+        [
+          "revision_1",
+          0.498832529594217
+        ],
+        [
+          "revision_2",
+          0.24707874712024153
+        ]
+      ],
+      "random_span_aas": 0.5544914769369104,
+      "n_unmatched_final_spans": 0
+    },
+    {
+      "case_id": "case_014",
+      "aas_initial": 0.13306399076031122,
+      "aas_final": 0.13306399076031122,
+      "revisions_run": 2,
+      "history": [
+        [
+          "initial",
+          0.13306399076031122
+        ],
+        [
+          "revision_1",
+          0.12489117436742475
+        ],
+        [
+          "revision_2",
+          0.12489117436742475
+        ]
+      ],
+      "random_span_aas": 0.15819318335152374,
+      "n_unmatched_final_spans": 0
+    },
+    {
+      "case_id": "case_015",
+      "aas_initial": 0.4404221213876905,
+      "aas_final": 0.4404221213876905,
+      "revisions_run": 2,
+      "history": [
+        [
+          "initial",
+          0.4404221213876905
+        ],
+        [
+          "revision_1",
+          0.10016865677582232
+        ],
+        [
+          "revision_2",
+          0.13205438036062156
+        ]
+      ],
+      "random_span_aas": 0.24121481690025484,
+      "n_unmatched_final_spans": 0
+    },
+    {
+      "case_id": "case_016",
+      "aas_initial": 0.15388951146018434,
+      "aas_final": 0.15388951146018434,
+      "revisions_run": 2,
+      "history": [
+        [
+          "initial",
+          0.15388951146018434
+        ],
+        [
+          "revision_1",
+          0.11034694312987763
+        ],
+        [
+          "revision_2",
+          0.11034694312987763
+        ]
+      ],
+      "random_span_aas": 0.03839462027774127,
+      "n_unmatched_final_spans": 0
+    },
+    {
+      "case_id": "case_017",
+      "aas_initial": 0.14138217935211422,
+      "aas_final": 0.14138217935211422,
+      "revisions_run": 2,
+      "history": [
+        [
+          "initial",
+          0.14138217935211422
+        ],
+        [
+          "revision_1",
+          0.14138217935211422
+        ],
+        [
+          "revision_2",
+          0.14138217935211422
+        ]
+      ],
+      "random_span_aas": 0.11029228044510461,
+      "n_unmatched_final_spans": 0
+    },
+    {
+      "case_id": "case_018",
+      "aas_initial": 0.08877404735929179,
+      "aas_final": 0.1325291639705916,
+      "revisions_run": 2,
+      "history": [
+        [
+          "initial",
+          0.08877404735929179
+        ],
+        [
+          "revision_1",
+          0.019552528037873593
+        ],
+        [
+          "revision_2",
+          0.1325291639705916
+        ]
+      ],
+      "random_span_aas": 0.24326844702056,
+      "n_unmatched_final_spans": 0
+    },
+    {
+      "case_id": "case_019",
+      "aas_initial": 0.3640487632282071,
+      "aas_final": 0.3640487632282071,
+      "revisions_run": 2,
+      "history": [
+        [
+          "initial",
+          0.3640487632282071
+        ],
+        [
+          "revision_1",
+          0.2909395824874784
+        ],
+        [
+          "revision_2",
+          0.3640487632282071
+        ]
+      ],
+      "random_span_aas": 0.1711003813996191,
+      "n_unmatched_final_spans": 0
+    },
+    {
+      "case_id": "case_020",
+      "aas_initial": 0.014320982450458873,
+      "aas_final": 0.014320982450458873,
+      "revisions_run": 2,
+      "history": [
+        [
+          "initial",
+          0.014320982450458873
+        ],
+        [
+          "revision_1",
+          0.0
+        ],
+        [
+          "revision_2",
+          0.0
+        ]
+      ],
+      "random_span_aas": 0.07020795274692747,
+      "n_unmatched_final_spans": 1
+    }
+  ]
+}

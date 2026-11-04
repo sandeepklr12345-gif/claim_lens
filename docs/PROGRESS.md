@@ -59,3 +59,18 @@
 **Design notes / deviations:** attributions cover clause words only, so only spans cited from the clause can earn AAS mass (reason-sourced spans count as unmatched, as SPEC 7.5 says unmatched count as zero). `langgraph` added to `requirements-ci.txt` (pure Python) so the FakeLLM end-to-end test runs in CI as SPEC 9 asks. Appeal draft is a template (no LLM), only for NOT_SUPPORTED. Reason extraction relies on the letter; the synthetic letters are short, so extracted reasons can be vague (case_001: "Not covered under your policy.").
 
 **Tests:** `ruff check .` pass; `pytest -q -m "not model"` 30 passed (also in a clean venv with only `requirements-ci.txt` and no torch); `pytest -q -m model` 4 passed.
+
+## M3 (2026-11-04 ~23:45 IST, ahead of the 03:30 target)
+**Objective:** Streamlit UI; evaluation on all 20 cases.
+
+**Files:** `app/streamlit_app.py`, `eval/{common,run_retrieval,run_e2e,run_faithfulness,run_all,tune_tau}.py`, `eval/results/{summary.md,retrieval.json,tau.json,match_probs.json,e2e.json,faithfulness.json,e2e/*.json}`, `tests/test_ui.py` (local), `configs/app.yaml` (tau 0.8 / 0.4), `claimlens/explain/aas.py` (random-span baseline), `claimlens/agent/graph.py` (`extract_reason`, `retrieve_rerank` helpers).
+
+**Acceptance:** `python -m eval.run_all` produced `eval/results/summary.md`. PASS. UI: `streamlit run app\streamlit_app.py` serves (health ok, HTTP 200); AppTest loads the page and runs a full case through the button (verdict banner, IG-highlighted clause, initial/final explanation with AAS).
+
+**Results (all synthetic, n=20; see `eval/results/summary.md`):**
+- Retrieval Recall@3: BM25 0.85, hybrid 0.80, hybrid+rerank 0.90 (n=20, differences are within noise; no claim that hybrid beats BM25).
+- End-to-end verdict agreement 13/20 (65%); the always-SUPPORTED baseline is 12/20 (60%). The agent says SUPPORTED for 17/20 cases. Match probability separates SUPPORTED from NOT_SUPPORTED weakly (ROC-AUC 0.615): the pretrained cross-encoder scores relevance, not support vs contradiction, and NOT_SUPPORTED cases are written against highly relevant benefit clauses.
+- Thresholds: SPEC says tune on the first 10 cases, but cases 1-12 are all SUPPORTED, so a stratified 10-case dev split was used (documented in `tune_tau.py`). Tuned 0.8/0.4 improved dev (0.60 -> 0.70) but not held-out (0.60 -> 0.50); all-20 stays 0.60. Adopted as the protocol's result; both reported.
+- Faithfulness (core question): mean AAS 0.200 initial -> 0.233 after reflection (improved in 4/20 cases, unchanged in 16, worse in 0 by construction since the best is kept). Random spans of the same size score 0.171, so initial AAS is only slightly above chance and the reflection gain (+0.033) is small. No significance test; the 7B model often returns the same spans when asked to revise.
+
+**Known issues:** end-to-end verdicts differ slightly from `tau.json` because the reason is re-extracted by the LLM each run. A `streamlit run` dev server on port 8599 was left running by the build (kill-by-pattern was denied); stop it with Task Manager or ignore. Comprehensiveness / sufficiency (SPEC "Should") not built.

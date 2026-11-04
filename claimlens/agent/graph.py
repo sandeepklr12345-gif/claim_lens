@@ -51,29 +51,41 @@ class AgentState(TypedDict, total=False):
     appeal_draft: str | None
 
 
+def extract_reason(llm: LLM, letter_text: str) -> str:
+    """Ask the LLM for the stated rejection reason; fall back to the start of the letter."""
+    try:
+        out = llm.generate_json(PARSE_PROMPT.format(letter=letter_text), SYSTEM)
+        reason = str(out.get("reason", "")).strip()
+    except Exception as e:  # noqa: BLE001
+        log.warning("reason extraction failed (%s); using the letter text", e)
+        reason = ""
+    return reason or letter_text[:300]  # FALLBACK (marked): the letter's first 300 chars
+
+
+def retrieve_rerank(
+    tools: Tools, reason: str, policy_id: str, top_k_fused: int, top_k_return: int
+) -> list[RetrievedClause]:
+    """Hybrid top-k, re-ranked by the cross-encoder; `score` is the matcher logit."""
+    hits = tools.search_clauses(reason, policy_id, top_k_fused)
+    scored = []
+    for h in hits:
+        m = tools.score_pair(reason, h.chunk.text, h.chunk.chunk_id)
+        scored.append(h.model_copy(update={"score": m.score}))
+    scored.sort(key=lambda h: -h.score)
+    return scored[:top_k_return]
+
+
 def build_graph(tools: Tools, llm: LLM, cfg: dict[str, Any]) -> Any:
     rag = cfg["rag"]
     agent = cfg["agent"]
     tau_high, tau_low = agent["tau_high"], agent["tau_low"]
 
     def parse(state: AgentState) -> dict[str, Any]:
-        try:
-            out = llm.generate_json(PARSE_PROMPT.format(letter=state["letter_text"]), SYSTEM)
-            reason = str(out.get("reason", "")).strip()
-        except Exception as e:  # noqa: BLE001
-            log.warning("reason extraction failed (%s); using the letter text", e)
-            reason = ""
-        # FALLBACK (marked): if the LLM gives nothing usable, use the start of the letter
-        return {"reason": reason or state["letter_text"][:300]}
+        return {"reason": extract_reason(llm, state["letter_text"])}
 
     def retrieve(state: AgentState) -> dict[str, Any]:
-        hits = tools.search_clauses(state["reason"], state["policy_id"], rag["top_k_fused"])
-        scored = []
-        for h in hits:
-            m = tools.score_pair(state["reason"], h.chunk.text, h.chunk.chunk_id)
-            scored.append(h.model_copy(update={"score": m.score}))  # score = re-rank logit
-        scored.sort(key=lambda h: -h.score)
-        return {"top_clauses": scored[: rag["top_k_return"]]}
+        return {"top_clauses": retrieve_rerank(
+            tools, state["reason"], state["policy_id"], rag["top_k_fused"], rag["top_k_return"])}
 
     def match(state: AgentState) -> dict[str, Any]:
         if not state["top_clauses"]:  # nothing retrieved: abstain downstream
