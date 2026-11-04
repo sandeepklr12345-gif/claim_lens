@@ -7,6 +7,7 @@ Nodes are thin wrappers over tested functions; tools come through the `Tools` in
 from __future__ import annotations
 
 import logging
+from collections.abc import Callable
 from typing import Any, TypedDict
 
 from langgraph.graph import END, START, StateGraph
@@ -26,6 +27,9 @@ from claimlens.schemas import (
 )
 
 log = logging.getLogger(__name__)
+# Called with (event, data): a node name and its state update once that node finishes, plus
+# "attribution" {"words": n} and "aas" {"label", "aas"} from inside explain_reflect.
+Progress = Callable[[str, dict[str, Any]], None]
 SYSTEM = "You are a careful assistant for health-insurance claim audits. Reply with JSON only."
 PARSE_PROMPT = """Claim rejection letter:
 \"\"\"{letter}\"\"\"
@@ -75,7 +79,13 @@ def retrieve_rerank(
     return scored[:top_k_return]
 
 
-def build_graph(tools: Tools, llm: LLM, cfg: dict[str, Any]) -> Any:
+def _no_progress(_event: str, _data: dict[str, Any]) -> None:
+    return None
+
+
+def build_graph(
+    tools: Tools, llm: LLM, cfg: dict[str, Any], emit: Progress = _no_progress
+) -> Any:
     rag = cfg["rag"]
     agent = cfg["agent"]
     tau_high, tau_low = agent["tau_high"], agent["tau_low"]
@@ -99,11 +109,13 @@ def build_graph(tools: Tools, llm: LLM, cfg: dict[str, Any]) -> Any:
         best = state["top_clauses"][0].chunk
         reason, prob = state["reason"], state["match"].prob
         attr = tools.attribute_ig(reason, best.text, best.chunk_id)
+        emit("attribution", {"words": len(attr.tokens)})
         stance = stance_for(decide(prob, tau_high, tau_low))
         res = reflect(
             llm, attr, reason, best.chunk_id, best.text, prob, stance,
             tau=agent.get("tau_aas", TAU_AAS), max_rounds=agent.get("max_rounds", 2),
-            aas_fn=lambda spans: tools.alignment_score(reason, best.text, spans, attr))
+            aas_fn=lambda spans: tools.alignment_score(reason, best.text, spans, attr),
+            on_aas=lambda label, aas: emit("aas", {"label": label, "aas": aas}))
         return {"attribution": attr, "explanation_initial": res.initial,
                 "explanation_final": res.final, "aas_initial": res.aas_initial,
                 "aas_final": res.aas_final, "aas_history": res.history}
@@ -134,10 +146,17 @@ def build_graph(tools: Tools, llm: LLM, cfg: dict[str, Any]) -> Any:
     return g.compile()
 
 
-def run_case(case: Case, tools: Tools, llm: LLM, cfg: dict[str, Any]) -> CaseResult:
-    graph = build_graph(tools, llm, cfg)
-    out: AgentState = graph.invoke({
-        "case_id": case.case_id, "policy_id": case.policy_id, "letter_text": case.letter_text})
+def run_case(
+    case: Case, tools: Tools, llm: LLM, cfg: dict[str, Any], on_progress: Progress | None = None
+) -> CaseResult:
+    emit = on_progress or _no_progress
+    graph = build_graph(tools, llm, cfg, emit)
+    out: AgentState = {
+        "case_id": case.case_id, "policy_id": case.policy_id, "letter_text": case.letter_text}
+    for step in graph.stream(dict(out), stream_mode="updates"):  # same order as invoke()
+        for node, update in step.items():
+            out.update(update or {})
+            emit(node, update or {})
     return CaseResult(
         case_id=case.case_id, reason=out["reason"], top_clauses=out["top_clauses"],
         match=out.get("match"), attribution=out.get("attribution"),

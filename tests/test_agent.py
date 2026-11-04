@@ -88,6 +88,28 @@ def test_end_to_end_with_reflection():
     assert res.appeal_draft is None  # only drafted for NOT_SUPPORTED
 
 
+def test_on_progress_reports_every_step_in_order_and_result_is_unchanged():
+    def llm() -> FakeLLM:
+        return FakeLLM([
+            {"reason": "pre-existing diseases covered only after 36 months continuous coverage"},
+            {"explanation": "initial",
+             "cited_spans": [{"source": "clause", "text": "continuous coverage under the policy"}]},
+            {"explanation": "revised", "cited_spans": [
+                {"source": "clause",
+                 "text": "Pre-existing diseases are covered only after 36 months"}]},
+        ], default={"explanation": "again", "cited_spans": []})
+
+    case = make_case("Dear Mr A, your claim is rejected ...")
+    events: list[tuple[str, dict]] = []
+    res = run_case(case, FakeTools(), llm(), CFG, on_progress=lambda e, d: events.append((e, d)))
+    names = [e for e, _ in events]
+    assert names[:3] == ["parse", "retrieve", "match"]
+    assert names[3] == "attribution" and names[4] == "aas"
+    assert names[-3:] == ["explain_reflect", "verdict", "draft"]
+    assert [d["label"] for e, d in events if e == "aas"] == [h[0] for h in res.aas_history]
+    assert res == run_case(case, FakeTools(), llm(), CFG)  # no callback, same result
+
+
 def test_not_supported_gets_template_appeal_with_disclaimer():
     llm = FakeLLM(default={"reason": "dental claim for cosmetic tourism", "explanation": "e",
                            "cited_spans": []})

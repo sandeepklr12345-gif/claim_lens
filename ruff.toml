@@ -4,3 +4,9 @@ extend-exclude = [".cache", "runs", "logs"]
 
 [lint]
 select = ["E", "F", "I", "UP", "B"]
+
+[lint.per-file-ignores]
+# Inline HTML and CSS; breaking these strings up would only make the markup harder to read.
+"app/result_view.py" = ["E501"]
+"app/preview_result.py" = ["E501"]
+"app/intake_view.py" = ["E501"]

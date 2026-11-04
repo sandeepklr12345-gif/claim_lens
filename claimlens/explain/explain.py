@@ -96,16 +96,19 @@ class ReflectionResult:
 
 def reflect(llm: LLM, attr: Attribution, reason: str, clause_id: str, clause: str, prob: float,
             stance: str, tau: float = TAU_AAS, max_rounds: int = MAX_ROUNDS,
-            aas_fn: Callable[[list[CitedSpan]], AlignmentResult] | None = None
+            aas_fn: Callable[[list[CitedSpan]], AlignmentResult] | None = None,
+            on_aas: Callable[[str, float], None] | None = None,
             ) -> ReflectionResult:
     """Explain, then revise up to `max_rounds` times while AAS < tau; keep the best.
 
     `aas_fn` lets the agent score spans through the explainer MCP tool; the default is the
-    local function.
+    local function. `on_aas(label, aas)` is told each score as it arrives (live UI progress).
     """
     score = aas_fn or (lambda spans: alignment_score(attr, spans, clause))
+    notify = on_aas or (lambda _label, _aas: None)
     initial = explain(llm, reason, clause_id, clause, prob, stance)
     res = score(initial.cited_spans)
+    notify("initial", res.aas)
     best, best_aas = initial, res.aas
     history = [("initial", res.aas)]
     cur, cur_idx, cur_aas = initial, set(res.cited_idx), res.aas
@@ -121,6 +124,7 @@ def reflect(llm: LLM, attr: Attribution, reason: str, clause_id: str, clause: st
         rr = score(cur.cited_spans)
         cur_idx, cur_aas = set(rr.cited_idx), rr.aas
         history.append((f"revision_{r}", rr.aas))
+        notify(f"revision_{r}", rr.aas)
         if rr.aas > best_aas:
             best, best_aas = cur, rr.aas
     return ReflectionResult(initial, best, res.aas, best_aas, history)

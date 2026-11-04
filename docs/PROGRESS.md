@@ -84,3 +84,38 @@
 
 **Open items for the owner (not done by the build):** name and USN in the README header (`[TODO]`); hand-check all 20 case labels (`data/QA.md`); verify the two policy PDFs against the insurers' sites; `MASTER_PROMPT.md` has an uncommitted local edit that the build left alone; a `streamlit run` dev server on port 8599 may still be running.
 **Cut / deferred:** comprehensiveness and sufficiency metrics (SPEC "Should"); everything in SPEC section 12 (Phase 2).
+
+## Front-end design (2026-11-05 ~01:30 IST, after M4)
+**Objective:** apply the canvas design: Intake screen, the audit-result screen in `app/result_view.py`, live run progress.
+
+**Files:** new `app/{adapter,intake_view,result_view,preview_result}.py`, `.streamlit/config.toml`, `tests/{test_adapter,test_intake_view,test_result_view}.py`. Changed `app/streamlit_app.py` (rewritten), `claimlens/agent/graph.py` and `claimlens/explain/explain.py` (optional progress callbacks), `claimlens/llm/client.py` (`OllamaClient.health`), `tests/{test_ui,test_agent}.py`, `ruff.toml`, `README.md`. No new dependencies; `requirements-ci.txt` unchanged.
+
+**Pipeline state:** the M2 pipeline runs end to end, so the UI calls the real `run_case`. The sample-data fallback was not needed; `preview_result.py` is the only place wireframe values appear and it is labelled.
+
+**Live progress:** `run_case(..., on_progress=...)` streams the same linear graph (`graph.stream`, same nodes and edges; a test checks the result equals a run without the callback). It reports each node, plus attribution and each AAS score from inside `explain_reflect`. The UI runs the audit in a worker thread and redraws `RunProgress` twice a second, so elapsed time ticks during long LLM calls. Timings shown are measured; nothing is estimated.
+
+**Schema gaps (no values invented):**
+- STUB (marked in `app/adapter.py`): `Attribution` covers clause words only, so reason words have score 0.0 and the "Reason in the letter" card is unshaded. Smallest fix if wanted: also return the token_type 0 tokens from `claimlens/explain/ig.py` as `reason_tokens` and `reason_scores` on `Attribution`.
+- Clause display: tokens are lower-cased and split on punctuation, so `clause_words` rebuilds the clause's own words and sums their tokens' positive mass.
+- No per-clause summaries: "Other clauses" shows shortened clause text (an excerpt), and logits go through a sigmoid.
+- "What the check changed" is built from `aas_history` and `feedback_words`; the agent stores no prose.
+- `appeal_draft` exists only for NOT_SUPPORTED, so the mockup's clarification draft on SUPPORTED is not shown.
+
+**Bugs found and fixed while testing:**
+- `extract_reason` hides LLM failures, so a stopped Ollama only surfaced after retrieval and matching. `health()` now checks before the run.
+- AAS needs an exact substring but the view matches loosely, so on case_020 a span scoring zero would have been underlined (share 0.035 vs AAS 0.014). `to_view` now tags such spans "unmatched": listed, not underlined.
+- `preview_result.py` failed under `streamlit run` (`No module named 'app'`); it now sets `sys.path` as `streamlit_app.py` does.
+- Streamlit drops widget state on the result screen, which would have reset the policy select. It is now restored from the selected case; `tests/test_ui.py` covers it.
+- In a real browser the panel, spinner and errors sat below the fold, and Streamlit's heading rule overrode Source Serif 4 on `h1`. Both fixed (`!important` on `.cl-serif` and `.cl-hero`).
+
+**Deviations:** `ruff.toml` exempts the three inline-HTML view files from E501 so the supplied markup stays as written. `app/result_view.py` differs from the supplied file by the Google Fonts `@import` (as asked) and that `!important`. `app/preview_result.py` differs by the `sys.path` lines.
+
+**Tests:** `ruff check .` pass; `pytest -q -m "not model"` 63 passed (also in the clean CI venv, no torch or Streamlit); `pytest -q -m model` 8 passed (real Ollama and models, including a full audit through the button and the Ollama-down message).
+
+**Ran in a real browser (headless Edge):** intake, selecting a case, Run audit, every live panel stage in order, result screen, back to intake; no errors in the server log. Real-data check on 3 sample cases and 1 pasted letter: `clause_words` kept 100% of the positive attribution mass and the view's cited share equals AAS on all 4.
+
+**Measured here (8 runs, not evaluation results):** 25-44 s per audit once models are loaded, about 85% of it in Explain and check. The first run in a fresh process adds 39-149 s of model loading. Rerun scores vary (case_013 AAS 0.499 then 0.345), so the local LLM is not repeatable even with a fixed seed.
+
+**Not checked:** phone-width layout; visual judgement beyond the desktop screenshots; the result screen's "After reflection" toggle and policy restore in the browser (both covered by AppTest only); `eval/results` were not regenerated, and the evaluation path through `run_case` now uses `graph.stream`.
+
+**Known issue:** the page fetches fonts from Google Fonts, so "Nothing is sent to an outside service" is true of letters and claim data but not of that font request.
