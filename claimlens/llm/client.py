@@ -7,8 +7,6 @@ import logging
 import re
 from typing import Any, Protocol
 
-import requests
-
 from claimlens.utils.config import load_config
 
 log = logging.getLogger(__name__)
@@ -52,6 +50,8 @@ class OllamaClient:
         }
         if json_mode:
             body["format"] = "json"
+        import requests  # lazy: CI installs no HTTP client (SPEC.md 7.10)
+
         r = requests.post(f"{self.host}/api/chat", json=body, timeout=self.timeout)
         r.raise_for_status()
         return str(r.json()["message"]["content"])
