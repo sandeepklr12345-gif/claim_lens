@@ -21,3 +21,5 @@
 **Search check:** `python -m claimlens.rag.search "waiting period" --doc care_supreme` returns the Named Ailment waiting-period clause first, with section path and page.
 
 **CI note:** the owner added `.github/workflows/blank.yml` on GitHub (commit `3ea0db4`, same job as SPEC 7.10 plus concurrency, read-only permissions, timeout). It is the project's CI workflow; the duplicate `ci.yml` written by the build was removed. SPEC/CLAUDE.md say `ci.yml`: read that as `blank.yml`. The remote history was also rewritten once before M0 (initial commit amended to `e178315`); not done by the build.
+
+**M0 result (2026-11-04 ~22:33 IST): PASS.** Commits `251ae7e` (M0 code), `72def7b` (CI de-dup), `57e879f` (fixed invalid YAML in `blank.yml`: unquoted `: ` in a step name made GitHub reject the workflow in 0s; first two CI runs were red for that reason). Push verified (`origin/main` == local). CI run 41873438920 on `57e879f`: success (ruff + 12 unit tests).
