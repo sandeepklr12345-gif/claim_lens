@@ -1,0 +1,7 @@
+pytest
+ruff
+pydantic>=2.6
+numpy
+rank_bm25
+PyMuPDF
+pyyaml
