@@ -23,3 +23,20 @@
 **CI note:** the owner added `.github/workflows/blank.yml` on GitHub (commit `3ea0db4`, same job as SPEC 7.10 plus concurrency, read-only permissions, timeout). It is the project's CI workflow; the duplicate `ci.yml` written by the build was removed. SPEC/CLAUDE.md say `ci.yml`: read that as `blank.yml`. The remote history was also rewritten once before M0 (initial commit amended to `e178315`); not done by the build.
 
 **M0 result (2026-11-04 ~22:33 IST): PASS.** Commits `251ae7e` (M0 code), `72def7b` (CI de-dup), `57e879f` (fixed invalid YAML in `blank.yml`: unquoted `: ` in a step name made GitHub reject the workflow in 0s; first two CI runs were red for that reason). Push verified (`origin/main` == local). CI run 41873438920 on `57e879f`: success (ruff + 12 unit tests).
+
+## M1 (2026-11-04 ~22:48 IST, ahead of the 23:45 target)
+**Objective:** 20 synthetic cases + ~80 labeled pairs; matcher scoring; IG attributions.
+
+**Files:** `claimlens/llm/client.py` (OllamaClient, FakeLLM), `claimlens/data/generate.py`, `claimlens/matcher/{scorer,metrics}.py`, `claimlens/explain/{ig,render,wordpieces}.py`, `eval/run_matcher.py`, `eval/run_ig_samples.py`, `data/pairs.jsonl` (80 pairs: 40 pos / 40 hard neg), `data/cases/case_001..020.json` (12 SUPPORTED, 8 NOT_SUPPORTED), `data/QA.md`, `eval/results/{matcher.json,ig_samples.html}`, tests.
+
+**Matcher (pretrained `cross-encoder/ms-marco-MiniLM-L-6-v2`, no fine-tuning), from `eval/results/matcher.json`:** threshold picked on dev half; held-out half (n=40): accuracy 0.575, F1 0.653, ROC-AUC 0.6275. Weak, as expected for an off-the-shelf MS-MARCO model on this task; reported as is.
+
+**IG:** Captum LayerIntegratedGradients on the word-embedding layer, pad baseline with special tokens kept, 50 steps, summed over the embedding dim, L2-normalised over clause tokens, word-pieces merged by summing. 3 sample pairs rendered to `eval/results/ig_samples.html`. Manual look: top words for a "12 months" reason are "12" and "months".
+
+**Tests:** `ruff check .` pass; `pytest -q -m "not model"` 19 passed; `pytest -q -m model` 4 passed.
+
+**Known issues / honesty notes:**
+- Gold labels are by construction. Hand check of 5 cases (by Claude, not the owner): 3 sound, 1 questionable, 1 wrong (see `data/QA.md`). SUPPORTED labels are noisier. Owner should hand-check all 20.
+- Letters are short (~40 words) and generic; some pair reasons only loosely match their clause.
+- The chunker is frozen now: chunk ids in the data depend on it.
+- NOT_SUPPORTED gold_clause_ids holds the benefit clause that contradicts the rejection (not an empty list).

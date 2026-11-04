@@ -1,0 +1,11 @@
+{
+  "case_id": "case_019",
+  "policy_id": "hdfc_optima_secure",
+  "letter_text": "Dear Ms. B. Rao, We regret to inform you that Claim #CLM-42087 for hospitalization expenses is not covered under your policy. For further details, contact our claims department. Sincerely, [Insurer Name]",
+  "reason": "Claim for hospitalization expenses not aligned with policy coverage.",
+  "gold_clause_ids": [
+    "hdfc_optima_secure-0017"
+  ],
+  "gold_verdict": "NOT_SUPPORTED",
+  "source": "synthetic"
+}

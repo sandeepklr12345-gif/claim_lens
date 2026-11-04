@@ -1,0 +1,11 @@
+{
+  "case_id": "case_006",
+  "policy_id": "hdfc_optima_secure",
+  "letter_text": "Dear Mr. A. Kumar, Unfortunately, your claim CLM-31319 has been rejected due to non-payment of premium within the grace period. Please ensure all future premiums are paid on time. Sincerely, [Insurer Name]",
+  "reason": "Premium not paid within grace period",
+  "gold_clause_ids": [
+    "hdfc_optima_secure-0066"
+  ],
+  "gold_verdict": "SUPPORTED",
+  "source": "synthetic"
+}

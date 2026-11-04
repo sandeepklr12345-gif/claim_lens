@@ -1,0 +1,11 @@
+{
+  "case_id": "case_018",
+  "policy_id": "care_supreme",
+  "letter_text": "To Ms. B. Rao, Ref CLM-80010: This letter informs you that the claim for mental health consultation is not covered under your policy. For further details, contact our claims department.",
+  "reason": "Claim for mental health consultation not covered under this policy.",
+  "gold_clause_ids": [
+    "care_supreme-0061"
+  ],
+  "gold_verdict": "NOT_SUPPORTED",
+  "source": "synthetic"
+}

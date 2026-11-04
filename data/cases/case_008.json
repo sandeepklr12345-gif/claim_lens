@@ -1,0 +1,11 @@
+{
+  "case_id": "case_008",
+  "policy_id": "care_supreme",
+  "letter_text": "Dear Mr. A. Kumar, Unfortunately, your claim (CLM-56566) for pre-existing condition expenses has been denied as it occurred before the specified wait period. Please refer to your policy for details. Sincerely, [Insurer Name]",
+  "reason": "Claim for pre-existing condition before wait period expired",
+  "gold_clause_ids": [
+    "care_supreme-0049"
+  ],
+  "gold_verdict": "SUPPORTED",
+  "source": "synthetic"
+}

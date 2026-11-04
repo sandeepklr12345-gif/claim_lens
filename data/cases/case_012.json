@@ -1,0 +1,11 @@
+{
+  "case_id": "case_012",
+  "policy_id": "hdfc_optima_secure",
+  "letter_text": "Dear Mr. A. Kumar, Unfortunately, your claim for CLM-99593 has been rejected due to exceeding the maximum underwriting loading for your pre-existing condition. Please contact us for further details. Best regards, [Insurer Name]",
+  "reason": "Exceeded maximum underwriting loading due to pre-existing condition.",
+  "gold_clause_ids": [
+    "hdfc_optima_secure-0072"
+  ],
+  "gold_verdict": "SUPPORTED",
+  "source": "synthetic"
+}

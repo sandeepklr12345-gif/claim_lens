@@ -9,3 +9,4 @@ transformers
 requests
 pytest
 ruff
+captum

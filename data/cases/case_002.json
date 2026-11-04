@@ -1,0 +1,11 @@
+{
+  "case_id": "case_002",
+  "policy_id": "hdfc_optima_secure",
+  "letter_text": "Dear Mr. A. Kumar, We regret to inform you that your claim for AYUSH treatment is not covered under your policy. Please refer to your policy document for details. CLM-46434",
+  "reason": "Claim for AYUSH treatment not within policy coverage limits.",
+  "gold_clause_ids": [
+    "hdfc_optima_secure-0020"
+  ],
+  "gold_verdict": "SUPPORTED",
+  "source": "synthetic"
+}

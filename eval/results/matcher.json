@@ -1,0 +1,20 @@
+{
+  "model": "cross-encoder/ms-marco-MiniLM-L-6-v2",
+  "n_pairs": 80,
+  "n_positive": 40,
+  "source": "synthetic",
+  "threshold_on_dev": 0.22609636949866804,
+  "dev": {
+    "n": 40,
+    "accuracy": 0.6,
+    "f1": 0.68,
+    "roc_auc": 0.6325
+  },
+  "test": {
+    "n": 40,
+    "accuracy": 0.575,
+    "f1": 0.6530612244897959,
+    "roc_auc": 0.6275
+  },
+  "all_roc_auc": 0.62625
+}

@@ -1,0 +1,11 @@
+{
+  "case_id": "case_015",
+  "policy_id": "hdfc_optima_secure",
+  "letter_text": "Dear Ms. B. Rao, We regret to inform you that claim CLM-89840 for the nomination benefit is not covered under your policy. For further inquiries, please contact our claims department. Sincerely, [Insurer Name]",
+  "reason": "Claim for nomination benefit not covered under policy.",
+  "gold_clause_ids": [
+    "hdfc_optima_secure-0068"
+  ],
+  "gold_verdict": "NOT_SUPPORTED",
+  "source": "synthetic"
+}

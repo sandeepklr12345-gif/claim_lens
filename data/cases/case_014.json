@@ -1,0 +1,11 @@
+{
+  "case_id": "case_014",
+  "policy_id": "care_supreme",
+  "letter_text": "To Ms. B. Rao (CLM-19358): Unfortunately, your claim for home treatment is not covered under your policy. For details, contact us. Sincerely, [Insurer Name]",
+  "reason": "Claim for home treatment not covered under policy.",
+  "gold_clause_ids": [
+    "care_supreme-0035"
+  ],
+  "gold_verdict": "NOT_SUPPORTED",
+  "source": "synthetic"
+}
