@@ -16,7 +16,7 @@ matcher:
   model: cross-encoder/ms-marco-MiniLM-L-6-v2
 
 agent:
-  tau_high: 0.7    # SUPPORTED if match prob >= tau_high (SPEC 7.6; tuned on first 10 cases in M3)
-  tau_low: 0.3     # NOT_SUPPORTED if match prob < tau_low; otherwise INSUFFICIENT_EVIDENCE
+  tau_high: 0.8    # SUPPORTED if match prob >= tau_high (SPEC 7.6; tuned in M3, see eval/results/tau.json)
+  tau_low: 0.4     # NOT_SUPPORTED if match prob < tau_low; otherwise INSUFFICIENT_EVIDENCE
   tau_aas: 0.6     # reflect while AAS < this
   max_rounds: 2

@@ -89,3 +89,29 @@ def feedback_words(
         if pos[i] <= low_frac * top and w not in STOP and re.search(r"\w", w) and w not in weak:
             weak.append(w)
     return missing, weak[:k]
+
+
+def random_span_aas(
+    attr: Attribution, span_lengths: list[int], trials: int = 200, seed: int = 42
+) -> float:
+    """Chance level for AAS: mean AAS of random contiguous spans of the same word lengths.
+
+    Compare the real AAS with this baseline: AAS above chance means the cited spans really
+    sit on high-attribution words (SPEC.md 2 'Should', 7.5).
+    """
+    import random
+
+    pos = [max(0.0, s) for s in attr.scores]
+    total, n = sum(pos), len(pos)
+    lengths = [k for k in span_lengths if 0 < k <= n]
+    if total <= 0 or not lengths:
+        return 0.0
+    rng = random.Random(seed)
+    acc = 0.0
+    for _ in range(trials):
+        idx: set[int] = set()
+        for k in lengths:
+            start = rng.randrange(0, n - k + 1)
+            idx.update(range(start, start + k))
+        acc += sum(pos[i] for i in idx) / total
+    return acc / trials

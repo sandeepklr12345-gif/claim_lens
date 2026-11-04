@@ -1,0 +1,142 @@
+{
+  "n_cases": 20,
+  "verdict_agreement": 0.65,
+  "n_agree": 13,
+  "abstain_rate": 0.05,
+  "gold_clause_in_top3_rate": 0.7,
+  "confusion_gold_to_pred": {
+    "SUPPORTED": {
+      "SUPPORTED": 11,
+      "INSUFFICIENT_EVIDENCE": 1
+    },
+    "NOT_SUPPORTED": {
+      "SUPPORTED": 6,
+      "NOT_SUPPORTED": 2
+    }
+  },
+  "tau_high": 0.8,
+  "tau_low": 0.4,
+  "source": "synthetic",
+  "per_case": [
+    {
+      "case_id": "case_001",
+      "gold": "SUPPORTED",
+      "pred": "SUPPORTED",
+      "gold_clause_in_top3": false
+    },
+    {
+      "case_id": "case_002",
+      "gold": "SUPPORTED",
+      "pred": "SUPPORTED",
+      "gold_clause_in_top3": true
+    },
+    {
+      "case_id": "case_003",
+      "gold": "SUPPORTED",
+      "pred": "SUPPORTED",
+      "gold_clause_in_top3": true
+    },
+    {
+      "case_id": "case_004",
+      "gold": "SUPPORTED",
+      "pred": "SUPPORTED",
+      "gold_clause_in_top3": true
+    },
+    {
+      "case_id": "case_005",
+      "gold": "SUPPORTED",
+      "pred": "SUPPORTED",
+      "gold_clause_in_top3": false
+    },
+    {
+      "case_id": "case_006",
+      "gold": "SUPPORTED",
+      "pred": "SUPPORTED",
+      "gold_clause_in_top3": true
+    },
+    {
+      "case_id": "case_007",
+      "gold": "SUPPORTED",
+      "pred": "SUPPORTED",
+      "gold_clause_in_top3": true
+    },
+    {
+      "case_id": "case_008",
+      "gold": "SUPPORTED",
+      "pred": "SUPPORTED",
+      "gold_clause_in_top3": true
+    },
+    {
+      "case_id": "case_009",
+      "gold": "SUPPORTED",
+      "pred": "SUPPORTED",
+      "gold_clause_in_top3": true
+    },
+    {
+      "case_id": "case_010",
+      "gold": "SUPPORTED",
+      "pred": "SUPPORTED",
+      "gold_clause_in_top3": true
+    },
+    {
+      "case_id": "case_011",
+      "gold": "SUPPORTED",
+      "pred": "SUPPORTED",
+      "gold_clause_in_top3": false
+    },
+    {
+      "case_id": "case_012",
+      "gold": "SUPPORTED",
+      "pred": "INSUFFICIENT_EVIDENCE",
+      "gold_clause_in_top3": true
+    },
+    {
+      "case_id": "case_013",
+      "gold": "NOT_SUPPORTED",
+      "pred": "SUPPORTED",
+      "gold_clause_in_top3": true
+    },
+    {
+      "case_id": "case_014",
+      "gold": "NOT_SUPPORTED",
+      "pred": "SUPPORTED",
+      "gold_clause_in_top3": false
+    },
+    {
+      "case_id": "case_015",
+      "gold": "NOT_SUPPORTED",
+      "pred": "NOT_SUPPORTED",
+      "gold_clause_in_top3": true
+    },
+    {
+      "case_id": "case_016",
+      "gold": "NOT_SUPPORTED",
+      "pred": "SUPPORTED",
+      "gold_clause_in_top3": true
+    },
+    {
+      "case_id": "case_017",
+      "gold": "NOT_SUPPORTED",
+      "pred": "SUPPORTED",
+      "gold_clause_in_top3": true
+    },
+    {
+      "case_id": "case_018",
+      "gold": "NOT_SUPPORTED",
+      "pred": "NOT_SUPPORTED",
+      "gold_clause_in_top3": true
+    },
+    {
+      "case_id": "case_019",
+      "gold": "NOT_SUPPORTED",
+      "pred": "SUPPORTED",
+      "gold_clause_in_top3": false
+    },
+    {
+      "case_id": "case_020",
+      "gold": "NOT_SUPPORTED",
+      "pred": "SUPPORTED",
+      "gold_clause_in_top3": false
+    }
+  ]
+}

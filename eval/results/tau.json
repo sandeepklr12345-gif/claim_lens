@@ -1,0 +1,30 @@
+{
+  "tau_high": 0.8,
+  "tau_low": 0.4,
+  "dev_case_ids": [
+    "case_001",
+    "case_002",
+    "case_003",
+    "case_004",
+    "case_005",
+    "case_006",
+    "case_013",
+    "case_014",
+    "case_015",
+    "case_016"
+  ],
+  "default_0.7_0.3": {
+    "dev": 0.6,
+    "test": 0.6,
+    "all20": 0.6
+  },
+  "tuned": {
+    "dev": 0.7,
+    "test": 0.5,
+    "all20": 0.6
+  },
+  "abstain_rate_all20": 0.05,
+  "prob_roc_auc_supported_vs_not_all20": 0.6145833333333334,
+  "top1_gold_clause_hit_rate_all20": 0.45,
+  "note": "tuned on the stratified dev split only; test and all20 reported as is"
+}

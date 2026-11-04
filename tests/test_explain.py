@@ -80,3 +80,13 @@ def test_reflection_skipped_when_aas_high_and_best_kept_when_worse():
     llm2 = FakeLLM([poor, worse, worse])
     res2 = reflect(llm2, attr, "r", "c", CLAUSE, 0.8, "supports the rejection")
     assert res2.final.text == "poor" and len(llm2.calls) == 3  # initial + 2 rounds, best kept
+
+
+def test_random_span_baseline_is_chance_level():
+    from claimlens.explain.aas import random_span_aas
+
+    attr = make_attr()
+    chance = random_span_aas(attr, [3], trials=500, seed=42)
+    assert 0.0 < chance < 0.9  # a random 3-word window rarely hits all the mass
+    assert chance == random_span_aas(attr, [3], trials=500, seed=42)  # seeded
+    assert random_span_aas(attr, [999]) == 0.0  # span longer than the clause
