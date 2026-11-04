@@ -40,3 +40,5 @@
 - Letters are short (~40 words) and generic; some pair reasons only loosely match their clause.
 - The chunker is frozen now: chunk ids in the data depend on it.
 - NOT_SUPPORTED gold_clause_ids holds the benefit clause that contradicts the rejection (not an empty list).
+
+**M1 CI fix:** first CI run for `4a15d0b` was red (`ModuleNotFoundError: requests`; the CI requirements are deliberately light). `requests` is now imported lazily inside `OllamaClient`. Verified by running the unit tests in a clean venv with only `requirements-ci.txt` (19 passed) before pushing.
