@@ -1,0 +1,11 @@
+# torch: install the CUDA build separately (see CLAUDE.md). Installed here: torch 2.11.0+cu128
+pydantic>=2.6
+numpy
+pyyaml
+rank_bm25
+PyMuPDF
+sentence-transformers
+transformers
+requests
+pytest
+ruff
