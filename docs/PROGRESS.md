@@ -42,3 +42,20 @@
 - NOT_SUPPORTED gold_clause_ids holds the benefit clause that contradicts the rejection (not an empty list).
 
 **M1 CI fix:** first CI run for `4a15d0b` was red (`ModuleNotFoundError: requests`; the CI requirements are deliberately light). `requests` is now imported lazily inside `OllamaClient`. Verified by running the unit tests in a clean venv with only `requirements-ci.txt` (19 passed) before pushing.
+
+## M2 (2026-11-04 ~23:25 IST, ahead of the 01:45 target)
+**Objective:** explanation + reflection with AAS; 2 MCP servers; LangGraph flow.
+
+**Files:** `claimlens/explain/{aas,explain}.py`, `claimlens/agent/{graph,tools,verdict,run}.py`, `claimlens/core.py` (shared tool functions), `claimlens/mcp_servers/{policy_server,explainer_server}.py`, `configs/app.yaml` (agent: tau_high 0.7, tau_low 0.3, tau_aas 0.6, max_rounds 2), `tests/test_{explain,agent}.py`.
+
+**Acceptance (case_001, CLI):** `python -m claimlens.agent.run --case data\cases\case_001.json` prints verdict, initial and final explanation, AAS before and after. PASS. Same result through MCP (`--mcp`): both servers started, all 5 tools called over stdio, identical output (AAS initial 0.133, final 0.133; history 0.133 -> 0.133 -> 0.015, i.e. the 7B model's revisions did not raise AAS on this case). The MCP path took about 2 minutes (two model loads); direct tools are faster and are the default.
+
+**Bugs found and fixed while testing:**
+- The LLM wrote `source: "Policy clause care_supreme-0051"`, so every span was treated as a non-clause span and AAS was silently 0. `parse_explanation` now treats anything not mentioning "reason" as a clause span; regression test added.
+- `mcp` 2.x removed `FastMCP`; pinned `mcp<2` (installed 1.30.0), as SPEC 5 names FastMCP.
+- MCP servers hung on Windows when torch/the embedding model loaded inside a tool call; both servers now warm up (retrievers, matcher, Captum) in the main thread before `mcp.run()`. MCP wiring finished inside the 30-minute time-box, so no direct-call fallback was needed for the agent (DirectTools stays as the default and for tests/UI).
+- Retrieval returning nothing crashed the graph with IndexError; it now abstains (INSUFFICIENT_EVIDENCE, no explanation).
+
+**Design notes / deviations:** attributions cover clause words only, so only spans cited from the clause can earn AAS mass (reason-sourced spans count as unmatched, as SPEC 7.5 says unmatched count as zero). `langgraph` added to `requirements-ci.txt` (pure Python) so the FakeLLM end-to-end test runs in CI as SPEC 9 asks. Appeal draft is a template (no LLM), only for NOT_SUPPORTED. Reason extraction relies on the letter; the synthetic letters are short, so extracted reasons can be vague (case_001: "Not covered under your policy.").
+
+**Tests:** `ruff check .` pass; `pytest -q -m "not model"` 30 passed (also in a clean venv with only `requirements-ci.txt` and no torch); `pytest -q -m model` 4 passed.

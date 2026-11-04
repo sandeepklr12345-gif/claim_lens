@@ -49,12 +49,21 @@ class Attribution(BaseModel):
 
 class CitedSpan(BaseModel):
     text: str
+    source: str = "clause"  # "clause" or "reason"; only clause spans can earn attribution mass
     clause_id: str | None = None
 
 
 class Explanation(BaseModel):
     text: str
     cited_spans: list[CitedSpan] = Field(default_factory=list)
+
+
+class AlignmentResult(BaseModel):
+    """Attribution Alignment Score and which attribution words the cited spans covered."""
+
+    aas: float = Field(ge=0.0, le=1.0)
+    cited_idx: list[int] = Field(default_factory=list)
+    unmatched: list[str] = Field(default_factory=list)
 
 
 class Case(BaseModel):
@@ -87,5 +96,6 @@ class CaseResult(BaseModel):
     explanation_final: Explanation | None = None
     aas_initial: float | None = None
     aas_final: float | None = None
+    aas_history: list[tuple[str, float]] = Field(default_factory=list)  # (round, AAS)
     verdict: Verdict
     appeal_draft: str | None = None
