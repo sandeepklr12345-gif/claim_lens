@@ -61,7 +61,11 @@ python -m claimlens.agent.run --case data\cases\case_001.json          # in-proc
 python -m claimlens.agent.run --case data\cases\case_001.json --mcp    # through the MCP servers
 ```
 
-**UI:** `streamlit run app\streamlit_app.py` (pick a sample case or paste a letter, press *Run audit*).
+**UI:** `streamlit run app\streamlit_app.py` with Ollama running. Pick a sample case or paste a letter
+and press *Run audit*. A live panel shows each step as it runs, then the verdict and evidence appear.
+The first run in a session also loads the models, so it takes longest. The page loads its fonts from
+Google Fonts when online and falls back to system fonts otherwise; letters stay on this computer.
+`streamlit run app\preview_result.py` shows the result screen with hand-made sample values.
 
 **Search a policy:** `python -m claimlens.rag.search "waiting period" --doc care_supreme`
 
@@ -108,7 +112,8 @@ and only 5 were hand-checked** (3 sound, 1 questionable, 1 wrong; see `data/QA.m
 
 ```
 claimlens/   schemas.py  core.py  rag/  matcher/  explain/  llm/  agent/  mcp_servers/  data/
-app/streamlit_app.py     configs/app.yaml     data/ (policies, cases, pairs.jsonl, QA.md)
+app/         streamlit_app.py  intake_view.py  result_view.py  adapter.py  preview_result.py
+configs/app.yaml         .streamlit/config.toml       data/ (policies, cases, pairs.jsonl, QA.md)
 eval/        run_*.py  results/               docs/PROGRESS.md (build log, bugs, deviations)
 tests/       .github/workflows/blank.yml      SPEC.md  CLAUDE.md
 ```
