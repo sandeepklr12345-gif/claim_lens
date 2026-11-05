@@ -119,3 +119,25 @@
 **Not checked:** phone-width layout; visual judgement beyond the desktop screenshots; the result screen's "After reflection" toggle and policy restore in the browser (both covered by AppTest only); `eval/results` were not regenerated, and the evaluation path through `run_case` now uses `graph.stream`.
 
 **Known issue:** the page fetches fonts from Google Fonts, so "Nothing is sent to an outside service" is true of letters and claim data but not of that font request.
+
+## Phase 0 (2026-11-05 ~20:00 IST)
+Tag `phase1-presented` on `e631ec7` pushed and verified. Branch `phase2` created; Phase 2 docs committed as `0d5ad09`. Ollama lists `qwen2.5:7b`. Venv `C:\venvs\claim_lens` has torch 2.11.0+cu128, CUDA available.
+**Corrections to CLAUDE.md:** the GPU is an RTX 4050 Laptop, not a 4060. The venv is outside the repo. CI (`blank.yml`) runs only on `main`, so `phase2` CI is started with `gh workflow run blank.yml --ref phase2`.
+
+## P1 Data (2026-11-05 ~20:35 IST, ahead of the Fri 09:00 target; IN PROGRESS, needs the owner)
+**Objective:** larger labeled set, 30 cases, leakage-free splits, verification log.
+
+**Files:** new `claimlens/data/phase2.py`, `tests/test_phase2_data.py`, `data/pairs_v2.jsonl`, `data/splits.json`, `data/verify_pairs.csv`, `data/cases/case_021..030.json`, `eval/results/data_v2.md`. Changed `claimlens/schemas.py` (`Pair.verified`).
+
+**Results (`eval/results/data_v2.md`):** 206 pairs, 103 pos / 103 neg (train 114, val 52, test 40); 30 cases (18 SUPPORTED, 12 NOT_SUPPORTED; val 17, test 13); clause leakage 0.
+
+**Decisions:**
+- FALLBACK (SPEC 13.2): no third policy PDF yet, so test = whole held-out section groups. `generate --test-policy <id>` rebuilds with a third policy.
+- Only 55 restrictive clauses exist, so each gives two reasons; 3 clauses returned one. Positive clauses repeat across pairs inside one split.
+- Beyond SPEC: case gold clauses never enter train, so no train-split cases exist. The Phase 1 `pairs.jsonl` is kept but not reused, because its clauses would cross the splits.
+
+**Acceptance:** files exist PASS; no clause leakage PASS (tested on the committed files); label balance reported PASS; verified >= 20 **PENDING** (0 so far; `data/verify_pairs.csv` is ready for the owner). Hand-written cases **NOT DONE**: `data/cases_extra/` (t01 to t06, two realistic letters) is not in the repo, git history or the searched folders, so the 30 cases are all generated.
+
+**Tests:** `ruff check .` pass; `pytest -q -m "not model"` 75 passed. Commit `b9226b6`, push verified. CI run 42050898056 on `phase2`: success.
+
+**Known issues:** labels are by construction; hard negatives may also support the reason. Generated case labels 021-030 are not hand-checked. Phase 1 case_003 (questionable) and case_009 (wrong) keep their labels until the owner decides.
