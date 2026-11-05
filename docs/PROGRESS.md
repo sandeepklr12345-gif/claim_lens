@@ -141,3 +141,60 @@ Tag `phase1-presented` on `e631ec7` pushed and verified. Branch `phase2` created
 **Tests:** `ruff check .` pass; `pytest -q -m "not model"` 75 passed. Commit `b9226b6`, push verified. CI run 42050898056 on `phase2`: success.
 
 **Known issues:** labels are by construction; hard negatives may also support the reason. Generated case labels 021-030 are not hand-checked. Phase 1 case_003 (questionable) and case_009 (wrong) keep their labels until the owner decides.
+
+**Fix found in P2:** `tests/test_ui.py` hard-coded 20 cases and failed once cases 021-030 existed. P1 had run only the unit tests, so this was missed; the test now counts the files.
+
+## P2 Matcher (2026-11-05 ~21:20 IST, ahead of the Fri 14:00 target)
+**Objective:** fine-tuned cross-encoder and baseline table.
+
+**Files:** new `eval/train_matcher.py`, `eval/run_matcher_v2.py`, `claimlens/matcher/baselines.py`, `tests/test_matcher_baselines.py`, `tests/test_matcher_resolve.py`, `eval/results/matcher_v2.md`, `eval/results/matcher_v2_scores.json`. Changed `claimlens/matcher/scorer.py`, `configs/app.yaml`, `eval/run_matcher.py`, `tests/test_ui.py`.
+
+**Decisions:** the 13.7 model IDs were confirmed on Hugging Face. Plain torch loop, because `accelerate` is not an allowed dependency. FALLBACK: a checkpoint missing from `models/` (git-ignored, so every fresh clone) falls back to the pretrained model with a logged warning. All three bases were trained, and the agent's checkpoint is the best fine-tuned one on validation.
+
+**Negative result (`eval/results/matcher_v2.md`):** the fine-tuned MiniLM does not beat the Phase 1 pretrained model on validation. Fine-tuned legal-bert and InLegalBERT are clearly worse, probably because 114 training pairs are too few for a fresh head. The zero-shot LLM's validation threshold labels almost everything positive, although its test ROC-AUC is the highest. Test has n=40, so small gaps are not reliable.
+
+**Acceptance:** the fine-tuned model runs through `python -m claimlens.agent.run` PASS; table complete PASS; verified subset **PENDING** (0 pairs verified, the table says so and rebuilds with `--render`).
+
+**Tests:** `ruff check .` pass; `pytest -q -m "not model"` 89 passed; `pytest -q -m model` 8 passed. Commit `1604bac`, push verified. CI run 42064951236: success.
+
+## P3 Explainability (2026-11-05 ~22:15 IST, ahead of the Sat 09:00 target)
+**Objective:** SHAP, attention rollout, comprehensiveness and sufficiency.
+
+**Files:** new `claimlens/explain/{rollout,shap_text,faithfulness}.py`, `eval/run_faithfulness_v2.py`, `tests/test_faithfulness.py`, `eval/results/faithfulness_v2.{md,json}`. Changed `claimlens/explain/{ig,explain}.py`, `claimlens/matcher/scorer.py` (eager attention), `requirements.txt`, `tests/test_model_ig.py`.
+
+**Results (`eval/results/faithfulness_v2.md`, 30 cases):** every method beats random words; SHAP is the most faithful and rollout the weakest at k=10 and 20. IG vs SHAP agree only weakly, and IG changes a lot with its baseline. AAS is built on IG, so it inherits that sensitivity. SPEC's cut order was not needed: SHAP ran on all 30 cases in 348 s, then 234 s in the final `run_all`, with `max_evals` 2000.
+
+**Method notes:** comprehensiveness and sufficiency use the logit, because fine-tuned probabilities saturate near 1. Words are deleted, and scoring uses detokenised lower-case text on both sides of each difference.
+
+**Tests:** `ruff check .` pass; `pytest -q -m model` 9 passed. Commit `81ddb71`, push verified. CI run 42069216642: success.
+
+## P4 Reflection (2026-11-06 ~00:20 IST, ahead of the Sat 16:00 target)
+**Objective:** tuned `tau`, manual check of 10 revised explanations.
+
+**Files:** new `eval/tune_reflection.py`, `eval/results/reflection_v2.{md,json}`, `docs/reflection_check.md`. Changed `claimlens/agent/graph.py`, `claimlens/explain/explain.py`, `claimlens/schemas.py`, `configs/app.yaml`, `eval/{run_all,run_e2e,run_faithfulness,tune_tau}.py`, `tests/test_faithfulness.py`.
+
+**Decisions:**
+- One agent run at `tau_aas` 0.8 records each revision path; a lower tau stops earlier on the same path, so `replay_reflection` tests the grid with no extra LLM calls. A test compares it with real `reflect` runs.
+- Beyond SPEC: `tau_high` and `tau_low` were tuned on the Phase 1 model, so they were retuned on validation cases. `tau.json` now uses the Phase 2 split and replaces the old dev split; the Phase 1 results stay at tag `phase1-presented`.
+- Added `CaseResult.revisions`. The first run kept only the best text and gave 4 explanations for a sheet that needs 10, so the agent was rerun. The sheet includes revisions that did not raise AAS.
+
+**Results (`eval/results/`):** every tau in the grid gives the same mean final AAS, because AAS rarely reaches 0.4, so the tie rule gives `tau_aas` = 0.4: the threshold has no practical effect on this data. Verdicts: tuned thresholds improve validation but not test, where agreement equals always answering SUPPORTED (0.46).
+
+**Repeatability:** two agent runs with the same seed gave different reflection numbers: validation mean final AAS 0.166 and 0.230; test mean AAS 0.182 -> 0.191 (improved 2) and 0.176 -> 0.196 (improved 1). The second run is the reported one, because it is the run that stores revisions; tau was the same both times and nothing was selected on test. The LLM's run-to-run variation is as large as the reflection effect.
+
+**Acceptance:** all result files produced by `python -m eval.run_all` PASS (exit 0). `docs/reflection_check.md` has 10 explanations PASS; owner's better / same / worse marks **PENDING**.
+
+**Tests:** `ruff check .` pass; `pytest -q -m "not model"` 110 passed.
+
+**Commit note:** `claimlens/schemas.py` holds the revisions field and the P5 API models, so it went in with P4. Commit `35ad07e`, push verified.
+
+## P5 Packaging (2026-11-06, ahead of the Sun 12:00 target)
+**Objective:** FastAPI, Docker Compose, CI, final README.
+
+**Files:** new `api/__init__.py`, `api/main.py`, `claimlens/utils/storage.py`, `Dockerfile`, `.dockerignore`, `docker-compose.yml`, `tests/test_api.py`. Changed `.github/workflows/blank.yml`, `requirements-ci.txt`, `README.md`, `.gitignore`.
+
+**Corrections to the plan:** SPEC's "existing storage module" did not exist, so `claimlens/utils/storage.py` is new. The CI workflow only runs on push or PR to `main`, so `phase2` runs are started with `gh workflow run`. The GPU here is an RTX 4050 Laptop 6 GB, not a 4060. Containers run the matcher on CPU.
+
+**Run in this session:** `docker compose build` passed (image 3.42 GB). `docker compose up` served the API on 8000 and the UI on 8501 (health 200). A full audit of case_001 through the container and host Ollama returned status done, verdict SUPPORTED and the disclaimer in 130 s, while `run_all` shared Ollama; that run used the local `models/` folder. Coverage: `claimlens` and `api` 67% total, `api/main.py` 92%, `storage.py` 100%.
+
+**Open issue, verification (needs the owner):** at 00:44-00:46 on 2026-11-06, outside this session, `data/verify_pairs.csv` was filled in and `apply-verify` was run. All 20 notes start `CLAUDE (...)`, and 5 labels were flipped. The records then read `verified: true` under "Owner-verified subset", but the files do not show that the owner checked them, and project rules require that. Those changes (`data/pairs_v2.jsonl`, `data/verify_pairs.csv`, `data/QA.md`, `eval/results/data_v2.md`, `eval/results/matcher_v2.md`) were left as they are and **not committed**, so the repo and README stay at 0 verified until the owner decides. If kept, the test scores change: fine-tuned MiniLM test acc/F1/AUC 0.625/0.706/0.772 becomes 0.550/0.625/0.668, and the README must be updated from `eval/results/`.

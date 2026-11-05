@@ -43,5 +43,17 @@ jobs:
 
       # Tests marked @pytest.mark.model need torch, a Hugging Face model,
       # Ollama or a GPU. They run locally with: pytest -q -m model
-      - name: Unit tests
-        run: pytest -q -m "not model"
+      - name: Unit tests with coverage
+        run: pytest -q -m "not model" --cov=claimlens --cov=api --cov-report=term
+
+  docker-build:
+    name: Docker build (no push)
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+
+    steps:
+      - name: Check out code
+        uses: actions/checkout@v4
+
+      - name: Build the image
+        run: docker build -t claimlens:ci .
