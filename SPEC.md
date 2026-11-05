@@ -181,3 +181,61 @@ pytest: chunking on a sample text, retrieval finds a known clause, AAS on a hand
 | Backend and deploy | FastAPI endpoints (`/cases`, `/cases/{id}/run`, `/cases/{id}`); Docker Compose; CI extended with Docker build and coverage (basic CI already exists from Phase 1) |
 | Evaluation | All hypotheses H1-H3 from the report; RAGAS for retrieval-grounded answers; MLflow or W&B tracking |
 | Stretch | OCR for scanned letters; Hindi and Kannada; counterfactual explanations of what would change the outcome |
+
+## 13. Phase 2 cut for 3 days (Fri 6 to Sun 8 Nov 2026)
+
+This is the part of section 12 that is built now. Everything in 12.2 not listed here is deferred (see 13.6). Same integrity rules as Phase 1: every number in the README comes from `eval/results/`, negative results are reported as they are.
+
+### 13.1 Time plan (IST). Hard stop: Sun 8 Nov 22:00. Cut line: if more than 30 min behind a target, apply 13.6 without asking.
+
+| Milestone | Target window | Deliverable |
+|---|---|---|
+| P1 Data | Fri 6 Nov 09:00-13:00 | Larger labeled set, 30 cases, splits, verification log |
+| P2 Matcher | Fri 6 Nov 14:00-20:00 | Fine-tuned cross-encoder and baseline table |
+| P3 Explainability | Sat 7 Nov 09:00-15:00 | SHAP, attention rollout, comprehensiveness and sufficiency, random-span AAS |
+| P4 Reflection | Sat 7 Nov 16:00-19:00 | Tuned `tau`, manual check of 10 revised explanations |
+| P5 Serve | Sun 8 Nov 09:00-18:00 | FastAPI, Docker Compose, extended CI, README with new results |
+| Buffer | Sun 8 Nov 18:00-22:00 | Fixes, final report |
+
+### 13.2 P1 Data
+- `data/pairs_v2.jsonl`: about 200 labeled `(reason, clause)` pairs. Fields: `pair_id, policy_id, reason, clause_id, clause_text, label, source: "synthetic", verified: bool`. Generate with Ollama from chosen clauses, as in Phase 1.
+- Add a third policy PDF (the user supplies it; see 13.7). Split: train and validation from policies 1 and 2, split by `clause_id` so no clause appears in both; test = the third policy. If no third PDF is available, hold out whole clause groups and say so in the README (fallback, logged in `docs/PROGRESS.md`).
+- Cases: grow `data/cases/` to 30. Include the hand-written cases from `data/cases_extra/` (t01 to t06 and the two realistic letters) with real `gold_clause_ids`.
+- The user hand-verifies at least 20 pairs (10%). Record IDs and corrections in `data/QA.md`. Claude Code prepares a CSV of the 20 pairs for the user to mark; do not mark verified yourself.
+- Acceptance: files exist, splits have no clause leakage (test it), verified count >= 20, label balance reported.
+
+### 13.3 P2 Matcher
+- Script `python -m eval.train_matcher --base <model-id-or-path> --out models/matcher_v2` (models/ is git-ignored). Seed 42, fp16, batch 16, max length 256, at most 4 epochs, early stopping on validation F1.
+- Base models to try, in order: `nlpaueb/legal-bert-base-uncased`, `law-ai/InLegalBERT` [verify IDs]. Fallback if downloads fail or both do worse than the Phase 1 model: fine-tune the existing `cross-encoder/ms-marco-MiniLM-L-6-v2`. If the GPU runs out of memory: batch 8, max length 192, gradient accumulation 2.
+- Baselines on the same test set: BM25 score threshold, the Phase 1 pretrained cross-encoder, a zero-shot Ollama LLM.
+- Report accuracy, F1 and ROC-AUC on validation and test, and on the verified subset. Output `eval/results/matcher_v2.md`.
+- The matcher loader (`claimlens/matcher`) already accepts a checkpoint path; the agent switches model through `configs/app.yaml`, not code changes.
+- Acceptance: the fine-tuned model runs through `python -m claimlens.agent.run`; the table is complete even if the fine-tuned model does not win.
+
+### 13.4 P3 Explainability and P4 Reflection
+- `attribute(method="ig" | "shap" | "rollout")` returns the same word-level structure for all methods.
+- SHAP with the `shap` text explainer at word level. Time-box: if it takes more than 60 minutes per run, use 10 cases and state it.
+- Report Spearman correlation between IG and SHAP over the cases, with IG baseline sensitivity (pad vs zero-embedding baseline).
+- Comprehensiveness and sufficiency at k = 10, 20, 50 tokens, for IG, SHAP, attention rollout and a random-token baseline. Output `eval/results/faithfulness_v2.md`.
+- AAS with a random-span baseline (already in Phase 1; keep it).
+- P4: tune the reflection threshold `tau` on validation cases only (grid 0.4 to 0.8), then report once on test. Write `docs/reflection_check.md` with 10 revised explanations, each with the original, the revision and the AAS change; the user marks each as better, same or worse.
+- Acceptance: all result files exist and are produced by `python -m eval.run_all`.
+
+### 13.5 P5 Serve
+- FastAPI app `api/main.py`: `POST /cases` (create from letter text and policy id), `POST /cases/{id}/run`, `GET /cases/{id}`. Pydantic schemas from `claimlens/schemas.py`. Case state stored through the existing storage module (JSON files; no PostgreSQL).
+- Docker Compose: `api` and `ui` services. Ollama stays on the host (`OLLAMA_HOST=http://host.docker.internal:11434`); do not containerise the GPU model.
+- CI: add `docker build` (build only, no push) and `pytest --cov` to `.github/workflows`; keep `pytest -m "not model"` and `ruff check .`.
+- README: update with the new tables, copied from `eval/results/` only. Add the name and USN open item.
+- Acceptance: `docker compose up` serves the API and UI from a fresh clone; API tests pass with the LLM and models mocked; `gh run list --limit 1` shows success.
+
+### 13.6 Deferred (do not build)
+Planner and orchestrator agents and re-planning, PostgreSQL and long-term memory, regulations and appeal MCP servers, the full appeal drafter, RAGAS, MLflow or W&B, OCR, Hindi and Kannada, counterfactual explanations, a vector-database swap.
+
+Cut order if behind: (1) IG baseline sensitivity, (2) attention rollout, (3) Docker Compose, (4) CI extension, (5) SHAP down to 10 cases. Never cut: P1, P2, comprehensiveness and sufficiency, the README.
+
+### 13.7 Open items before starting
+- [ ] Which third policy PDF (the user supplies it)
+- [ ] Name and USN for the README
+- [ ] The 20 pairs to hand-verify (done by the user in P1)
+- [ ] Confirm Hugging Face model IDs in 13.3
+- [ ] Fix `gold_clause_ids` placeholders in the t01 to t06 cases
