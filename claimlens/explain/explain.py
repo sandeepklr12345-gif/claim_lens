@@ -94,6 +94,29 @@ class ReflectionResult:
     history: list[tuple[str, float]] = field(default_factory=list)  # (label, AAS)
 
 
+def replay_reflection(history: list[tuple[str, float]], tau: float) -> tuple[float, int]:
+    """(best AAS, revisions used) had `reflect` run with this tau.
+
+    Valid for any tau up to the one the history was recorded with: a lower tau stops earlier
+    on the same path, because the revision prompts depend only on earlier rounds.
+    """
+    best, revisions = history[0][1], 0
+    for _, aas in history[1:]:
+        if history[revisions][1] >= tau:
+            break
+        revisions += 1
+        best = max(best, aas)
+    return best, revisions
+
+
+def choose_tau(histories: list[list[tuple[str, float]]], grid: list[float]) -> float:
+    """The tau with the highest mean final AAS; a tie goes to the lowest (fewest LLM calls)."""
+    def mean_final(tau: float) -> float:
+        return sum(replay_reflection(h, tau)[0] for h in histories) / len(histories)
+
+    return max(sorted(grid), key=lambda t: (round(mean_final(t), 9), -t))
+
+
 def reflect(llm: LLM, attr: Attribution, reason: str, clause_id: str, clause: str, prob: float,
             stance: str, tau: float = TAU_AAS, max_rounds: int = MAX_ROUNDS,
             aas_fn: Callable[[list[CitedSpan]], AlignmentResult] | None = None,

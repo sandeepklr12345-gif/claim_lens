@@ -56,7 +56,8 @@ class Matcher:
         self.max_len = checkpoint_max_len(name)
         self.device = device or ("cuda" if torch.cuda.is_available() else "cpu")
         self.tokenizer = AutoTokenizer.from_pretrained(name)
-        self.model = AutoModelForSequenceClassification.from_pretrained(name)
+        self.model = AutoModelForSequenceClassification.from_pretrained(
+            name, attn_implementation="eager")  # eager returns attentions for rollout
         self.model.to(self.device).eval()
         self.name = name
 
