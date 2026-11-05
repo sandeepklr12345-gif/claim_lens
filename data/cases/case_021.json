@@ -1,0 +1,11 @@
+{
+  "case_id": "case_021",
+  "policy_id": "care_supreme",
+  "letter_text": "Dear Mr. A. Kumar, Unfortunately, your claim for Policy Year 2023 has been rejected as the Cumulative Bonus Super limit of 500% of the Sum Insured has been exceeded. Best regards, [Insurer Name]",
+  "reason": "Cumulative Bonus Super limit exceeded for Policy Year 2023.",
+  "gold_clause_ids": [
+    "care_supreme-0054"
+  ],
+  "gold_verdict": "SUPPORTED",
+  "source": "synthetic"
+}

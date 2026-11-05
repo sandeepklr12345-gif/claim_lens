@@ -1,0 +1,11 @@
+{
+  "case_id": "case_029",
+  "policy_id": "care_supreme",
+  "letter_text": "CLM-57400: Dear Ms. B. Rao, Unfortunately, your claim for Day Care Treatment is not covered as per your policy. For further details, contact our claims team. Sincerely, [Insurer Name]",
+  "reason": "Claim for Day Care Treatment not aligned with policy coverage.",
+  "gold_clause_ids": [
+    "care_supreme-0031"
+  ],
+  "gold_verdict": "NOT_SUPPORTED",
+  "source": "synthetic"
+}
