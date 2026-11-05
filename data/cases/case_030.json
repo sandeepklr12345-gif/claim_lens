@@ -1,0 +1,11 @@
+{
+  "case_id": "case_030",
+  "policy_id": "hdfc_optima_secure",
+  "letter_text": "Subject: Rejection of Claim (CLM-85674) Dear Ms. B. Rao, Unfortunately, your claim for home health care expenses is not covered by your policy. Please review your policy document for details. Sincerely, [Insurer Name]",
+  "reason": "Claim for home health care not aligned with policy coverage.",
+  "gold_clause_ids": [
+    "hdfc_optima_secure-0019"
+  ],
+  "gold_verdict": "NOT_SUPPORTED",
+  "source": "synthetic"
+}

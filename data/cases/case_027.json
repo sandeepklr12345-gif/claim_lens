@@ -1,0 +1,11 @@
+{
+  "case_id": "case_027",
+  "policy_id": "care_supreme",
+  "letter_text": "Dear Ms. B. Rao, We regret to inform you that claim CLM-92397 for nomination payment is not covered under your policy. For further inquiries, please contact our claims department. Sincerely, [Insurer Name]",
+  "reason": "Claim for nomination payment not covered under policy.",
+  "gold_clause_ids": [
+    "care_supreme-0087"
+  ],
+  "gold_verdict": "NOT_SUPPORTED",
+  "source": "synthetic"
+}
