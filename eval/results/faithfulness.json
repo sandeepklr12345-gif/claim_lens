@@ -1,125 +1,125 @@
 {
-  "n_cases": 20,
-  "mean_aas_initial": 0.20004606803622588,
-  "mean_aas_final": 0.23328073977276884,
-  "mean_random_span_aas": 0.1705191943558502,
-  "n_improved": 4,
-  "n_unchanged": 16,
+  "n_cases": 30,
+  "mean_aas_initial": 0.1652297270593259,
+  "mean_aas_final": 0.2152251841949228,
+  "mean_random_span_aas": 0.1664594206004475,
+  "n_improved": 7,
+  "n_unchanged": 23,
   "n_worse": 0,
-  "n_reflection_triggered": 20,
-  "mean_aas_initial_triggered": 0.20004606803622588,
-  "mean_aas_final_triggered": 0.23328073977276884,
-  "caveat": "AAS can be raised by quoting top-attributed words; compare with the random-span baseline. Small synthetic set (20 cases); no significance test.",
+  "n_reflection_triggered": 28,
+  "mean_aas_initial_triggered": 0.13775467827787852,
+  "mean_aas_final_triggered": 0.19132123949458948,
+  "caveat": "AAS can be raised by quoting top-attributed words; compare with the random-span baseline. Small synthetic set; no significance test.",
   "source": "synthetic",
   "per_case": [
     {
       "case_id": "case_001",
-      "aas_initial": 0.1330639866360122,
-      "aas_final": 0.1330639866360122,
+      "aas_initial": 0.11869413086712072,
+      "aas_final": 0.11869413086712072,
       "revisions_run": 2,
       "history": [
         [
           "initial",
-          0.1330639866360122
+          0.11869413086712072
         ],
         [
           "revision_1",
-          0.1330639866360122
+          0.09374865068684307
         ],
         [
           "revision_2",
-          0.015289180829411504
+          0.09374865068684307
         ]
       ],
-      "random_span_aas": 0.15101806574371912,
+      "random_span_aas": 0.14783350897040073,
       "n_unmatched_final_spans": 0
     },
     {
       "case_id": "case_002",
-      "aas_initial": 0.0783083799328391,
-      "aas_final": 0.0783083799328391,
+      "aas_initial": 0.060765412988142115,
+      "aas_final": 0.060765412988142115,
       "revisions_run": 2,
       "history": [
         [
           "initial",
-          0.0783083799328391
+          0.060765412988142115
         ],
         [
           "revision_1",
-          0.013009920002931576
+          0.0053640039989859105
         ],
         [
           "revision_2",
-          0.025229491786105823
+          0.0053640039989859105
         ]
       ],
-      "random_span_aas": 0.02315312442073855,
+      "random_span_aas": 0.03428845927866498,
       "n_unmatched_final_spans": 0
     },
     {
       "case_id": "case_003",
-      "aas_initial": 0.1462501467435267,
-      "aas_final": 0.33361912593223525,
+      "aas_initial": 0.15143987473197754,
+      "aas_final": 0.15143987473197754,
       "revisions_run": 2,
       "history": [
         [
           "initial",
-          0.1462501467435267
+          0.15143987473197754
         ],
         [
           "revision_1",
-          0.1462501467435267
+          0.15143987473197754
         ],
         [
           "revision_2",
-          0.33361912593223525
+          0.15143987473197754
         ]
       ],
-      "random_span_aas": 0.16565517498916432,
+      "random_span_aas": 0.09341694000005335,
       "n_unmatched_final_spans": 0
     },
     {
       "case_id": "case_004",
-      "aas_initial": 0.08697863326925014,
-      "aas_final": 0.08697863326925014,
+      "aas_initial": 0.08992105557979722,
+      "aas_final": 0.08992105557979722,
       "revisions_run": 2,
       "history": [
         [
           "initial",
-          0.08697863326925014
+          0.08992105557979722
         ],
         [
           "revision_1",
-          0.08697863326925014
+          0.08992105557979722
         ],
         [
           "revision_2",
-          0.08697863326925014
+          0.08992105557979722
         ]
       ],
-      "random_span_aas": 0.053327426709591494,
+      "random_span_aas": 0.05233457779073958,
       "n_unmatched_final_spans": 0
     },
     {
       "case_id": "case_005",
-      "aas_initial": 0.22135768317719043,
-      "aas_final": 0.22135768317719043,
+      "aas_initial": 0.16877554421622182,
+      "aas_final": 0.22803973733161034,
       "revisions_run": 2,
       "history": [
         [
           "initial",
-          0.22135768317719043
+          0.16877554421622182
         ],
         [
           "revision_1",
-          0.0
+          0.22803973733161034
         ],
         [
           "revision_2",
-          0.0
+          0.16877554421622182
         ]
       ],
-      "random_span_aas": 0.2935553070036242,
+      "random_span_aas": 0.1761023932238251,
       "n_unmatched_final_spans": 0
     },
     {
@@ -141,304 +141,304 @@
           0.0
         ]
       ],
-      "random_span_aas": 0.06484217030551963,
+      "random_span_aas": 0.0790630586661183,
       "n_unmatched_final_spans": 1
     },
     {
       "case_id": "case_007",
-      "aas_initial": 0.32277429500951543,
-      "aas_final": 0.32277429500951543,
-      "revisions_run": 2,
+      "aas_initial": 0.4425287754949853,
+      "aas_final": 0.4425287754949853,
+      "revisions_run": 0,
       "history": [
         [
           "initial",
-          0.32277429500951543
+          0.4425287754949853
         ],
         [
           "revision_1",
-          0.32277429500951543
+          0.4425287754949853
         ],
         [
           "revision_2",
-          0.32277429500951543
+          0.4425287754949853
         ]
       ],
-      "random_span_aas": 0.2677615178978748,
+      "random_span_aas": 0.23486048364199838,
       "n_unmatched_final_spans": 0
     },
     {
       "case_id": "case_008",
-      "aas_initial": 0.26531953938354225,
-      "aas_final": 0.5949460961483557,
+      "aas_initial": 0.26334773440545095,
+      "aas_final": 0.8891542080185357,
       "revisions_run": 2,
       "history": [
         [
           "initial",
-          0.26531953938354225
+          0.26334773440545095
         ],
         [
           "revision_1",
-          0.16788554233694752
+          0.18330446549051516
         ],
         [
           "revision_2",
-          0.5949460961483557
+          0.8891542080185357
         ]
       ],
-      "random_span_aas": 0.42963933391972925,
+      "random_span_aas": 0.9354287004631705,
       "n_unmatched_final_spans": 0
     },
     {
       "case_id": "case_009",
-      "aas_initial": 0.05105751909147286,
-      "aas_final": 0.05105751909147286,
+      "aas_initial": 0.03718650743911259,
+      "aas_final": 0.03718650743911259,
       "revisions_run": 2,
       "history": [
         [
           "initial",
-          0.05105751909147286
+          0.03718650743911259
         ],
         [
           "revision_1",
-          0.050895780195781434
+          0.025131083328624286
         ],
         [
           "revision_2",
-          0.03228149752562261
+          0.025131083328624286
         ]
       ],
-      "random_span_aas": 0.14029316535794512,
+      "random_span_aas": 0.13210301709443714,
       "n_unmatched_final_spans": 0
     },
     {
       "case_id": "case_010",
-      "aas_initial": 0.24856270295659721,
-      "aas_final": 0.24856270295659721,
+      "aas_initial": 0.2605431607654304,
+      "aas_final": 0.2605431607654304,
       "revisions_run": 2,
       "history": [
         [
           "initial",
-          0.24856270295659721
+          0.2605431607654304
         ],
         [
           "revision_1",
-          0.17613002912346806
+          0.17680168404566382
         ],
         [
           "revision_2",
-          0.17613002912346806
+          0.17680168404566382
         ]
       ],
-      "random_span_aas": 0.08999271110916585,
+      "random_span_aas": 0.09881963740656023,
       "n_unmatched_final_spans": 0
     },
     {
       "case_id": "case_011",
-      "aas_initial": 0.21800381704780003,
-      "aas_final": 0.32194659921383706,
+      "aas_initial": 0.0,
+      "aas_final": 0.26863310344378827,
       "revisions_run": 2,
       "history": [
         [
           "initial",
-          0.21800381704780003
+          0.0
         ],
         [
           "revision_1",
-          0.21800381704780003
+          0.0
         ],
         [
           "revision_2",
-          0.32194659921383706
+          0.26863310344378827
         ]
       ],
-      "random_span_aas": 0.08347922785288932,
+      "random_span_aas": 0.0692317924663294,
       "n_unmatched_final_spans": 0
     },
     {
       "case_id": "case_012",
-      "aas_initial": 0.3945105318842963,
-      "aas_final": 0.3945105318842963,
+      "aas_initial": 0.31389187515592076,
+      "aas_final": 0.31389187515592076,
       "revisions_run": 2,
       "history": [
         [
           "initial",
-          0.3945105318842963
+          0.31389187515592076
         ],
         [
           "revision_1",
-          0.022441972505303883
+          0.29699913366255837
         ],
         [
           "revision_2",
-          0.022441972505303883
+          0.29699913366255837
         ]
       ],
-      "random_span_aas": 0.06050350272840056,
+      "random_span_aas": 0.06856774729972438,
       "n_unmatched_final_spans": 0
     },
     {
       "case_id": "case_013",
-      "aas_initial": 0.498832529594217,
-      "aas_final": 0.498832529594217,
+      "aas_initial": 0.052862480734437264,
+      "aas_final": 0.052862480734437264,
       "revisions_run": 2,
       "history": [
         [
           "initial",
-          0.498832529594217
+          0.052862480734437264
         ],
         [
           "revision_1",
-          0.498832529594217
+          0.052862480734437264
         ],
         [
           "revision_2",
-          0.24707874712024153
+          0.052862480734437264
         ]
       ],
-      "random_span_aas": 0.5544914769369104,
+      "random_span_aas": 0.014707269104945839,
       "n_unmatched_final_spans": 0
     },
     {
       "case_id": "case_014",
-      "aas_initial": 0.13306399076031122,
-      "aas_final": 0.13306399076031122,
+      "aas_initial": 0.11869413086712072,
+      "aas_final": 0.11869413086712072,
       "revisions_run": 2,
       "history": [
         [
           "initial",
-          0.13306399076031122
+          0.11869413086712072
         ],
         [
           "revision_1",
-          0.12489117436742475
+          0.09374865068684307
         ],
         [
           "revision_2",
-          0.12489117436742475
+          0.09374865068684307
         ]
       ],
-      "random_span_aas": 0.15819318335152374,
+      "random_span_aas": 0.14783350897040073,
       "n_unmatched_final_spans": 0
     },
     {
       "case_id": "case_015",
-      "aas_initial": 0.4404221213876905,
-      "aas_final": 0.4404221213876905,
+      "aas_initial": 0.14348443798430016,
+      "aas_final": 0.14348443798430016,
       "revisions_run": 2,
       "history": [
         [
           "initial",
-          0.4404221213876905
+          0.14348443798430016
         ],
         [
           "revision_1",
-          0.10016865677582232
+          0.09269110507156839
         ],
         [
           "revision_2",
-          0.13205438036062156
+          0.09269110507156839
         ]
       ],
-      "random_span_aas": 0.24121481690025484,
+      "random_span_aas": 0.18359853323890285,
       "n_unmatched_final_spans": 0
     },
     {
       "case_id": "case_016",
-      "aas_initial": 0.15388951146018434,
-      "aas_final": 0.15388951146018434,
+      "aas_initial": 0.07519088415636425,
+      "aas_final": 0.07519088415636425,
       "revisions_run": 2,
       "history": [
         [
           "initial",
-          0.15388951146018434
+          0.07519088415636425
         ],
         [
           "revision_1",
-          0.11034694312987763
+          0.07519088415636425
         ],
         [
           "revision_2",
-          0.11034694312987763
+          0.07519088415636425
         ]
       ],
-      "random_span_aas": 0.03839462027774127,
+      "random_span_aas": 0.023485275971631924,
       "n_unmatched_final_spans": 0
     },
     {
       "case_id": "case_017",
-      "aas_initial": 0.14138217935211422,
-      "aas_final": 0.14138217935211422,
+      "aas_initial": 0.14849413017574198,
+      "aas_final": 0.14849413017574198,
       "revisions_run": 2,
       "history": [
         [
           "initial",
-          0.14138217935211422
+          0.14849413017574198
         ],
         [
           "revision_1",
-          0.14138217935211422
+          0.14849413017574198
         ],
         [
           "revision_2",
-          0.14138217935211422
+          0.14849413017574198
         ]
       ],
-      "random_span_aas": 0.11029228044510461,
+      "random_span_aas": 0.11284443066206946,
       "n_unmatched_final_spans": 0
     },
     {
       "case_id": "case_018",
-      "aas_initial": 0.08877404735929179,
-      "aas_final": 0.1325291639705916,
+      "aas_initial": 0.10213880920243185,
+      "aas_final": 0.21330306515629022,
       "revisions_run": 2,
       "history": [
         [
           "initial",
-          0.08877404735929179
+          0.10213880920243185
         ],
         [
           "revision_1",
-          0.019552528037873593
+          0.0
         ],
         [
           "revision_2",
-          0.1325291639705916
+          0.21330306515629022
         ]
       ],
-      "random_span_aas": 0.24326844702056,
+      "random_span_aas": 0.3750840389639707,
       "n_unmatched_final_spans": 0
     },
     {
       "case_id": "case_019",
-      "aas_initial": 0.3640487632282071,
-      "aas_final": 0.3640487632282071,
-      "revisions_run": 2,
+      "aas_initial": 0.6572320445041931,
+      "aas_final": 0.6572320445041931,
+      "revisions_run": 0,
       "history": [
         [
           "initial",
-          0.3640487632282071
+          0.6572320445041931
         ],
         [
           "revision_1",
-          0.2909395824874784
+          0.6572320445041931
         ],
         [
           "revision_2",
-          0.3640487632282071
+          0.6572320445041931
         ]
       ],
-      "random_span_aas": 0.1711003813996191,
+      "random_span_aas": 0.311597621168104,
       "n_unmatched_final_spans": 0
     },
     {
       "case_id": "case_020",
-      "aas_initial": 0.014320982450458873,
-      "aas_final": 0.014320982450458873,
+      "aas_initial": 0.0,
+      "aas_final": 0.0,
       "revisions_run": 2,
       "history": [
         [
           "initial",
-          0.014320982450458873
+          0.0
         ],
         [
           "revision_1",
@@ -449,8 +449,228 @@
           0.0
         ]
       ],
-      "random_span_aas": 0.07020795274692747,
+      "random_span_aas": 0.07584944953355198,
+      "n_unmatched_final_spans": 2
+    },
+    {
+      "case_id": "case_021",
+      "aas_initial": 0.21740758269040364,
+      "aas_final": 0.3341183128002604,
+      "revisions_run": 2,
+      "history": [
+        [
+          "initial",
+          0.21740758269040364
+        ],
+        [
+          "revision_1",
+          0.1330000174612329
+        ],
+        [
+          "revision_2",
+          0.3341183128002604
+        ]
+      ],
+      "random_span_aas": 0.1952979329347399,
+      "n_unmatched_final_spans": 0
+    },
+    {
+      "case_id": "case_022",
+      "aas_initial": 0.27029725991746745,
+      "aas_final": 0.27029725991746745,
+      "revisions_run": 2,
+      "history": [
+        [
+          "initial",
+          0.27029725991746745
+        ],
+        [
+          "revision_1",
+          0.27029725991746745
+        ],
+        [
+          "revision_2",
+          0.27029725991746745
+        ]
+      ],
+      "random_span_aas": 0.3103971207028403,
+      "n_unmatched_final_spans": 2
+    },
+    {
+      "case_id": "case_023",
+      "aas_initial": 0.11720153128586547,
+      "aas_final": 0.11720153128586547,
+      "revisions_run": 2,
+      "history": [
+        [
+          "initial",
+          0.11720153128586547
+        ],
+        [
+          "revision_1",
+          0.09409701437347173
+        ],
+        [
+          "revision_2",
+          0.09409701437347173
+        ]
+      ],
+      "random_span_aas": 0.06274839361219428,
+      "n_unmatched_final_spans": 0
+    },
+    {
+      "case_id": "case_024",
+      "aas_initial": 0.039027714441391095,
+      "aas_final": 0.039027714441391095,
+      "revisions_run": 2,
+      "history": [
+        [
+          "initial",
+          0.039027714441391095
+        ],
+        [
+          "revision_1",
+          0.039027714441391095
+        ],
+        [
+          "revision_2",
+          0.039027714441391095
+        ]
+      ],
+      "random_span_aas": 0.09481344911130649,
+      "n_unmatched_final_spans": 0
+    },
+    {
+      "case_id": "case_025",
+      "aas_initial": 0.12540136047216424,
+      "aas_final": 0.12540136047216424,
+      "revisions_run": 2,
+      "history": [
+        [
+          "initial",
+          0.12540136047216424
+        ],
+        [
+          "revision_1",
+          0.12540136047216424
+        ],
+        [
+          "revision_2",
+          0.0658033734045504
+        ]
+      ],
+      "random_span_aas": 0.1813487411762437,
       "n_unmatched_final_spans": 1
+    },
+    {
+      "case_id": "case_026",
+      "aas_initial": 0.2564042947587202,
+      "aas_final": 0.28377653699827066,
+      "revisions_run": 2,
+      "history": [
+        [
+          "initial",
+          0.2564042947587202
+        ],
+        [
+          "revision_1",
+          0.28377653699827066
+        ],
+        [
+          "revision_2",
+          0.0
+        ]
+      ],
+      "random_span_aas": 0.13428405527327947,
+      "n_unmatched_final_spans": 0
+    },
+    {
+      "case_id": "case_027",
+      "aas_initial": 0.21278736679662397,
+      "aas_final": 0.21278736679662397,
+      "revisions_run": 2,
+      "history": [
+        [
+          "initial",
+          0.21278736679662397
+        ],
+        [
+          "revision_1",
+          0.0
+        ],
+        [
+          "revision_2",
+          0.0
+        ]
+      ],
+      "random_span_aas": 0.19524469191151256,
+      "n_unmatched_final_spans": 1
+    },
+    {
+      "case_id": "case_028",
+      "aas_initial": 0.19707069287625353,
+      "aas_final": 0.19707069287625353,
+      "revisions_run": 2,
+      "history": [
+        [
+          "initial",
+          0.19707069287625353
+        ],
+        [
+          "revision_1",
+          0.10104504300699207
+        ],
+        [
+          "revision_2",
+          0.10104504300699207
+        ]
+      ],
+      "random_span_aas": 0.10542081128131103,
+      "n_unmatched_final_spans": 0
+    },
+    {
+      "case_id": "case_029",
+      "aas_initial": 0.07169123189619234,
+      "aas_final": 0.07169123189619234,
+      "revisions_run": 2,
+      "history": [
+        [
+          "initial",
+          0.07169123189619234
+        ],
+        [
+          "revision_1",
+          0.07169123189619234
+        ],
+        [
+          "revision_2",
+          0.07169123189619234
+        ]
+      ],
+      "random_span_aas": 0.03864846460525233,
+      "n_unmatched_final_spans": 0
+    },
+    {
+      "case_id": "case_030",
+      "aas_initial": 0.24441178737594677,
+      "aas_final": 0.5353245029683268,
+      "revisions_run": 1,
+      "history": [
+        [
+          "initial",
+          0.24441178737594677
+        ],
+        [
+          "revision_1",
+          0.5353245029683268
+        ],
+        [
+          "revision_2",
+          0.2673762291321205
+        ]
+      ],
+      "random_span_aas": 0.3085285134891452,
+      "n_unmatched_final_spans": 0
     }
   ]
 }

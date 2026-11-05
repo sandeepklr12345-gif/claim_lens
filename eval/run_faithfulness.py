@@ -9,11 +9,14 @@ from __future__ import annotations
 import numpy as np
 
 from claimlens.explain.aas import alignment_score, random_span_aas, words
+from claimlens.explain.explain import replay_reflection
 from claimlens.schemas import CaseResult
+from claimlens.utils.config import load_config
 from eval.common import RESULTS, load_cases, write_json
 
 
 def main() -> None:
+    tau = load_config()["agent"]["tau_aas"]
     rows = []
     for c in load_cases():
         f = RESULTS / "e2e" / f"{c.case_id}.json"
@@ -24,10 +27,12 @@ def main() -> None:
             continue
         lens_final = [len(words(s.text)) for s in r.explanation_final.cited_spans
                       if s.source == "clause"]
+        # e2e may be recorded at a higher tau than the chosen one; replay gives the chosen one
+        aas_final, revisions = replay_reflection(r.aas_history, tau)
         rows.append({
             "case_id": c.case_id,
-            "aas_initial": r.aas_initial, "aas_final": r.aas_final,
-            "revisions_run": max(0, len(r.aas_history) - 1),
+            "aas_initial": r.aas_initial, "aas_final": aas_final,
+            "revisions_run": revisions,
             "history": r.aas_history,
             "random_span_aas": random_span_aas(r.attribution, lens_final),
             "n_unmatched_final_spans": len(alignment_score(
@@ -48,7 +53,7 @@ def main() -> None:
         "mean_aas_initial_triggered": float(a0[triggered].mean()) if triggered.any() else None,
         "mean_aas_final_triggered": float(a1[triggered].mean()) if triggered.any() else None,
         "caveat": "AAS can be raised by quoting top-attributed words; compare with the "
-                  "random-span baseline. Small synthetic set (20 cases); no significance test.",
+                  "random-span baseline. Small synthetic set; no significance test.",
         "source": "synthetic", "per_case": rows,
     }
     write_json("faithfulness.json", out)

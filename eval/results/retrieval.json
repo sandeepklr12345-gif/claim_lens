@@ -1,17 +1,17 @@
 {
-  "n_cases": 20,
+  "n_cases": 30,
   "query": "case.reason (clean synthetic reason)",
   "source": "synthetic",
   "bm25": {
-    "recall@3": 0.85,
-    "mrr@10": 0.6583333333333333
+    "recall@3": 0.9,
+    "mrr@10": 0.7388888888888888
   },
   "hybrid": {
-    "recall@3": 0.8,
-    "mrr@10": 0.6942261904761905
+    "recall@3": 0.8666666666666667,
+    "mrr@10": 0.7628174603174603
   },
   "hybrid+rerank": {
-    "recall@3": 0.9,
-    "mrr@10": 0.6905555555555556
+    "recall@3": 0.8666666666666667,
+    "mrr@10": 0.7069444444444444
   }
 }

@@ -3,160 +3,270 @@
     "case_id": "case_001",
     "gold": "SUPPORTED",
     "reason": "Not covered under your policy.",
+    "split": "test",
     "best_clause": "care_supreme-0051",
-    "prob": 0.8091265975524127,
+    "prob": 0.9604210011539609,
     "gold_clause_hit": false
   },
   {
     "case_id": "case_002",
     "gold": "SUPPORTED",
     "reason": "Your claim for AYUSH treatment is not covered under your policy.",
+    "split": "val",
     "best_clause": "hdfc_optima_secure-0037",
-    "prob": 0.9856229896377104,
+    "prob": 0.9971243112061742,
     "gold_clause_hit": false
   },
   {
     "case_id": "case_003",
     "gold": "SUPPORTED",
     "reason": "Pre-existing Condition waiting period cannot be modified after policy inception.",
+    "split": "val",
     "best_clause": "hdfc_optima_secure-0043",
-    "prob": 0.9997155018540981,
+    "prob": 0.9998326413015111,
     "gold_clause_hit": true
   },
   {
     "case_id": "case_004",
     "gold": "SUPPORTED",
     "reason": "Claim exceeds policy year limits, despite unlimited recharge within the year.",
+    "split": "test",
     "best_clause": "care_supreme-0043",
-    "prob": 0.9881565097926613,
+    "prob": 0.9954843636071575,
     "gold_clause_hit": true
   },
   {
     "case_id": "case_005",
     "gold": "SUPPORTED",
-    "reason": "Not covered under your policy.",
-    "best_clause": "hdfc_optima_secure-0033",
-    "prob": 0.9614540997487869,
-    "gold_clause_hit": false
+    "reason": "The claim for orthopedic treatment in the U.S. is not covered under your policy.",
+    "split": "val",
+    "best_clause": "hdfc_optima_secure-0038",
+    "prob": 0.4486376391333516,
+    "gold_clause_hit": true
   },
   {
     "case_id": "case_006",
     "gold": "SUPPORTED",
     "reason": "Non-payment of premium within the grace period",
+    "split": "val",
     "best_clause": "hdfc_optima_secure-0066",
-    "prob": 0.9972458556621447,
+    "prob": 0.9988948966671266,
     "gold_clause_hit": true
   },
   {
     "case_id": "case_007",
     "gold": "SUPPORTED",
-    "reason": "The claim does not fall under the 'Hospitalization Expenses' benefit.",
+    "reason": "The claim for dental expenses is not admissible as it does not fall under the 'Hospitalization Expenses' benefit.",
+    "split": "test",
     "best_clause": "care_supreme-0044",
-    "prob": 0.9941366242800652,
+    "prob": 0.9965049283843206,
     "gold_clause_hit": true
   },
   {
     "case_id": "case_008",
     "gold": "SUPPORTED",
     "reason": "Claim denied as pre-existing condition expenses occurred before specified wait period.",
+    "split": "val",
     "best_clause": "care_supreme-0049",
-    "prob": 0.9558416014723813,
+    "prob": 0.9898094460218674,
     "gold_clause_hit": true
   },
   {
     "case_id": "case_009",
     "gold": "SUPPORTED",
     "reason": "Your claim for the annual health check-up is not covered under your policy.",
+    "split": "val",
     "best_clause": "care_supreme-0055",
-    "prob": 0.9926086377772568,
+    "prob": 0.9977008131111729,
     "gold_clause_hit": true
   },
   {
     "case_id": "case_010",
     "gold": "SUPPORTED",
     "reason": "The claim for fitness center services is not covered under your policy.",
+    "split": "val",
     "best_clause": "care_supreme-0056",
-    "prob": 0.9321869392687512,
+    "prob": 0.9764868966129621,
     "gold_clause_hit": true
   },
   {
     "case_id": "case_011",
     "gold": "SUPPORTED",
     "reason": "Claim for treatment within 30 days of policy commencement is excluded.",
+    "split": "test",
     "best_clause": "care_supreme-0103",
-    "prob": 0.9817933832516985,
+    "prob": 0.9949775372625154,
     "gold_clause_hit": false
   },
   {
     "case_id": "case_012",
     "gold": "SUPPORTED",
     "reason": "Exceeding maximum underwriting loading for pre-existing condition.",
-    "best_clause": "hdfc_optima_secure-0070",
-    "prob": 0.7539243875717266,
-    "gold_clause_hit": false
+    "split": "val",
+    "best_clause": "hdfc_optima_secure-0072",
+    "prob": 0.971169267283338,
+    "gold_clause_hit": true
   },
   {
     "case_id": "case_013",
     "gold": "NOT_SUPPORTED",
     "reason": "The claim for road ambulance services is not covered under your policy.",
-    "best_clause": "care_supreme-0039",
-    "prob": 0.9913356413502252,
-    "gold_clause_hit": true
+    "split": "test",
+    "best_clause": "care_supreme-0029",
+    "prob": 0.9979077352101049,
+    "gold_clause_hit": false
   },
   {
     "case_id": "case_014",
     "gold": "NOT_SUPPORTED",
     "reason": "Not covered under your policy.",
+    "split": "test",
     "best_clause": "care_supreme-0051",
-    "prob": 0.8091265975524127,
+    "prob": 0.9604210011539609,
     "gold_clause_hit": false
   },
   {
     "case_id": "case_015",
     "gold": "NOT_SUPPORTED",
     "reason": "Claim CLM-89840 for the nomination benefit is not covered under your policy.",
-    "best_clause": "hdfc_optima_secure-0027",
-    "prob": 0.38862852058406977,
-    "gold_clause_hit": false
+    "split": "val",
+    "best_clause": "hdfc_optima_secure-0068",
+    "prob": 0.8062109903476722,
+    "gold_clause_hit": true
   },
   {
     "case_id": "case_016",
     "gold": "NOT_SUPPORTED",
     "reason": "The claim for air ambulance services is not covered under your policy.",
+    "split": "val",
     "best_clause": "care_supreme-0029",
-    "prob": 0.9869790625481674,
+    "prob": 0.9972673755551398,
     "gold_clause_hit": false
   },
   {
     "case_id": "case_017",
     "gold": "NOT_SUPPORTED",
     "reason": "Claim CLM-32431 for post-hospitalization medical expenses is not covered by your policy.",
+    "split": "test",
     "best_clause": "care_supreme-0033",
-    "prob": 0.9824138346155339,
+    "prob": 0.9929005135766513,
     "gold_clause_hit": true
   },
   {
     "case_id": "case_018",
     "gold": "NOT_SUPPORTED",
-    "reason": "Not covered under your policy.",
-    "best_clause": "care_supreme-0051",
-    "prob": 0.8091265975524127,
+    "reason": "The claim for mental health consultation is not covered under your policy.",
+    "split": "val",
+    "best_clause": "care_supreme-0015",
+    "prob": 0.4871443146491598,
     "gold_clause_hit": false
   },
   {
     "case_id": "case_019",
     "gold": "NOT_SUPPORTED",
     "reason": "Claim #CLM-42087 for hospitalization expenses is not covered under your policy.",
+    "split": "test",
     "best_clause": "hdfc_optima_secure-0026",
-    "prob": 0.9629147248459301,
+    "prob": 0.983704326382139,
     "gold_clause_hit": false
   },
   {
     "case_id": "case_020",
     "gold": "NOT_SUPPORTED",
     "reason": "Treatment was deemed not medically necessary.",
+    "split": "test",
     "best_clause": "care_supreme-0013",
-    "prob": 0.9895440752859596,
+    "prob": 0.9965585698651033,
     "gold_clause_hit": false
+  },
+  {
+    "case_id": "case_021",
+    "gold": "SUPPORTED",
+    "reason": "Cumulative Bonus Super limit of 500% of Sum Insured exceeded.",
+    "split": "val",
+    "best_clause": "care_supreme-0054",
+    "prob": 0.9996769967692305,
+    "gold_clause_hit": true
+  },
+  {
+    "case_id": "case_022",
+    "gold": "SUPPORTED",
+    "reason": "Rejected due to reduced Sum Insured at policy renewal, accrued bonus cannot be utilized.",
+    "split": "test",
+    "best_clause": "care_supreme-0042",
+    "prob": 0.9996926583212183,
+    "gold_clause_hit": true
+  },
+  {
+    "case_id": "case_023",
+    "gold": "SUPPORTED",
+    "reason": "Not covered due to 48-month waiting period for pre-existing condition.",
+    "split": "test",
+    "best_clause": "care_supreme-0062",
+    "prob": 0.9996879047166152,
+    "gold_clause_hit": true
+  },
+  {
+    "case_id": "case_024",
+    "gold": "SUPPORTED",
+    "reason": "pre-hospitalization expenses are not covered under your policy.",
+    "split": "val",
+    "best_clause": "hdfc_optima_secure-0046",
+    "prob": 0.9997838342812018,
+    "gold_clause_hit": false
+  },
+  {
+    "case_id": "case_025",
+    "gold": "SUPPORTED",
+    "reason": "This benefit is not covered under your policy.",
+    "split": "val",
+    "best_clause": "hdfc_optima_secure-0027",
+    "prob": 0.9983245155209455,
+    "gold_clause_hit": false
+  },
+  {
+    "case_id": "case_026",
+    "gold": "SUPPORTED",
+    "reason": "Your claim exceeds the authorized limit.",
+    "split": "val",
+    "best_clause": "care_supreme-0096",
+    "prob": 0.9801285105754808,
+    "gold_clause_hit": true
+  },
+  {
+    "case_id": "case_027",
+    "gold": "NOT_SUPPORTED",
+    "reason": "Claim CLM-92397 for nomination payment is not covered under your policy.",
+    "split": "val",
+    "best_clause": "care_supreme-0087",
+    "prob": 0.9679543684344111,
+    "gold_clause_hit": true
+  },
+  {
+    "case_id": "case_028",
+    "gold": "NOT_SUPPORTED",
+    "reason": "Your claim for AYUSH treatment expenses is not covered under your policy.",
+    "split": "test",
+    "best_clause": "care_supreme-0034",
+    "prob": 0.9987707826368702,
+    "gold_clause_hit": true
+  },
+  {
+    "case_id": "case_029",
+    "gold": "NOT_SUPPORTED",
+    "reason": "Day Care Treatment is not covered as per your policy.",
+    "split": "test",
+    "best_clause": "care_supreme-0006",
+    "prob": 0.9892321560488351,
+    "gold_clause_hit": false
+  },
+  {
+    "case_id": "case_030",
+    "gold": "NOT_SUPPORTED",
+    "reason": "Your claim for home health care expenses is not covered by your policy.",
+    "split": "val",
+    "best_clause": "hdfc_optima_secure-0019",
+    "prob": 0.9987764620773789,
+    "gold_clause_hit": true
   }
 ]
