@@ -13,7 +13,8 @@ rag:
   rrf_k: 60
 
 matcher:
-  model: cross-encoder/ms-marco-MiniLM-L-6-v2
+  model: models/matcher_v2   # git-ignored; build with eval.train_matcher (see README)
+  fallback_model: cross-encoder/ms-marco-MiniLM-L-6-v2   # used when a models/ checkpoint is absent
 
 agent:
   tau_high: 0.8    # SUPPORTED if match prob >= tau_high (SPEC 7.6; tuned in M3, see eval/results/tau.json)
