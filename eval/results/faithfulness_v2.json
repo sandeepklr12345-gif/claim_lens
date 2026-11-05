@@ -2,9 +2,9 @@
   "n_cases": 30,
   "model": "matcher_v2",
   "seconds_total": {
-    "ig": 12.7,
-    "shap": 348.1,
-    "rollout": 2.2
+    "ig": 8.3,
+    "shap": 233.6,
+    "rollout": 1.4
   },
   "per_case": [
     {

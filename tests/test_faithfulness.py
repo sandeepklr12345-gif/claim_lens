@@ -66,6 +66,7 @@ def test_replay_matches_a_real_reflect_run():
     answers = [{"explanation": "e", "cited_spans": [{"text": t}]}
                for t in ("alpha", "alpha beta", "alpha beta gamma")]
     full = reflect(FakeLLM(answers), attr, "r", "c", clause, 0.9, "supports", tau=0.8)
+    assert len(full.revisions) == len(full.history) - 1 == 2
     for tau in (0.2, 0.3, 0.5, 0.6, 0.8):
         run = reflect(FakeLLM(answers), attr, "r", "c", clause, 0.9, "supports", tau=tau)
         assert replay_reflection(full.history, tau) == (run.aas_final, len(run.history) - 1)

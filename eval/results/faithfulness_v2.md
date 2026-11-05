@@ -16,4 +16,4 @@ Model `matcher_v2`, 30 synthetic cases, each on its gold reason and gold clause.
 | IG vs SHAP | 0.247 | 0.150 | 30 |
 | IG pad baseline vs zero-embedding baseline | 0.394 | 0.132 | 30 |
 
-Time over all cases (s): Integrated Gradients 12.7, SHAP 348.1, Attention rollout 2.2.
+Time over all cases (s): Integrated Gradients 8.3, SHAP 233.6, Attention rollout 1.4.

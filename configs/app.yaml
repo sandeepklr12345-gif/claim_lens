@@ -17,7 +17,7 @@ matcher:
   fallback_model: cross-encoder/ms-marco-MiniLM-L-6-v2   # used when a models/ checkpoint is absent
 
 agent:
-  tau_high: 0.8    # SUPPORTED if match prob >= tau_high (SPEC 7.6; tuned in M3, see eval/results/tau.json)
-  tau_low: 0.4     # NOT_SUPPORTED if match prob < tau_low; otherwise INSUFFICIENT_EVIDENCE
-  tau_aas: 0.6     # reflect while AAS < this
+  tau_high: 0.96   # SUPPORTED if match prob >= tau_high (tuned on validation cases, see eval/results/tau.json)
+  tau_low: 0.82    # NOT_SUPPORTED if match prob < tau_low; otherwise INSUFFICIENT_EVIDENCE
+  tau_aas: 0.4     # reflect while AAS < this (tuned on validation, see eval/results/reflection_v2.md)
   max_rounds: 2
