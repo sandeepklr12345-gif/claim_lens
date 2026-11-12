@@ -18,11 +18,15 @@ import sys
 from claimlens.data.phase2 import write_report
 from claimlens.utils.config import ROOT
 from eval import (
+    run_appeal,
+    run_audit,
     run_e2e,
     run_faithfulness,
     run_faithfulness_v2,
     run_matcher,
     run_matcher_v2,
+    run_matcher_v3,
+    run_replan,
     run_retrieval,
     tune_reflection,
     tune_tau,
@@ -117,6 +121,12 @@ def main() -> None:
         tune_reflection.main()
         run_faithfulness.main()
         run_faithfulness_v2.main()
+        # Phase 2b (SPEC.md 14): audit report, v3 matcher table, appeal drafts, re-plan check
+        run_audit.main()
+        run_matcher_v3.main()
+        run_appeal.main()  # drafts are cached in eval/results/appeal/ (delete to redraft)
+        if not (RESULTS / "replan_v3.json").exists():  # slow (re-plans cases); delete to rerun
+            run_replan.main()
     (RESULTS / "matcher_v2.md").write_text(run_matcher_v2.render(), encoding="utf-8")
     write_report(ROOT / "data", RESULTS / "data_v2.md")
     (RESULTS / "summary.md").write_text(build_summary(), encoding="utf-8")
