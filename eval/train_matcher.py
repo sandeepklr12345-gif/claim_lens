@@ -53,13 +53,19 @@ def predict(model, tokenizer, pairs: list[Pair], max_length: int, device: str) -
 
 
 def train(args: argparse.Namespace) -> dict:
-    set_seed()
+    set_seed(args.seed)
     device = "cuda" if torch.cuda.is_available() else "cpu"
     data = ROOT / "data"
     splits, _ = load_splits(data)
     pairs = load_pairs(data / "pairs_v2.jsonl")
     train_pairs = [p for p in pairs if splits[p.clause_id] == "train"]
     val_pairs = [p for p in pairs if splits[p.clause_id] == "val"]
+    n_hard = 0
+    if args.hard_negatives:  # R1b: judge-confirmed hard negatives, train and val groups only
+        hard = load_pairs(ROOT / args.hard_negatives)
+        n_hard = len(hard)
+        train_pairs += [p for p in hard if splits[p.clause_id] == "train"]
+        val_pairs += [p for p in hard if splits[p.clause_id] == "val"]
     y_val = np.array([p.label for p in val_pairs])
 
     tokenizer = AutoTokenizer.from_pretrained(args.base)
@@ -72,7 +78,7 @@ def train(args: argparse.Namespace) -> dict:
     out_dir.mkdir(parents=True, exist_ok=True)
 
     order = list(range(len(train_pairs)))
-    rng = random.Random(SEED)
+    rng = random.Random(args.seed)
     history: list[dict] = []
     best_key = (-1.0, -1.0)
     best_epoch = 0
@@ -111,7 +117,8 @@ def train(args: argparse.Namespace) -> dict:
             log.info("early stop at epoch %d", epoch)
             break
 
-    meta = {"base": args.base, "seed": SEED, "fp16": device == "cuda", "epochs_run": len(history),
+    meta = {"base": args.base, "seed": args.seed, "n_hard_negatives": n_hard,
+            "fp16": device == "cuda", "epochs_run": len(history),
             "best_epoch": best_epoch, "batch_size": args.batch_size, "grad_accum": args.grad_accum,
             "max_length": args.max_length, "lr": args.lr, "n_train": len(train_pairs),
             "n_val": len(val_pairs), "val_threshold": threshold, "history": history,
@@ -131,6 +138,8 @@ def main() -> None:
     ap.add_argument("--grad-accum", type=int, default=1)
     ap.add_argument("--lr", type=float, default=2e-5)
     ap.add_argument("--patience", type=int, default=2)
+    ap.add_argument("--seed", type=int, default=SEED)
+    ap.add_argument("--hard-negatives", help="JSONL of hard negatives (data/hard_negatives.jsonl)")
     meta = train(ap.parse_args())
     log.info("done: best epoch %d of %d, %.0fs", meta["best_epoch"], meta["epochs_run"],
              meta["seconds"])

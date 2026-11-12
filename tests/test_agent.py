@@ -103,8 +103,9 @@ def test_on_progress_reports_every_step_in_order_and_result_is_unchanged():
     events: list[tuple[str, dict]] = []
     res = run_case(case, FakeTools(), llm(), CFG, on_progress=lambda e, d: events.append((e, d)))
     names = [e for e, _ in events]
-    assert names[:3] == ["parse", "retrieve", "match"]
-    assert names[3] == "attribution" and names[4] == "aas"
+    # R3 added the check_retrieval node after retrieve (tau_retr unset in CFG: it just passes)
+    assert names[:4] == ["parse", "retrieve", "check_retrieval", "match"]
+    assert names[4] == "attribution" and names[5] == "aas"
     assert names[-3:] == ["explain_reflect", "verdict", "draft"]
     assert [d["label"] for e, d in events if e == "aas"] == [h[0] for h in res.aas_history]
     assert res == run_case(case, FakeTools(), llm(), CFG)  # no callback, same result

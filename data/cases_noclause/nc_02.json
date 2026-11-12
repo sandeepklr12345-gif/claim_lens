@@ -1,0 +1,9 @@
+{
+  "case_id": "nc_02",
+  "policy_id": "hdfc_optima_secure",
+  "letter_text": "Dear Policyholder, your claim is rejected because our records do not show that you filed an income tax return for the previous three years. The claim cannot be considered until returns are filed.",
+  "reason": "The claim is rejected because the insured did not file an income tax return for the previous three years.",
+  "gold_clause_ids": [],
+  "gold_verdict": "INSUFFICIENT_EVIDENCE",
+  "source": "synthetic"
+}

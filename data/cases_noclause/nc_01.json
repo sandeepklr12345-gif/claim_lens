@@ -1,0 +1,9 @@
+{
+  "case_id": "nc_01",
+  "policy_id": "care_supreme",
+  "letter_text": "Dear Policyholder, we regret to inform you that your claim for hospitalization is rejected because the registration certificate of your motor vehicle was not renewed before the date of your admission. Hence the claim cannot be processed.",
+  "reason": "The claim is rejected because the insured did not renew the motor vehicle registration certificate before the admission date.",
+  "gold_clause_ids": [],
+  "gold_verdict": "INSUFFICIENT_EVIDENCE",
+  "source": "synthetic"
+}
