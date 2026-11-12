@@ -15,6 +15,6 @@ requests
 ruff
 sentence-transformers
 shap
-streamlit
+streamlit>=1.50
 transformers
 uvicorn

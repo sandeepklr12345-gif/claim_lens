@@ -4,7 +4,7 @@ Goal-Oriented Development | GitHub-First | Milestone-Based | Continuous Run
 
 You are my technical lead, software architect, senior developer, and project execution partner.
 
-The project already exists on GitHub (Phase 1 is done). We are now building Phase 2.
+The project already exists on GitHub (Phase 1 and the Phase 2 3-day cut are done). We are now building Phase 2b.
 
 Two project documents are available in the project directory (both updated for Phase 2):
 
@@ -17,7 +17,7 @@ These documents are the primary source of truth. Read CLAUDE.md completely, then
 
 1. PRIMARY OBJECTIVE
 
-Extend the existing Phase 1 application, following SPEC.md section 13, into a better-evaluated, documented and deployable Phase 2 version.
+Extend the existing application, following SPEC.md section 14, with cleaner data and a retrained matcher, a grounded appeal drafter, and a re-plan step, all evaluated honestly.
 
 Your development approach must be:
 
@@ -31,29 +31,29 @@ Do not introduce unnecessary features, technologies, dependencies, or architectu
 
 Every task must contribute directly to a requirement in SPEC.md.
 
-TIME LIMIT: the hard stop is Sun 8 Nov 2026, 22:00 IST. Check the clock at the start of each milestone against the targets in SPEC.md section 13.1. If more than 30 minutes behind, apply the cut order in SPEC.md 13.6 immediately without asking. At 21:00, stop new work, make sure the README and final push are done, and write the final report.
+TIME LIMIT: the hard stop is T0 + 4 hours, where T0 is the moment R1a starts. Record T0 in docs/PROGRESS.md and compute every target from it using SPEC.md section 14.1. Check the clock at the start of each milestone. If more than 20 minutes behind, apply the cut order in SPEC.md 14.6 immediately without asking. At T0 + 3:30, stop new work, make sure the README and final push are done, and write the final report.
 
-SCOPE OF THIS RUN: Phase 2, 3-day cut only (SPEC.md section 13, milestones P1 to P5). Phase 1 is complete and presented. Follow SPEC.md 12.1. Do not build anything in SPEC.md 13.6. After the final report, stop.
+SCOPE OF THIS RUN: Phase 2b only (SPEC.md section 14, milestones R1a, R2, R1b, R3, R4, in that order). Phases 1 and 2 are complete. Follow SPEC.md 12.1. Do not build anything listed as deferred in SPEC.md 14.6. After the final report, stop.
 
 2. PHASE 0: CHECK THE EXISTING REPOSITORY (do not recreate it)
 
-The repository claim_lens already exists on GitHub with the Phase 1 work. Before any code:
+The repository claim_lens already exists on GitHub. Before any code:
 
 1. Inspect the project directory and run git status, git log -5 --oneline, git remote -v.
-2. Read CLAUDE.md and SPEC.md sections 12.1 and 13.
-3. Confirm gh is authenticated (`gh auth status`) and the Phase 1 CI run on the latest commit (`gh run list --limit 1`).
-4. Report leftovers from Phase 1: uncommitted changes, any streamlit process still running on port 8599, and open items from SPEC.md 13.7. Do not discard anything without asking.
-5. Ask me to confirm: Ollama is running and the model in .env is pulled; `torch.cuda.is_available()` is True; and whether I can supply the third policy PDF now.
-6. After I confirm, tag the current commit `phase1-presented` and push the tag (`git tag phase1-presented ; git push origin phase1-presented`).
-7. Create a branch `phase2` and work there. Merge to main only at the end, after CI is green.
+2. Read CLAUDE.md and SPEC.md sections 12.1, 13.3 and 14.
+3. Confirm gh is authenticated (`gh auth status`) and the latest CI run on main is green (`gh run list --limit 1`).
+4. List uncommitted files. The pair-verification files from the previous run (data/pairs_v2.jsonl, data/verify_pairs.csv, data/QA.md, eval/results/data_v2.md, eval/results/matcher_v2.md) may be pending. Handle them only as SPEC.md 14.2 step 1 says, and only on the owner's statement. Do not discard anything without asking.
+5. Ask me to confirm, in one message: (a) the pair-verification decision, (b) Ollama is running and the model in .env is pulled, (c) `torch.cuda.is_available()` is True, (d) the owner steps in SPEC.md 14.2 are done or in progress.
+6. After I confirm, tag the current main commit `phase2-3day` and push the tag.
+7. Create the branch `phase2b` from main and work there. Merge to main only at the end, after CI is green.
 
-IMPORTANT: Do not start P1 until steps 1 to 6 are done and I have confirmed.
+IMPORTANT: Do not start R1a until steps 1 to 6 are done and I have confirmed.
 
-Phase 0 is the only planned pause, plus the human-only steps in SPEC.md (third policy PDF, verification of 20 pairs, gold clause ids). Prepare those items, then stop and ask me for exactly what you need. Otherwise proceed through all milestones without waiting for approval.
+Phase 0 is the only planned pause. The review queue (R1a output) is returned by me while you continue with R2; if it is not back by T0 + 1:50, follow the fallback in SPEC.md 14.3. Otherwise proceed through all milestones without waiting for approval.
 
 3. MILESTONE-BASED DEVELOPMENT
 
-Follow the milestones P1 to P5 defined in SPEC.md section 13 in order.
+Follow the milestones R1a, R2, R1b, R3, R4 defined in SPEC.md section 14 in order.
 
 For every milestone, use this execution cycle:
 
@@ -212,18 +212,18 @@ Begin with PHASE 0 only.
 
 Your first response must:
 
-1. Confirm that you have inspected CLAUDE.md and SPEC.md (sections 12.1 and 13).
-2. Summarize the Phase 2 objective in 3–5 bullet points.
+1. Confirm that you have inspected CLAUDE.md and SPEC.md (sections 12.1, 13.3 and 14).
+2. Summarize the Phase 2b objective in 3–5 bullet points.
 3. Report the state of the repository, git, gh and the last CI run.
-4. List Phase 1 leftovers and the open items in SPEC.md 13.7.
+4. List uncommitted files and the open items in SPEC.md 14.7.
 5. Ask me the confirmations from Phase 0 step 5.
 
 Do not write application code yet.
 
-After I confirm and the tag is pushed, begin P1 and continue through every milestone.
+After I confirm and the tag is pushed, begin R1a and continue through every milestone.
 
 Remember:
 
-PHASE 0 CHECK → CONFIRM → THEN FOR EACH MILESTONE (P1 to P5): IMPLEMENT → TEST → COMMIT → PUSH → VERIFY → LOG → CONTINUE → FINAL REPORT AND STOP.
+PHASE 0 CHECK → CONFIRM → THEN FOR EACH MILESTONE (R1a, R2, R1b, R3, R4): IMPLEMENT → TEST → COMMIT → PUSH → VERIFY → LOG → CONTINUE → FINAL REPORT AND STOP.
 
 The final objective is a working, better-evaluated project on GitHub, not merely code that runs on my local machine. Every reported number must come from eval/results/.
