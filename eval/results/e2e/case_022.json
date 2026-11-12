@@ -1,6 +1,6 @@
 {
   "case_id": "case_022",
-  "reason": "Rejected due to reduced Sum Insured at policy renewal, accrued bonus cannot be utilized.",
+  "reason": "Rejected due to reduced Sum Insured at policy renewal.",
   "top_clauses": [
     {
       "chunk": {
@@ -10,21 +10,21 @@
         "section_path": "3.1 BASE BENEFITS > 3.1.3 Benefit: Cumulative Bonus > (viii)",
         "page": 11
       },
-      "score": 8.08724308013916,
+      "score": 3.8419406414031982,
       "bm25_rank": 1,
-      "dense_rank": 1
+      "dense_rank": 6
     },
     {
       "chunk": {
-        "chunk_id": "care_supreme-0055",
+        "chunk_id": "care_supreme-0091",
         "doc_id": "care_supreme",
-        "text": "In the event of a Claim there is no impact on the accrual of Cumulative Bonus Super. At the time of Policy renewal if the Policyholder chooses not to renew this Optional Benefit, then the Cumulative Bonus Super under the expiring Policy shall be forfeited. The Recharge amount ('Unlimited Automatic Recharge'), 'Optional Benefit: Plus Benefit' shall not be considered while calculating 'Cumulative Bonus Super '. Annual Health check-up On the Insured Person's request, through Cashless Facility, the Company will arrange for the Insured Person's Annual Health Check-up for the list of medical tests specified below at its Network to provide the services, in India, subject to the conditions specified below: a) This Benefit shall be available only once during a Policy Year per Insured Person; and b) This benefit does not reduce the Sum Insured.",
-        "section_path": "3.2 Optional Benefits > 3.2.11 Annual Health check-up > (i)",
-        "page": 14
+        "text": "Alterations in the Policy This Policy constitutes the complete contract of insurance. No change or alteration shall be valid or effective unless approved in writing by the Company, which approval shall be evidenced by a written endorsement signed and stamped by the Company. However, change or alteration with respect to increase/ decrease of the Sum Insured shall be permissible only at the time of renewal of the Policy. Out of all the details of the various Benefits provided in the Policy Terms and Conditions, only the details pertaining to Benefits chosen by policyholder as per Policy Schedule shall be considered relevant",
+        "section_path": "5.24 Alterations in the Policy",
+        "page": 26
       },
-      "score": 6.7018842697143555,
-      "bm25_rank": 7,
-      "dense_rank": 4
+      "score": 2.2442119121551514,
+      "bm25_rank": 8,
+      "dense_rank": 1
     },
     {
       "chunk": {
@@ -34,15 +34,15 @@
         "section_path": "3.1 BASE BENEFITS > 3.1.3 Benefit: Cumulative Bonus",
         "page": 11
       },
-      "score": 6.197704792022705,
-      "bm25_rank": 2,
-      "dense_rank": 2
+      "score": 2.235917091369629,
+      "bm25_rank": 17,
+      "dense_rank": 7
     }
   ],
   "match": {
     "clause_id": "care_supreme-0042",
-    "score": 8.08724308013916,
-    "prob": 0.9996926583212183
+    "score": 3.8419406414031982,
+    "prob": 0.9789985903586848
   },
   "attribution": {
     "clause_id": "care_supreme-0042",
@@ -181,241 +181,191 @@
       "."
     ],
     "scores": [
-      0.2318684309720993,
-      0.08170849084854126,
-      0.10913392156362534,
-      0.17726552486419678,
-      -0.017067300155758858,
-      -0.010268153622746468,
-      0.1611471325159073,
-      0.15406876802444458,
-      0.1315835863351822,
-      -0.13458921015262604,
-      -0.05154474452137947,
-      0.09286533296108246,
-      0.0223518586717546,
-      0.04486412927508354,
-      -0.10638400167226791,
-      -0.05711619555950165,
-      0.051656413823366165,
-      0.11307752132415771,
-      -0.07734045386314392,
-      0.21970823407173157,
-      0.04628830403089523,
-      -0.17306479811668396,
-      0.019768239930272102,
-      0.10771439969539642,
-      0.30252838134765625,
-      0.016867753118276596,
-      0.045497771352529526,
-      -0.025305250659585,
-      -0.03042234666645527,
-      0.04625242203474045,
-      0.06345674395561218,
-      0.11250600218772888,
-      0.09223886579275131,
-      -0.028991566970944405,
-      0.035583049058914185,
-      -0.011965098790824413,
-      0.2193925976753235,
-      0.02498457580804825,
-      0.06642474234104156,
-      -0.04476144164800644,
-      -0.09072137624025345,
-      0.032824013382196426,
-      0.0073023331351578236,
-      0.1192513182759285,
-      0.006157711148262024,
-      -0.06297305226325989,
-      0.0795050859451294,
-      0.031142141669988632,
-      0.10364992916584015,
-      0.011987447738647461,
-      -0.038517601788043976,
-      0.10429657250642776,
-      -0.004884014837443829,
-      0.04003295302391052,
-      -0.02082894742488861,
-      0.05853693187236786,
-      0.0356161929666996,
-      0.0696636289358139,
-      0.019115500152111053,
-      0.08587495237588882,
-      0.15171732008457184,
-      0.04338401183485985,
-      0.0244606900960207,
-      0.02243036776781082,
-      0.059011366218328476,
-      0.07949520647525787,
-      0.025162601843476295,
-      0.008953379467129707,
-      0.047799915075302124,
-      0.18622590601444244,
-      0.15397456288337708,
-      0.06271886080503464,
-      -0.0037658470682799816,
-      0.02964491955935955,
-      0.013902053236961365,
-      0.09454309195280075,
-      0.1161833330988884,
-      0.03322947397828102,
-      0.01601525768637657,
-      0.06032020226120949,
-      0.06481841951608658,
-      0.0018470128998160362,
-      -0.05461937561631203,
-      0.08129172679036856,
-      0.0031516109593212605,
-      0.09644940495491028,
-      -0.04117174074053764,
-      0.025608882308006287,
-      0.06433454155921936,
-      0.020351316779851913,
-      -0.004642554093152285,
-      0.01737557165324688,
-      0.02869739755988121,
-      -0.04040723294019699,
-      0.0783759132027626,
-      0.0661981925368309,
-      0.043696120381355286,
-      0.030276630073785782,
-      0.07304658740758896,
-      -0.09435683488845825,
-      0.020601149648427963,
-      -0.015315737575292587,
-      -0.03790575638413429,
-      -0.0026953041087836027,
-      -0.13763800263404846,
-      0.17453404515981674,
-      -0.030602311715483665,
-      -0.09840427339076996,
-      -0.08851055055856705,
-      0.014914212748408318,
-      -0.04529975727200508,
-      0.10996915400028229,
-      0.24584254622459412,
-      -0.027264324948191643,
-      -0.0826643705368042,
-      -0.04255201667547226,
-      -0.03183077275753021,
-      -0.030644133687019348,
-      -0.006379801779985428,
-      0.03283395245671272,
-      -0.03593020513653755,
-      -0.010616880841553211,
-      -0.04651525989174843,
-      -0.027606818825006485,
-      -0.12392278015613556,
-      -0.02550145797431469,
-      -0.028568852692842484,
-      0.03154047578573227,
-      0.011082169599831104,
-      0.07498158514499664,
-      0.04457411542534828
+      0.1798553168773651,
+      0.020784540101885796,
+      0.12581618130207062,
+      0.1236574724316597,
+      -0.11683443933725357,
+      0.11232317984104156,
+      0.10114730894565582,
+      0.1274697184562683,
+      0.13851992785930634,
+      -0.08734291046857834,
+      0.0065719084814190865,
+      0.01490509882569313,
+      0.03560842201113701,
+      0.04819885641336441,
+      0.010125897824764252,
+      -0.016735538840293884,
+      -0.10582921653985977,
+      0.029687698930501938,
+      0.008251463994383812,
+      0.2878812253475189,
+      0.1290300488471985,
+      -0.15992587804794312,
+      -0.07645254582166672,
+      0.03768313303589821,
+      0.283003568649292,
+      -0.022206129506230354,
+      -0.01990792527794838,
+      -0.07953672111034393,
+      -0.028812501579523087,
+      0.0016086464747786522,
+      0.2243887037038803,
+      0.026329543441534042,
+      0.0692024976015091,
+      -0.015882685780525208,
+      0.062047626823186874,
+      0.003119771834462881,
+      0.1700204610824585,
+      0.029831979423761368,
+      0.09476019442081451,
+      -0.025437038391828537,
+      -0.05049916356801987,
+      -0.04834354668855667,
+      -0.0269931610673666,
+      0.10601381957530975,
+      -0.01661023497581482,
+      -0.13671515882015228,
+      0.031511932611465454,
+      0.030016638338565826,
+      0.15163803100585938,
+      0.12230206653475761,
+      -0.09788507968187332,
+      0.052287399768829346,
+      -0.0003609033883549273,
+      0.009348583407700062,
+      0.013605437241494656,
+      -0.03843636438250542,
+      -0.005803193897008896,
+      0.023402776569128036,
+      0.021420365199446678,
+      0.12100563943386078,
+      0.02493739314377308,
+      0.038377173244953156,
+      -0.00441727926954627,
+      -0.006652347277849913,
+      0.10045105218887329,
+      0.04394308477640152,
+      -0.04671270400285721,
+      -0.022156575694680214,
+      0.022909782826900482,
+      0.18490482866764069,
+      0.12953903805464506,
+      -0.0017386641120538116,
+      0.018291546031832695,
+      0.046139899641275406,
+      -0.025172250345349312,
+      0.017910277470946312,
+      0.08124309033155441,
+      0.02326628938317299,
+      0.055866289883852005,
+      0.04120001196861267,
+      0.12812726199626923,
+      0.08503174781799316,
+      0.011173251084983349,
+      0.09903040761128068,
+      0.04096857085824013,
+      0.05159464478492737,
+      -0.03297260403633118,
+      0.020365405827760696,
+      0.14541177451610565,
+      0.07721234858036041,
+      -0.04610106348991394,
+      0.022799966856837273,
+      0.0440637469291687,
+      0.004073482006788254,
+      0.16945838928222656,
+      0.09399992972612381,
+      0.05069703981280327,
+      0.09933261573314667,
+      0.06049773469567299,
+      -0.04108794778585434,
+      -0.011638479307293892,
+      0.03934301808476448,
+      0.002164337784051895,
+      0.02012708969414234,
+      -0.06924103200435638,
+      0.18684762832708657,
+      0.06652622669935226,
+      0.025692488998174667,
+      0.040274135768413544,
+      0.031244143843650818,
+      -0.03867124393582344,
+      0.0689060315489769,
+      -0.0607617013156414,
+      -0.012158164754509926,
+      -0.044297728687524796,
+      -0.04410562291741371,
+      0.020214231684803963,
+      0.017924612388014793,
+      -0.016705404967069626,
+      0.11430624127388,
+      0.014471549540758133,
+      0.033365342766046524,
+      0.014782235957682133,
+      -0.014425943605601788,
+      -0.010265931487083435,
+      -0.010763096623122692,
+      0.005167591385543346,
+      0.040456052869558334,
+      -0.05326960235834122,
+      0.08913568407297134,
+      -0.07151032984256744
     ]
   },
   "explanation_initial": {
-    "text": "The clause supports the rejection because it states that if the Sum Insured is reduced at renewal, the applicable Cumulative Bonus is reduced in proportion, and accrued bonus cannot be utilized in such cases.",
+    "text": "The clause supports the rejection because it states that the Cumulative Bonus is reduced in proportion to the Sum Insured when it is reduced at renewal, which directly applies to the situation described.",
     "cited_spans": [
       {
-        "text": "In case Sum Insured under the Policy is reduced at the time of renewal,",
-        "source": "clause",
-        "clause_id": null
-      },
-      {
-        "text": "the applicable Cumulative Bonus shall be reduced in proportion to the Sum Insured.",
-        "source": "clause",
-        "clause_id": null
-      },
-      {
-        "text": "in case Sum Insured under the Policy is reduced at the time of renewal,",
-        "source": "clause",
-        "clause_id": null
-      },
-      {
-        "text": "accrued bonus cannot be utilized.",
+        "text": "In case Sum Insured under the Policy is reduced at the time of renewal, the applicable Cumulative Bonus shall be reduced in proportion to the Sum Insured.",
         "source": "clause",
         "clause_id": null
       }
     ]
   },
   "explanation_final": {
-    "text": "The clause supports the rejection because it states that if the Sum Insured is reduced at renewal, the applicable Cumulative Bonus is reduced in proportion, and accrued bonus cannot be utilized in such cases.",
+    "text": "The clause supports the rejection because it states that the Cumulative Bonus is reduced in proportion to the Sum Insured when it is reduced at renewal, which directly applies to the situation described.",
     "cited_spans": [
       {
-        "text": "In case Sum Insured under the Policy is reduced at the time of renewal,",
-        "source": "clause",
-        "clause_id": null
-      },
-      {
-        "text": "the applicable Cumulative Bonus shall be reduced in proportion to the Sum Insured.",
-        "source": "clause",
-        "clause_id": null
-      },
-      {
-        "text": "in case Sum Insured under the Policy is reduced at the time of renewal,",
-        "source": "clause",
-        "clause_id": null
-      },
-      {
-        "text": "accrued bonus cannot be utilized.",
+        "text": "In case Sum Insured under the Policy is reduced at the time of renewal, the applicable Cumulative Bonus shall be reduced in proportion to the Sum Insured.",
         "source": "clause",
         "clause_id": null
       }
     ]
   },
-  "aas_initial": 0.27029725991746745,
-  "aas_final": 0.27029725991746745,
+  "aas_initial": 0.2584030545844377,
+  "aas_final": 0.2584030545844377,
   "aas_history": [
     [
       "initial",
-      0.27029725991746745
+      0.2584030545844377
     ],
     [
       "revision_1",
-      0.27029725991746745
+      0.1655935322241171
     ],
     [
       "revision_2",
-      0.27029725991746745
+      0.1655935322241171
     ]
   ],
   "revisions": [
     {
-      "text": "The policy reduces the Cumulative Bonus proportionally when the Sum Insured is decreased at renewal. Accrued bonus cannot be utilized in such cases.",
+      "text": "The reduction in Sum Insured at renewal led to a proportional decrease in Cumulative Bonus, as stated in the policy clause.",
       "cited_spans": [
         {
-          "text": "In case Sum Insured under the Policy is reduced at the time of renewal,",
-          "source": "clause",
-          "clause_id": null
-        },
-        {
-          "text": "the applicable Cumulative Bonus shall be reduced in proportion to the Sum Insured.",
-          "source": "clause",
-          "clause_id": null
-        },
-        {
-          "text": "in case Sum Insured under the Policy is reduced at the time of renewal,",
-          "source": "clause",
-          "clause_id": null
-        },
-        {
-          "text": "accrued bonus cannot be utilized.",
+          "text": "In case Sum Insured under the Policy is reduced at the time of renewal",
           "source": "clause",
           "clause_id": null
         }
       ]
     },
     {
-      "text": "When the Sum Insured is reduced, the applicable Cumulative Bonus is reduced proportionally. Accrued bonus cannot be utilized in such cases.",
+      "text": "The reduction in Sum Insured at renewal led to a proportional decrease in Cumulative Bonus.",
       "cited_spans": [
         {
-          "text": "In case Sum Insured under the Policy is reduced at the time of renewal, the applicable Cumulative Bonus shall be reduced in proportion to the Sum Insured.",
-          "source": "clause",
-          "clause_id": null
-        },
-        {
-          "text": "in case Sum Insured under the Policy is reduced at the time of renewal, accrued bonus cannot be utilized.",
+          "text": "In case Sum Insured under the Policy is reduced at the time of renewal",
           "source": "clause",
           "clause_id": null
         }
@@ -423,5 +373,16 @@
     }
   ],
   "verdict": "SUPPORTED",
-  "appeal_draft": null
+  "appeal_draft": null,
+  "appeal": null,
+  "plan_trace": [
+    {
+      "step": "check_retrieval",
+      "top_prob": 0.9789985903586848,
+      "tau_retr": null,
+      "replanned": false,
+      "decision": "ok"
+    }
+  ],
+  "abstain_reason": null
 }
