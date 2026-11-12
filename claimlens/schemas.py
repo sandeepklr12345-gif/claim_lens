@@ -87,6 +87,8 @@ class Pair(BaseModel):
     label: int = Field(ge=0, le=1)
     source: str = "synthetic"
     verified: bool = False  # True only after the project owner checked it (data/QA.md)
+    original_label: int | None = None  # label before any audit/review change (R1b)
+    hard_negative: bool = False  # R1b: mined negative, judge-confirmed (data/hard_negatives.jsonl)
 
 
 class CitedClause(BaseModel):

@@ -16,6 +16,7 @@ import csv
 import json
 import logging
 import random
+import re
 from pathlib import Path
 from typing import Any
 
@@ -249,10 +250,74 @@ def write_outputs(rows: list[dict[str, Any]], data: Path) -> None:
              len(rows), sum(r["flagged"] for r in rows), len(queue))
 
 
+def backfill_original_labels(pairs: list[Pair], data: Path) -> list[Pair]:
+    """Record the generator's label as `original_label` where it is not stored yet. For the
+    owner-verified 20 the jsonl label was already replaced, so it comes from verify_pairs.csv."""
+    gen = generated_labels(data, pairs)
+    return [p if p.original_label is not None else p.model_copy(update={"original_label": gen[
+        p.pair_id]}) for p in pairs]
+
+
+def apply_owner_review(pairs: list[Pair], queue: list[dict[str, str]]
+                       ) -> tuple[list[Pair], list[dict[str, str]]]:
+    """Apply the owner's `your_label` values: label updated, `verified: true`. Splits are
+    untouched (pairs keep their clause_id). Rows with a blank your_label are skipped."""
+    by_id = {p.pair_id: p for p in pairs}
+    done = []
+    for row in queue:
+        val = row.get("your_label", "").strip()
+        if not val:
+            continue
+        if val not in ("0", "1"):
+            raise ValueError(f"your_label for {row['pair_id']} must be 0 or 1, got {val!r}")
+        if row["pair_id"] not in by_id:
+            raise ValueError(f"unknown pair id {row['pair_id']}")
+        p = by_id[row["pair_id"]]
+        by_id[p.pair_id] = p.model_copy(update={
+            "label": int(val), "verified": True,
+            "original_label": p.original_label if p.original_label is not None else p.label})
+        done.append(row)
+    return [by_id[p.pair_id] for p in pairs], done
+
+
+def apply_judge_fallback(pairs: list[Pair], audit: list[dict[str, Any]]
+                         ) -> tuple[list[Pair], list[str]]:
+    """FALLBACK (SPEC 14.3) when the owner has not returned the queue: for flagged, unverified
+    pairs whose two judge passes agree on a label that differs from the current one (and are not
+    low confidence), take the judge label, `source: "llm_audit"`, `verified: false`."""
+    by_id = {p.pair_id: p for p in pairs}
+    changed = []
+    for r in audit:
+        p = by_id[r["pair_id"]]
+        j = r["judge_label_1"]
+        if (r["flagged"] and not p.verified and j is not None and j == r["judge_label_2"]
+                and j != p.label and r["confidence"] != "low"):
+            by_id[p.pair_id] = p.model_copy(update={
+                "label": j, "source": "llm_audit", "verified": False,
+                "original_label": p.original_label if p.original_label is not None else p.label})
+            changed.append(p.pair_id)
+    return [by_id[p.pair_id] for p in pairs], changed
+
+
+def review_table(rows: list[dict[str, str]], pairs: dict[str, Pair]) -> str:
+    """Markdown table of the owner's queue decisions for data/QA.md."""
+    lines = ["| Pair | Generated label | Judge label | Owner label | Changed | Note |",
+             "|---|---|---|---|---|---|"]
+    for r in rows:
+        old = pairs[r["pair_id"]].original_label
+        changed = "yes" if str(old) != r["your_label"].strip() else "no"
+        note = r.get("note", "").replace("|", "/").strip()
+        lines.append(f"| {r['pair_id']} | {old} | {r['judge_label'] or 'split'} "
+                     f"| {r['your_label'].strip()} | {changed} | {note} |")
+    return "\n".join(lines)
+
+
 def main() -> None:
     logging.basicConfig(level=logging.INFO, format="%(asctime)s %(message)s")
     ap = argparse.ArgumentParser(description=__doc__)
     ap.add_argument("command", choices=["judge", "queue", "apply-review"])
+    ap.add_argument("--judge-fallback", action="store_true",
+                    help="apply-review: owner has not returned the queue; use judge labels")
     args = ap.parse_args()
     data = ROOT / "data"
     if args.command == "judge":
@@ -267,7 +332,27 @@ def main() -> None:
         rows = read_audit(data / "label_audit.csv")
         _write_csv(data / "review_queue.csv", QUEUE_COLS, build_queue(rows, pairs))
     else:
-        raise SystemExit("apply-review is implemented in R1b")
+        from claimlens.data.phase2 import write_pairs
+
+        pairs = backfill_original_labels(load_pairs(data / "pairs_v2.jsonl"), data)
+        if args.judge_fallback:
+            pairs, changed = apply_judge_fallback(pairs, read_audit(data / "label_audit.csv"))
+            log.info("judge fallback changed %d labels (llm_audit, not verified): %s",
+                     len(changed), changed)
+        else:
+            with (data / "review_queue.csv").open(encoding="utf-8-sig", newline="") as f:
+                queue = list(csv.DictReader(f))
+            pairs, done = apply_owner_review(pairs, queue)
+            log.info("applied %d owner labels from review_queue.csv", len(done))
+            qa = data / "QA.md"
+            block = ("<!-- review:start -->\n## Review-queue decisions (R1a/R1b, owner)\n\n"
+                     + review_table(done, {p.pair_id: p for p in pairs})
+                     + "\n\n<!-- review:end -->")
+            text = qa.read_text(encoding="utf-8")
+            pat = re.compile(r"<!-- review:start -->.*?<!-- review:end -->", re.DOTALL)
+            qa.write_text(pat.sub(lambda _: block, text) if pat.search(text)
+                          else text.rstrip() + "\n\n" + block + "\n", encoding="utf-8")
+        write_pairs(pairs, data / "pairs_v2.jsonl")
 
 
 if __name__ == "__main__":
