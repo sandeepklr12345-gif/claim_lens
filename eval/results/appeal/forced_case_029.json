@@ -1,0 +1,39 @@
+{
+  "kind": "appeal",
+  "source": "llm",
+  "attempts": 2,
+  "fallback_reason": null,
+  "details": {
+    "policyholder_name": "Ms. B. Rao",
+    "policy_number": "[policy number]",
+    "claim_number": "CLM-57400",
+    "rejection_date": "[date of rejection]"
+  },
+  "facts": [
+    "Unfortunately, your claim for Day Care Treatment is not covered as per your policy.",
+    "For further details, contact our claims team."
+  ],
+  "cited_clauses": [
+    {
+      "clause_id": "care_supreme-0029",
+      "quote": "Any Claim paid for Benefits namely Hospitalization Expenses (i.e. In-Patient Care , Day Care Treatment , Advance Technology Methods , Pre –Hospitalization Medical Expenses , Post-Hospitalization Medical Expenses ,Organ Donor , Ayush Treatment and Domiciliary Hospitalization ) , Road Ambulance Cover , Air Ambulance Cover shall reduce the Sum Insured for the Policy Year and only the balance shall be available for all the future claims for that Policy Year."
+    }
+  ],
+  "reasoning": "The clause explicitly includes Day Care Treatment under Hospitalization Expenses, which contradicts the rejection ground.",
+  "relief_sought": "We request that you reconsider the rejection and cover the claim for Day Care Treatment as per the policy.",
+  "document_checklist": [
+    "Copy of the claim rejection letter",
+    "Policy wording and policy schedule",
+    "Claim form and discharge summary",
+    "Medical bills, prescriptions and investigation reports",
+    "Earlier correspondence with the insurer, including any grievance acknowledgement",
+    "Identity proof of the policyholder"
+  ],
+  "deadline_note": "A complaint to the Insurance Ombudsman needs a written representation to the insurer first; it must then be made within one year of the insurer's rejection, or of one month after the representation was sent (Insurance Ombudsman Rules, 2017, Rule 14(3), checked against the published text as amended till 09.11.2023; later amendments not checked). Confirm with the Ombudsman office before relying on a date, and compute dates with the deadline tool.",
+  "deadline_verified": true,
+  "disclaimer": "Decision support, not legal advice.",
+  "placeholders": [
+    "[date of rejection]",
+    "[policy number]"
+  ]
+}

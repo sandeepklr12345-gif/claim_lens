@@ -1,0 +1,44 @@
+{
+  "kind": "appeal",
+  "source": "llm",
+  "attempts": 1,
+  "fallback_reason": null,
+  "details": {
+    "policyholder_name": "Ms. B. Rao",
+    "policy_number": "[policy number]",
+    "claim_number": "[claim number]",
+    "rejection_date": "[date of rejection]"
+  },
+  "facts": [
+    "Unfortunately, your claim for home treatment is not covered under your policy.",
+    "The clause supports the rejection because it specifies conditions for the Optional Benefit, which are not met."
+  ],
+  "cited_clauses": [
+    {
+      "clause_id": "care_supreme-0051",
+      "quote": "Instant Cover Notwithstanding anything to the contrary in the Policy, by choosing this Optional Benefit the Company shall waive off the applicable PED waiting period on Diabetes/ Hypertension/ Hyperlipidemia/ Asthma at the time of issuance of first Policy with the Company."
+    },
+    {
+      "clause_id": "care_supreme-0051",
+      "quote": "The claim amount assessed by the Company for a particular claim shall be reduced by the Deductible as specified in the Policy Schedule and the Company shall be liable to make payment under the Policy for any Claim only when the Deductible on that Claim is exhausted."
+    }
+  ],
+  "reasoning": "The clause specifies conditions for the Optional Benefit, including that the policy must be issued for the first time and without a break in coverage, neither of which is applicable here.",
+  "relief_sought": "We request that you reconsider the rejection and cover the claim as it is within the terms of the policy.",
+  "document_checklist": [
+    "Copy of the claim rejection letter",
+    "Policy wording and policy schedule",
+    "Claim form and discharge summary",
+    "Medical bills, prescriptions and investigation reports",
+    "Earlier correspondence with the insurer, including any grievance acknowledgement",
+    "Identity proof of the policyholder"
+  ],
+  "deadline_note": "A complaint to the Insurance Ombudsman needs a written representation to the insurer first; it must then be made within one year of the insurer's rejection, or of one month after the representation was sent (Insurance Ombudsman Rules, 2017, Rule 14(3), checked against the published text as amended till 09.11.2023; later amendments not checked). Confirm with the Ombudsman office before relying on a date, and compute dates with the deadline tool.",
+  "deadline_verified": true,
+  "disclaimer": "Decision support, not legal advice.",
+  "placeholders": [
+    "[claim number]",
+    "[date of rejection]",
+    "[policy number]"
+  ]
+}

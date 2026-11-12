@@ -1,0 +1,43 @@
+{
+  "kind": "appeal",
+  "source": "llm",
+  "attempts": 1,
+  "fallback_reason": null,
+  "details": {
+    "policyholder_name": "Ms. B. Rao",
+    "policy_number": "[policy number]",
+    "claim_number": "CLM-80010",
+    "rejection_date": "[date of rejection]"
+  },
+  "facts": [
+    "This letter informs you that the claim for mental health consultation is not covered under your policy.",
+    "The Insured is not admitted as a day care or In-patient."
+  ],
+  "cited_clauses": [
+    {
+      "clause_id": "care_supreme-0015",
+      "quote": "Notification of Claim means the process of intimating a Claim to the Insurer or TPA through any of the recognized modes of communication."
+    },
+    {
+      "clause_id": "care_supreme-0015",
+      "quote": "OPD Treatment is one in which the Insured Person visits a clinic/Hospital or associated facility like a consultation room for diagnosis and treatment based on the advice of a Medical Practitioner."
+    }
+  ],
+  "reasoning": "The policy does not cover OPD Treatment for mental health consultations, which is the ground for rejection. The clause specifies that OPD Treatment does not include mental health consultations.",
+  "relief_sought": "We request the insurer to reconsider the claim and cover the mental health consultation as it is not excluded under the policy clause.",
+  "document_checklist": [
+    "Copy of the claim rejection letter",
+    "Policy wording and policy schedule",
+    "Claim form and discharge summary",
+    "Medical bills, prescriptions and investigation reports",
+    "Earlier correspondence with the insurer, including any grievance acknowledgement",
+    "Identity proof of the policyholder"
+  ],
+  "deadline_note": "A complaint to the Insurance Ombudsman needs a written representation to the insurer first; it must then be made within one year of the insurer's rejection, or of one month after the representation was sent (Insurance Ombudsman Rules, 2017, Rule 14(3), checked against the published text as amended till 09.11.2023; later amendments not checked). Confirm with the Ombudsman office before relying on a date, and compute dates with the deadline tool.",
+  "deadline_verified": true,
+  "disclaimer": "Decision support, not legal advice.",
+  "placeholders": [
+    "[date of rejection]",
+    "[policy number]"
+  ]
+}

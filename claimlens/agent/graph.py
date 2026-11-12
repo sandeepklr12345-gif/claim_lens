@@ -14,9 +14,11 @@ from langgraph.graph import END, START, StateGraph
 
 from claimlens.agent.tools import Tools
 from claimlens.agent.verdict import appeal_template, decide, stance_for
+from claimlens.appeal.draft import appeal_text, draft_appeal
 from claimlens.explain.explain import TAU_AAS, reflect
 from claimlens.llm.client import LLM
 from claimlens.schemas import (
+    AppealDraft,
     Attribution,
     Case,
     CaseResult,
@@ -54,6 +56,7 @@ class AgentState(TypedDict, total=False):
     revisions: list[Explanation]
     verdict: Verdict
     appeal_draft: str | None
+    appeal: AppealDraft | None
 
 
 def extract_reason(llm: LLM, letter_text: str) -> str:
@@ -128,12 +131,24 @@ def build_graph(
         return {"verdict": decide(state["match"].prob, tau_high, tau_low)}
 
     def draft(state: AgentState) -> dict[str, Any]:
-        if state["verdict"] != Verdict.NOT_SUPPORTED or "explanation_final" not in state:
-            return {"appeal_draft": None}
-        best = state["top_clauses"][0].chunk
-        # TEMPLATE draft (no LLM), SPEC.md "Should" item
-        return {"appeal_draft": appeal_template(
-            state["reason"], best.chunk_id, best.text, state["explanation_final"])}
+        """Grounded appeal (NOT_SUPPORTED) or clarification request (INSUFFICIENT_EVIDENCE)."""
+        if state["verdict"] == Verdict.SUPPORTED or not state.get("top_clauses"):
+            return {"appeal_draft": None, "appeal": None}
+        partial = CaseResult(
+            case_id=state["case_id"], reason=state["reason"], top_clauses=state["top_clauses"],
+            explanation_final=state.get("explanation_final"), verdict=state["verdict"])
+        try:
+            appeal = draft_appeal(partial, state["letter_text"], llm)
+        except Exception as e:  # noqa: BLE001
+            log.warning("appeal drafter failed (%s); using the Phase 1 template", e)
+            appeal = None
+        if appeal is not None:
+            return {"appeal": appeal, "appeal_draft": appeal_text(appeal)}
+        if state["verdict"] == Verdict.NOT_SUPPORTED and "explanation_final" in state:
+            best = state["top_clauses"][0].chunk  # FALLBACK (marked): Phase 1 template, no LLM
+            return {"appeal": None, "appeal_draft": appeal_template(
+                state["reason"], best.chunk_id, best.text, state["explanation_final"])}
+        return {"appeal": None, "appeal_draft": None}
 
     g = StateGraph(AgentState)
     for name, fn in [("parse", parse), ("retrieve", retrieve), ("match", match),
@@ -166,4 +181,4 @@ def run_case(
         explanation_final=out.get("explanation_final"), aas_initial=out.get("aas_initial"),
         aas_final=out.get("aas_final"), aas_history=out.get("aas_history", []),
         revisions=out.get("revisions", []), verdict=out["verdict"],
-        appeal_draft=out.get("appeal_draft"))
+        appeal_draft=out.get("appeal_draft"), appeal=out.get("appeal"))
