@@ -4,13 +4,13 @@
   "attempts": 1,
   "fallback_reason": null,
   "details": {
-    "policyholder_name": "[policyholder name]",
+    "policyholder_name": "Ms. B. Rao",
     "policy_number": "[policy number]",
     "claim_number": "CLM-89840",
     "rejection_date": "[date of rejection]"
   },
   "facts": [
-    "Claim CLM-89840 for the nomination benefit is not covered under your policy.",
+    "We regret to inform you that claim CLM-89840 for the nomination benefit is not covered under your policy.",
     "The audit found the clause does not support the ground given."
   ],
   "cited_clauses": [
@@ -23,8 +23,8 @@
       "quote": "In the event of death of the Policyholder, the Company will pay the nominee {as named in the Policy Schedule/ Policy Certificate/Endorsement (if any)} and in case there is no subsisting nominee, to the legal heirs or legal representatives of the Policyholder whose discharge shall be treated as full and final discharge of its liability under the Policy."
     }
   ],
-  "reasoning": "The clause outlines the process of nomination and claim payment, but does not address the coverage of nomination benefits directly. Therefore, the rejection is not supported by the policy wording.",
-  "relief_sought": "We request that the claim be reconsidered and honored as per the policy terms.",
+  "reasoning": "The policy clause focuses on the process of nominating beneficiaries rather than addressing the coverage of nomination benefits, thus not supporting the rejection of the claim.",
+  "relief_sought": "We request the insurer to reconsider the claim and cover the nomination benefit as per the policy terms.",
   "document_checklist": [
     "Copy of the claim rejection letter",
     "Policy wording and policy schedule",
@@ -38,7 +38,6 @@
   "disclaimer": "Decision support, not legal advice.",
   "placeholders": [
     "[date of rejection]",
-    "[policy number]",
-    "[policyholder name]"
+    "[policy number]"
   ]
 }

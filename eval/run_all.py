@@ -92,7 +92,8 @@ def build_summary() -> str:
           f"| random spans of the same size (chance) | {f['mean_random_span_aas']:.3f} |", "",
           f"Over {f['n_cases']} cases: improved {f['n_improved']}, unchanged "
           f"{f['n_unchanged']}, worse {f['n_worse']} (best kept, so worse should be 0). "
-          f"Reflection was triggered (initial AAS < 0.6) in {f['n_reflection_triggered']} cases."]
+          "Reflection was triggered (initial AAS below tau_aas) in "
+          f"{f['n_reflection_triggered']} cases."]
     if f["n_reflection_triggered"]:
         L.append(f"On those: mean AAS {f['mean_aas_initial_triggered']:.3f} -> "
                  f"{f['mean_aas_final_triggered']:.3f}.")

@@ -11,20 +11,20 @@
   },
   "facts": [
     "The claim for air ambulance services is not covered under your policy.",
-    "For further details, please contact our claims department."
+    "The treating Medical Practitioner did not certify in writing that the severity or the nature of the Insured Person's Illness or Injury warranted the requirement for Air Ambulance services."
   ],
   "cited_clauses": [
     {
-      "clause_id": "care_supreme-0029",
-      "quote": "The Co-payment proportion ( If opted ) shall be borne by the Insured Person on each Claim which will be applicable on Benefits namely Hospitalization Expenses, Road Ambulance Cover , Optional Benefits- Plus Benefit and Air Ambulance Cover"
+      "clause_id": "care_supreme-0059",
+      "quote": "Air Ambulance cover The Company will indemnify the Insured Person up to the amount as specified in Policy Schedule , for the Reasonable and Customary Charges necessarily incurred on availing Air Ambulance services, in India, offered by a Hospital or by an Ambulance service provider for the Insured Person's necessary transportation, provided that: The treating Medical Practitioner certifies in writing that the severity or the nature of the Insured Person's Illness or Injury warrants the Insured Person's requirement for Air Ambulance;"
     },
     {
-      "clause_id": "care_supreme-0029",
-      "quote": "Admissibility of a Claim under Benefit “In- patient Care and/or Day Care Treatment” is a pre- condition to the admission of a Claim under Pre Hospitalization Medical Expenses and Post Hospitalization Medical expenses, Organ Donor Cover, Road Ambulance Cover, Plus Benefit and Air Ambulance Cover and the event giving rise to a Claim under Benefit “In-patient Care and/or Day Care Treatment” shall be within the Policy Period for the Claim of such Benefit to be accepted."
+      "clause_id": "care_supreme-0059",
+      "quote": "The treating Medical Practitioner certifies in writing that the severity or the nature of the Insured Person's Illness or Injury warrants the Insured Person's requirement for Air Ambulance;"
     }
   ],
-  "reasoning": "The policy wording specifically lists air ambulance cover as one of the benefits, but the rejection letter states that the claim is not covered. The clause also mentions that claims for air ambulance services are conditional on prior in-patient care, which was not provided.",
-  "relief_sought": "We request that the claim for air ambulance services be reconsidered and honored as per the policy terms.",
+  "reasoning": "The policy clause requires a written certification from the treating Medical Practitioner, which was missing in this case.",
+  "relief_sought": "We request the insurer to reconsider the claim and cover the air ambulance services as they are necessary for the Insured Person's medical condition.",
   "document_checklist": [
     "Copy of the claim rejection letter",
     "Policy wording and policy schedule",

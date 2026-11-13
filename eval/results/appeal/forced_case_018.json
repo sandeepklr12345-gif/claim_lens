@@ -11,20 +11,16 @@
   },
   "facts": [
     "This letter informs you that the claim for mental health consultation is not covered under your policy.",
-    "The Insured is not admitted as a day care or In-patient."
+    "The policy does not cover general mental health consultations. Only specific conditions like acute depression, obsessive compulsive disorder, anxiety, and post traumatic stress disorder are covered."
   ],
   "cited_clauses": [
     {
-      "clause_id": "care_supreme-0015",
-      "quote": "OPD Treatment is one in which the Insured Person visits a clinic/Hospital or associated facility like a consultation room for diagnosis and treatment based on the advice of a Medical Practitioner."
-    },
-    {
-      "clause_id": "care_supreme-0015",
-      "quote": "Pre-existing Disease means any condition, ailment, injury or disease i. That is/are diagnosed by a physician within 48 months prior to the effective date of the policy issued by the insurer or its reinstatement or ii. For which medical advice or treatment was recommended by, or received from, a physician within 48 months prior to the effective date of the policy issued by insurer or its reinstatement."
+      "clause_id": "care_supreme-0061",
+      "quote": "The Company shall indemnify the Out Patient Medical Expenses incurred by the Insured Person up to the limit specified in the Policy Schedule, through cashless facility towards Consultation, Counseling and rehabilitation of the Insured Person, within the Policy Year for the following: a) Acute depression b) Obsessive compulsive disorder c) Anxiety d) Post traumatic stress disorder"
     }
   ],
-  "reasoning": "The policy does not cover OPD Treatment for mental health consultations, which is the ground for rejection. The clause defines OPD Treatment as visits for diagnosis and treatment, not mental health consultations.",
-  "relief_sought": "We request the insurer to reconsider the claim and cover the mental health consultation as it falls under the scope of OPD Treatment.",
+  "reasoning": "The policy explicitly covers only specific mental health conditions, not general consultations, which aligns with the rejection ground.",
+  "relief_sought": "We request that the claim for the mental health consultation be reconsidered and honored as it falls under the policy's coverage for mental health conditions.",
   "document_checklist": [
     "Copy of the claim rejection letter",
     "Policy wording and policy schedule",

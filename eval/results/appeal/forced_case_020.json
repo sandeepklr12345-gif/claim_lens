@@ -1,7 +1,7 @@
 {
   "kind": "appeal",
   "source": "llm",
-  "attempts": 1,
+  "attempts": 2,
   "fallback_reason": null,
   "details": {
     "policyholder_name": "Ms. B. Rao",
@@ -11,7 +11,7 @@
   },
   "facts": [
     "This letter informs you that your claim for inpatient care expenses is being rejected as the treatment was deemed not medically necessary.",
-    "For further details, contact our claims department."
+    "The treatment exceeded the level of care necessary to provide safe, adequate and appropriate medical care. It did not conform to professional standards widely accepted in international medical practice or by the medical community in India."
   ],
   "cited_clauses": [
     {
@@ -19,7 +19,7 @@
       "quote": "Medically Necessary Treatment (not applicable for Overseas Travel Insurance) means any treatment, tests, medication, or stay in Hospital or part of a stay in Hospital which: a. Is required for the medical management of the Illness or Injury suffered by the Insured Person; b. Must not exceed the level of care necessary to provide safe, adequate and appropriate medical care in scope, duration, or intensity; c. Must have been prescribed by a Medical Practitioner; d. Must conform to the professional standards widely accepted in international medical practice or by the medical community in India."
     }
   ],
-  "reasoning": "The treatment was deemed not medically necessary as it does not conform to the professional standards widely accepted in international medical practice or by the medical community in India, as stated in clause c. Additionally, the treatment must have been prescribed by a Medical Practitioner, which was not the case here.",
+  "reasoning": "The audit found that the treatment exceeded the level of care necessary to provide safe, adequate and appropriate medical care and did not conform to professional standards widely accepted in international medical practice or by the medical community in India, which contradicts the policy clause stating that treatment must not exceed the level of care necessary.",
   "relief_sought": "We request that the claim be reconsidered and approved.",
   "document_checklist": [
     "Copy of the claim rejection letter",

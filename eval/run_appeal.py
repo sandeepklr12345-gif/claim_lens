@@ -98,8 +98,8 @@ def main() -> None:
 
     md = ["# Appeal drafter (R2)", "",
           "Synthetic cases (30), local Ollama `qwen2.5:7b`. Agent results are the cached "
-          "`eval/results/e2e/` run (the thresholds in force when it was produced), so the verdict "
-          "mix below is not the retrained R1b mix.", "",
+          "`eval/results/e2e/` run (the 30-case run with the thresholds in `configs/app.yaml`; "
+          "delete `eval/results/appeal/` and rerun if the verdict mix changes).", "",
           "Verdicts in the cached run: " + ", ".join(f"{k} {v}" for k, v in sorted(
               verdicts.items())) + ". Drafts are made for NOT_SUPPORTED (appeal) and "
           "INSUFFICIENT_EVIDENCE (clarification request) only.", "",

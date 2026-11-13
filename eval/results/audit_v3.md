@@ -24,21 +24,21 @@ A pair is flagged if either pass disagrees with the generated label or reports l
 
 ## Calibration against the owner-verified pairs
 
-n = 20. With so few pairs this is only a sanity check, not an accuracy estimate. The 20 pairs are all from the test split and were chosen for verification, not at random. The owner labels came from an AI-assisted review that the owner confirmed.
+n = 57. With so few pairs this is only a sanity check, not an accuracy estimate. The 20 pairs are all from the test split and were chosen for verification, not at random. The owner labels came from an AI-assisted review that the owner confirmed.
 
 | Measure | Agreement with owner label |
 |---|---:|
-| Judge pass 1 | 17/20 (85%) |
-| Judge pass 2 (swapped order) | 16/20 (80%) |
-| Judge combined (both passes agree; others undecided) | 14/15 (93%) decided |
-| Generator's own label (for comparison) | 16/20 (80%) |
+| Judge pass 1 | 36/57 (63%) |
+| Judge pass 2 (swapped order) | 35/57 (61%) |
+| Judge combined (both passes agree; others undecided) | 33/52 (63%) decided |
+| Generator's own label (for comparison) | 44/57 (77%) |
 
-Of 4 generated labels the owner overturned, the audit flagged 4. It flagged 9 of the 20 verified pairs in total.
+Of 13 generated labels the owner overturned, the audit flagged 13. It flagged 36 of the 57 verified pairs in total.
 
 ## Review queue for the owner
 
 `data/review_queue.csv`: 40 rows (cap 40) = flagged pairs (cap 30) plus 10 random unflagged pairs. Owner-verified pairs are excluded. The random rows are not marked in the file; they are the rows whose `pair_id` is not flagged in `data/label_audit.csv`. Their error rate estimates how many errors the judge misses.
-- Flagged pairs available to review (excluding verified): 90
+- Flagged pairs available to review (excluding verified): 63
 - Queue rows that are flagged: 30
 - Queue rows that are random unflagged: 10
 - Queue rows where the two passes disagreed (blank judge_label): 0
