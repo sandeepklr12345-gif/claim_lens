@@ -2,7 +2,9 @@
 
 10 revised explanations (of 28 cases with a changed text), recorded at tau_aas = 0.8. Some revisions did not raise AAS, so the agent did not keep them; they are here so the check is not limited to its successes.
 
-**To be marked by the project owner:** put one x per case. Judge which text explains the rejection better, not the AAS number.
+**Marked by the project owner (2026-11-13).** One x per case, judging which text explains the rejection better, not the AAS number. The marks come from AI-assisted reviews (two independent research reports checked the revisions against policy wording; the policy PDF was re-read for case_018). The owner read them and recorded set A as their own. The reports agreed on 7 cases; for the 3 they disagreed on (case_012, case_018, case_026) the owner chose: case_012 worse, case_018 better, case_026 better.
+
+**Result:** of the 8 revisions the agent kept (AAS rose), 4 were judged better (016, 018, 020, 026) and 4 worse (001, 011, 012, 014); the 2 revisions with no AAS change (004, 007) were judged the same. A higher AAS therefore did not reliably mean a better explanation. The worse cases include the largest AAS gain (case_011, +0.279), which swapped the citation for an unrelated claim-filing deadline, and case_014, where the revision reversed the meaning of a clause that supersedes an exclusion. Small sample (10 cases, synthetic).
 
 ## case_001 (SUPPORTED)
 
@@ -18,7 +20,7 @@ Cited: "The claim amount assessed by the Company for a particular claim shall be
 
 **AAS change:** +0.045
 
-Owner mark: [ ] better  [ ] same  [ ] worse
+Owner mark: [ ] better  [ ] same  [x] worse
 
 ## case_011 (SUPPORTED)
 
@@ -34,7 +36,7 @@ Cited: "Claim must be filed within 30 days from the date of discharge"
 
 **AAS change:** +0.279
 
-Owner mark: [ ] better  [ ] same  [ ] worse
+Owner mark: [ ] better  [ ] same  [x] worse
 
 ## case_014 (NOT_SUPPORTED)
 
@@ -50,7 +52,7 @@ Cited: "Such treatment taken is within the jurisdiction of India; and Clause 4.2
 
 **AAS change:** +0.164
 
-Owner mark: [ ] better  [ ] same  [ ] worse
+Owner mark: [ ] better  [ ] same  [x] worse
 
 ## case_020 (NOT_SUPPORTED)
 
@@ -66,7 +68,7 @@ Cited: "Must not exceed the level of care necessary"; "conform to professional s
 
 **AAS change:** +0.010
 
-Owner mark: [ ] better  [ ] same  [ ] worse
+Owner mark: [x] better  [ ] same  [ ] worse
 
 ## case_012 (SUPPORTED)
 
@@ -82,7 +84,7 @@ Cited: "The maximum medical underwriting loading shall not exceed 100% for each 
 
 **AAS change:** +0.030
 
-Owner mark: [ ] better  [ ] same  [ ] worse
+Owner mark: [ ] better  [ ] same  [x] worse
 
 ## case_016 (NOT_SUPPORTED)
 
@@ -98,7 +100,7 @@ Cited: "The treating Medical Practitioner certifies in writing that the severity
 
 **AAS change:** +0.204
 
-Owner mark: [ ] better  [ ] same  [ ] worse
+Owner mark: [x] better  [ ] same  [ ] worse
 
 ## case_018 (NOT_SUPPORTED)
 
@@ -114,7 +116,7 @@ Cited: "The Company shall indemnify the Out Patient Medical Expenses incurred by
 
 **AAS change:** +0.199
 
-Owner mark: [ ] better  [ ] same  [ ] worse
+Owner mark: [x] better  [ ] same  [ ] worse
 
 ## case_026 (SUPPORTED)
 
@@ -130,7 +132,7 @@ Cited: "In the event that the cost of Hospitalization exceeds the authorized lim
 
 **AAS change:** +0.026
 
-Owner mark: [ ] better  [ ] same  [ ] worse
+Owner mark: [x] better  [ ] same  [ ] worse
 
 ## case_004 (SUPPORTED)
 
@@ -146,7 +148,7 @@ Cited: "valid for that Policy Year only"
 
 **AAS change:** +0.000
 
-Owner mark: [ ] better  [ ] same  [ ] worse
+Owner mark: [ ] better  [x] same  [ ] worse
 
 ## case_007 (SUPPORTED)
 
@@ -162,4 +164,4 @@ Cited: "Sum Insured available under this Benefit can only be utilized for Benefi
 
 **AAS change:** +0.000
 
-Owner mark: [ ] better  [ ] same  [ ] worse
+Owner mark: [ ] better  [x] same  [ ] worse

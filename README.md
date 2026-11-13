@@ -198,7 +198,7 @@ zero-embedding baselines 0.336 (SD 0.128).
 | Retrieval Recall@3 (30 cases): BM25 / hybrid / hybrid + re-rank | 0.900 / 0.867 / 0.900 |
 | Gold clause in top 3, agent run | 80.0% |
 
-The owner check of 10 revised explanations is in `docs/reflection_check.md`, not yet marked.
+The owner check of 10 revised explanations (`docs/reflection_check.md`, recorded at `tau_aas` = 0.8) found that **higher AAS did not reliably mean a better explanation**: of the 8 revisions the agent kept, 4 were judged better and 4 worse, and the 2 unchanged ones were the same. The worse revisions include the largest AAS gain (+0.279), which cited an unrelated filing deadline. The marks come from an AI-assisted review that the owner read and confirmed; n = 10, synthetic.
 
 ### Re-plan on weak retrieval (R3, `replan_v3.md`): negative result
 
