@@ -8,7 +8,8 @@ best-matching policy clause with word-level **Integrated Gradients** attribution
 explanation checked against those attributions (**faithfulness**), and a grounded appeal draft.
 
 > **Decision support, not legal advice.** Explainable AI mini project, Phase 2b (Phase 1 was
-> presented on 5 Nov 2026, tag `phase1-presented`; Phase 2 3-day cut, tag `phase2-3day`). Author: [TODO: name, USN].
+> presented on 5 Nov 2026, tag `phase1-presented`; Phase 2 3-day cut, tag `phase2-3day`). Author: Sandeep K.
+> Team members: Manish N Jog, Thanush M, Poorvikha M.
 
 **Research question:** does checking an LLM's explanation against Integrated Gradients attributions,
 and asking it to revise, make the explanation more faithful?
