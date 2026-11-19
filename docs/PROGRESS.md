@@ -256,3 +256,5 @@ Written ahead of the labels because it does not depend on them; nothing here has
 **Appeal rerun on the R1b verdict mix:** 4 drafts (2 NOT_SUPPORTED, 2 INSUFFICIENT_EVIDENCE), 4/4 first-try quote pass; forced stress test on the 12 gold NOT_SUPPORTED cases: 10 first try, 1 retry, 1 template, 12/12 complete.
 **Not done / owner-only:** `[TODO: name, USN]` in the README; `docs/reflection_check.md` marks; `case_003` / `case_009` label decisions; the 3 blank review-queue rows.
 **Known issues:** the Phase 2 pretrained-baseline row in `matcher_v2.md` is re-rendered under the current (owner-reviewed) labels, so its numbers differ from the Phase 2 README; `matcher_v3.md` shows old and new labels side by side. Re-chunking and `v2_008_pos` untouched. Local `main` has an unpushed docs commit `39ba4be` that diverges from `origin/main`.
+
+**Update (2026-11-13):** README author and team members filled in by the owner (no USN, as requested).
