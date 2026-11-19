@@ -1,0 +1,40 @@
+{
+  "kind": "appeal",
+  "source": "llm",
+  "attempts": 1,
+  "fallback_reason": null,
+  "details": {
+    "policyholder_name": "Ms. B. Rao",
+    "policy_number": "[policy number]",
+    "claim_number": "[claim number]",
+    "rejection_date": "[date of rejection]"
+  },
+  "facts": [
+    "This letter informs you that your claim for inpatient care expenses is being rejected as the treatment was deemed not medically necessary.",
+    "For further details, contact our claims department."
+  ],
+  "cited_clauses": [
+    {
+      "clause_id": "care_supreme-0013",
+      "quote": "Medically Necessary Treatment (not applicable for Overseas Travel Insurance) means any treatment, tests, medication, or stay in Hospital or part of a stay in Hospital which: a. Is required for the medical management of the Illness or Injury suffered by the Insured Person; b. Must not exceed the level of care necessary to provide safe, adequate and appropriate medical care in scope, duration, or intensity; c. Must have been prescribed by a Medical Practitioner; d. Must conform to the professional standards widely accepted in international medical practice or by the medical community in India."
+    }
+  ],
+  "reasoning": "The treatment was deemed not medically necessary as it does not conform to the professional standards widely accepted in international medical practice or by the medical community in India, as stated in clause c. Additionally, the treatment must have been prescribed by a Medical Practitioner, which was not the case here.",
+  "relief_sought": "We request that the claim be reconsidered and approved.",
+  "document_checklist": [
+    "Copy of the claim rejection letter",
+    "Policy wording and policy schedule",
+    "Claim form and discharge summary",
+    "Medical bills, prescriptions and investigation reports",
+    "Earlier correspondence with the insurer, including any grievance acknowledgement",
+    "Identity proof of the policyholder"
+  ],
+  "deadline_note": "A complaint to the Insurance Ombudsman needs a written representation to the insurer first; it must then be made within one year of the insurer's rejection, or of one month after the representation was sent (Insurance Ombudsman Rules, 2017, Rule 14(3), checked against the published text as amended till 09.11.2023; later amendments not checked). Confirm with the Ombudsman office before relying on a date, and compute dates with the deadline tool.",
+  "deadline_verified": true,
+  "disclaimer": "Decision support, not legal advice.",
+  "placeholders": [
+    "[claim number]",
+    "[date of rejection]",
+    "[policy number]"
+  ]
+}

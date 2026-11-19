@@ -1,0 +1,44 @@
+{
+  "kind": "appeal",
+  "source": "llm",
+  "attempts": 1,
+  "fallback_reason": null,
+  "details": {
+    "policyholder_name": "Ms. B. Rao",
+    "policy_number": "[policy number]",
+    "claim_number": "CLM-42087",
+    "rejection_date": "[date of rejection]"
+  },
+  "facts": [
+    "Claim #CLM-42087 for hospitalization expenses is not covered under your policy.",
+    "The cover is not available for the time spent by the Insured Person in an Intensive Care Unit (ICU).",
+    "The claim for the same Hospitalization is not admissible under Section B-1.1 (Hospitalization Expenses)."
+  ],
+  "cited_clauses": [
+    {
+      "clause_id": "hdfc_optima_secure-0026",
+      "quote": "The Cover is not available for the time spent by the Insured Person in an Intensive Care Unit (ICU)."
+    },
+    {
+      "clause_id": "hdfc_optima_secure-0026",
+      "quote": "The claim for the same Hospitalization is not admissible under Section B-1.1 (Hospitalization Expenses)."
+    }
+  ],
+  "reasoning": "These clauses directly support the rejection of the claim for hospitalization expenses.",
+  "relief_sought": "We request that the claim be reconsidered and honored as per the policy terms.",
+  "document_checklist": [
+    "Copy of the claim rejection letter",
+    "Policy wording and policy schedule",
+    "Claim form and discharge summary",
+    "Medical bills, prescriptions and investigation reports",
+    "Earlier correspondence with the insurer, including any grievance acknowledgement",
+    "Identity proof of the policyholder"
+  ],
+  "deadline_note": "A complaint to the Insurance Ombudsman needs a written representation to the insurer first; it must then be made within one year of the insurer's rejection, or of one month after the representation was sent (Insurance Ombudsman Rules, 2017, Rule 14(3), checked against the published text as amended till 09.11.2023; later amendments not checked). Confirm with the Ombudsman office before relying on a date, and compute dates with the deadline tool.",
+  "deadline_verified": true,
+  "disclaimer": "Decision support, not legal advice.",
+  "placeholders": [
+    "[date of rejection]",
+    "[policy number]"
+  ]
+}

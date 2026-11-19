@@ -1,0 +1,43 @@
+{
+  "kind": "appeal",
+  "source": "llm",
+  "attempts": 2,
+  "fallback_reason": null,
+  "details": {
+    "policyholder_name": "Ms. B. Rao",
+    "policy_number": "[policy number]",
+    "claim_number": "CLM-94939",
+    "rejection_date": "[date of rejection]"
+  },
+  "facts": [
+    "The claim for road ambulance services (CLM-94939) is not covered under your policy.",
+    "For further details, please contact our claims department."
+  ],
+  "cited_clauses": [
+    {
+      "clause_id": "care_supreme-0029",
+      "quote": "The Co-payment proportion ( If opted ) shall be borne by the Insured Person on each Claim which will be applicable on Benefits namely Hospitalization Expenses, Road Ambulance Cover , Optional Benefits- Plus Benefit and Air Ambulance Cover"
+    },
+    {
+      "clause_id": "care_supreme-0029",
+      "quote": "Admissibility of a Claim under Benefit “In- patient Care and/or Day Care Treatment” is a pre- condition to the admission of a Claim under Pre Hospitalization Medical Expenses and Post Hospitalization Medical expenses, Organ Donor Cover, Road Ambulance Cover, Plus Benefit and Air Ambulance Cover and the event giving rise to a Claim under Benefit “In-patient Care and/or Day Care Treatment” shall be within the Policy Period for the Claim of such Benefit to be accepted."
+    }
+  ],
+  "reasoning": "The policy wording explicitly states that Road Ambulance Cover is a benefit, but the claim was rejected on the ground that it is not covered. This contradiction is supported by the cited spans: 'Road Ambulance Cover' and the conditions for its claim.",
+  "relief_sought": "We request that the claim for road ambulance services be reconsidered and honored as per the policy terms.",
+  "document_checklist": [
+    "Copy of the claim rejection letter",
+    "Policy wording and policy schedule",
+    "Claim form and discharge summary",
+    "Medical bills, prescriptions and investigation reports",
+    "Earlier correspondence with the insurer, including any grievance acknowledgement",
+    "Identity proof of the policyholder"
+  ],
+  "deadline_note": "A complaint to the Insurance Ombudsman needs a written representation to the insurer first; it must then be made within one year of the insurer's rejection, or of one month after the representation was sent (Insurance Ombudsman Rules, 2017, Rule 14(3), checked against the published text as amended till 09.11.2023; later amendments not checked). Confirm with the Ombudsman office before relying on a date, and compute dates with the deadline tool.",
+  "deadline_verified": true,
+  "disclaimer": "Decision support, not legal advice.",
+  "placeholders": [
+    "[date of rejection]",
+    "[policy number]"
+  ]
+}

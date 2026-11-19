@@ -1,0 +1,39 @@
+{
+  "kind": "appeal",
+  "source": "llm",
+  "attempts": 1,
+  "fallback_reason": null,
+  "details": {
+    "policyholder_name": "Ms. B. Rao",
+    "policy_number": "[policy number]",
+    "claim_number": "CLM-32431",
+    "rejection_date": "[date of rejection]"
+  },
+  "facts": [
+    "Claim CLM-32431 for post-hospitalization medical expenses is not covered by your policy.",
+    "The claim is not covered because the expenses are not related to the same illness/injury for which the hospitalization claim was accepted, as required by the clause."
+  ],
+  "cited_clauses": [
+    {
+      "clause_id": "care_supreme-0033",
+      "quote": "Post-Hospitalization Medical Expenses The Company will indemnify the Insured Person for Medical Expenses incurred which are Medically Necessary, only through Reimbursement Facility, up to the Sum Insured, as specified in the Policy Schedule, provided that the Medical Expenses so incurred are related to the same Illness/Injury for which the Company has accepted the Insured Person's Claim under Benefit 'Hospitalization Expenses' and subject to the conditions specified below: i) For a period of 180 days immediately after the Insured Person's date of discharge from the hospital and claim documents to be submitted within 30 days after the completion of 180 days from the date of discharge from the hospital."
+    }
+  ],
+  "reasoning": "The clause specifically requires that the post-hospitalization expenses be related to the same illness/injury for which the hospitalization claim was accepted, which was not the case here.",
+  "relief_sought": "We request that the claim be reconsidered and covered under the terms of the policy.",
+  "document_checklist": [
+    "Copy of the claim rejection letter",
+    "Policy wording and policy schedule",
+    "Claim form and discharge summary",
+    "Medical bills, prescriptions and investigation reports",
+    "Earlier correspondence with the insurer, including any grievance acknowledgement",
+    "Identity proof of the policyholder"
+  ],
+  "deadline_note": "A complaint to the Insurance Ombudsman needs a written representation to the insurer first; it must then be made within one year of the insurer's rejection, or of one month after the representation was sent (Insurance Ombudsman Rules, 2017, Rule 14(3), checked against the published text as amended till 09.11.2023; later amendments not checked). Confirm with the Ombudsman office before relying on a date, and compute dates with the deadline tool.",
+  "deadline_verified": true,
+  "disclaimer": "Decision support, not legal advice.",
+  "placeholders": [
+    "[date of rejection]",
+    "[policy number]"
+  ]
+}

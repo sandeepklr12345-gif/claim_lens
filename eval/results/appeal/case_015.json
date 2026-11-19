@@ -1,0 +1,44 @@
+{
+  "kind": "appeal",
+  "source": "llm",
+  "attempts": 1,
+  "fallback_reason": null,
+  "details": {
+    "policyholder_name": "[policyholder name]",
+    "policy_number": "[policy number]",
+    "claim_number": "CLM-89840",
+    "rejection_date": "[date of rejection]"
+  },
+  "facts": [
+    "Claim CLM-89840 for the nomination benefit is not covered under your policy.",
+    "The audit found the clause does not support the ground given."
+  ],
+  "cited_clauses": [
+    {
+      "clause_id": "hdfc_optima_secure-0068",
+      "quote": "Nomination The Policyholder is required at the inception of the Policy to make a nomination for the purpose of payment of claims under the Policy in the event of death of the Policyholder."
+    },
+    {
+      "clause_id": "hdfc_optima_secure-0068",
+      "quote": "In the event of death of the Policyholder, the Company will pay the nominee {as named in the Policy Schedule/ Policy Certificate/Endorsement (if any)} and in case there is no subsisting nominee, to the legal heirs or legal representatives of the Policyholder whose discharge shall be treated as full and final discharge of its liability under the Policy."
+    }
+  ],
+  "reasoning": "The clause outlines the process of nomination and claim payment, but does not address the coverage of nomination benefits directly. Therefore, the rejection is not supported by the policy wording.",
+  "relief_sought": "We request that the claim be reconsidered and honored as per the policy terms.",
+  "document_checklist": [
+    "Copy of the claim rejection letter",
+    "Policy wording and policy schedule",
+    "Claim form and discharge summary",
+    "Medical bills, prescriptions and investigation reports",
+    "Earlier correspondence with the insurer, including any grievance acknowledgement",
+    "Identity proof of the policyholder"
+  ],
+  "deadline_note": "A complaint to the Insurance Ombudsman needs a written representation to the insurer first; it must then be made within one year of the insurer's rejection, or of one month after the representation was sent (Insurance Ombudsman Rules, 2017, Rule 14(3), checked against the published text as amended till 09.11.2023; later amendments not checked). Confirm with the Ombudsman office before relying on a date, and compute dates with the deadline tool.",
+  "deadline_verified": true,
+  "disclaimer": "Decision support, not legal advice.",
+  "placeholders": [
+    "[date of rejection]",
+    "[policy number]",
+    "[policyholder name]"
+  ]
+}

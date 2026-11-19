@@ -1,0 +1,391 @@
+{
+  "n_cases": 30,
+  "verdicts": {
+    "SUPPORTED": 27,
+    "NOT_SUPPORTED": 3
+  },
+  "n_drafts": 3,
+  "first_try_pass": 3,
+  "pass_after_retry": 0,
+  "template_fallback": 0,
+  "not_supported_cases": 3,
+  "not_supported_complete": 3,
+  "supported_with_draft": 0,
+  "source": "synthetic",
+  "per_case": [
+    {
+      "case_id": "case_001",
+      "verdict": "SUPPORTED",
+      "kind": null,
+      "source": null,
+      "attempts": null,
+      "n_quotes": 0,
+      "complete": false,
+      "fallback_reason": null
+    },
+    {
+      "case_id": "case_002",
+      "verdict": "SUPPORTED",
+      "kind": null,
+      "source": null,
+      "attempts": null,
+      "n_quotes": 0,
+      "complete": false,
+      "fallback_reason": null
+    },
+    {
+      "case_id": "case_003",
+      "verdict": "SUPPORTED",
+      "kind": null,
+      "source": null,
+      "attempts": null,
+      "n_quotes": 0,
+      "complete": false,
+      "fallback_reason": null
+    },
+    {
+      "case_id": "case_004",
+      "verdict": "SUPPORTED",
+      "kind": null,
+      "source": null,
+      "attempts": null,
+      "n_quotes": 0,
+      "complete": false,
+      "fallback_reason": null
+    },
+    {
+      "case_id": "case_005",
+      "verdict": "NOT_SUPPORTED",
+      "kind": "appeal",
+      "source": "llm",
+      "attempts": 1,
+      "n_quotes": 3,
+      "complete": true,
+      "fallback_reason": null
+    },
+    {
+      "case_id": "case_006",
+      "verdict": "SUPPORTED",
+      "kind": null,
+      "source": null,
+      "attempts": null,
+      "n_quotes": 0,
+      "complete": false,
+      "fallback_reason": null
+    },
+    {
+      "case_id": "case_007",
+      "verdict": "SUPPORTED",
+      "kind": null,
+      "source": null,
+      "attempts": null,
+      "n_quotes": 0,
+      "complete": false,
+      "fallback_reason": null
+    },
+    {
+      "case_id": "case_008",
+      "verdict": "SUPPORTED",
+      "kind": null,
+      "source": null,
+      "attempts": null,
+      "n_quotes": 0,
+      "complete": false,
+      "fallback_reason": null
+    },
+    {
+      "case_id": "case_009",
+      "verdict": "SUPPORTED",
+      "kind": null,
+      "source": null,
+      "attempts": null,
+      "n_quotes": 0,
+      "complete": false,
+      "fallback_reason": null
+    },
+    {
+      "case_id": "case_010",
+      "verdict": "SUPPORTED",
+      "kind": null,
+      "source": null,
+      "attempts": null,
+      "n_quotes": 0,
+      "complete": false,
+      "fallback_reason": null
+    },
+    {
+      "case_id": "case_011",
+      "verdict": "SUPPORTED",
+      "kind": null,
+      "source": null,
+      "attempts": null,
+      "n_quotes": 0,
+      "complete": false,
+      "fallback_reason": null
+    },
+    {
+      "case_id": "case_012",
+      "verdict": "SUPPORTED",
+      "kind": null,
+      "source": null,
+      "attempts": null,
+      "n_quotes": 0,
+      "complete": false,
+      "fallback_reason": null
+    },
+    {
+      "case_id": "case_013",
+      "verdict": "SUPPORTED",
+      "kind": null,
+      "source": null,
+      "attempts": null,
+      "n_quotes": 0,
+      "complete": false,
+      "fallback_reason": null
+    },
+    {
+      "case_id": "case_014",
+      "verdict": "SUPPORTED",
+      "kind": null,
+      "source": null,
+      "attempts": null,
+      "n_quotes": 0,
+      "complete": false,
+      "fallback_reason": null
+    },
+    {
+      "case_id": "case_015",
+      "verdict": "NOT_SUPPORTED",
+      "kind": "appeal",
+      "source": "llm",
+      "attempts": 1,
+      "n_quotes": 2,
+      "complete": true,
+      "fallback_reason": null
+    },
+    {
+      "case_id": "case_016",
+      "verdict": "SUPPORTED",
+      "kind": null,
+      "source": null,
+      "attempts": null,
+      "n_quotes": 0,
+      "complete": false,
+      "fallback_reason": null
+    },
+    {
+      "case_id": "case_017",
+      "verdict": "SUPPORTED",
+      "kind": null,
+      "source": null,
+      "attempts": null,
+      "n_quotes": 0,
+      "complete": false,
+      "fallback_reason": null
+    },
+    {
+      "case_id": "case_018",
+      "verdict": "NOT_SUPPORTED",
+      "kind": "appeal",
+      "source": "llm",
+      "attempts": 1,
+      "n_quotes": 2,
+      "complete": true,
+      "fallback_reason": null
+    },
+    {
+      "case_id": "case_019",
+      "verdict": "SUPPORTED",
+      "kind": null,
+      "source": null,
+      "attempts": null,
+      "n_quotes": 0,
+      "complete": false,
+      "fallback_reason": null
+    },
+    {
+      "case_id": "case_020",
+      "verdict": "SUPPORTED",
+      "kind": null,
+      "source": null,
+      "attempts": null,
+      "n_quotes": 0,
+      "complete": false,
+      "fallback_reason": null
+    },
+    {
+      "case_id": "case_021",
+      "verdict": "SUPPORTED",
+      "kind": null,
+      "source": null,
+      "attempts": null,
+      "n_quotes": 0,
+      "complete": false,
+      "fallback_reason": null
+    },
+    {
+      "case_id": "case_022",
+      "verdict": "SUPPORTED",
+      "kind": null,
+      "source": null,
+      "attempts": null,
+      "n_quotes": 0,
+      "complete": false,
+      "fallback_reason": null
+    },
+    {
+      "case_id": "case_023",
+      "verdict": "SUPPORTED",
+      "kind": null,
+      "source": null,
+      "attempts": null,
+      "n_quotes": 0,
+      "complete": false,
+      "fallback_reason": null
+    },
+    {
+      "case_id": "case_024",
+      "verdict": "SUPPORTED",
+      "kind": null,
+      "source": null,
+      "attempts": null,
+      "n_quotes": 0,
+      "complete": false,
+      "fallback_reason": null
+    },
+    {
+      "case_id": "case_025",
+      "verdict": "SUPPORTED",
+      "kind": null,
+      "source": null,
+      "attempts": null,
+      "n_quotes": 0,
+      "complete": false,
+      "fallback_reason": null
+    },
+    {
+      "case_id": "case_026",
+      "verdict": "SUPPORTED",
+      "kind": null,
+      "source": null,
+      "attempts": null,
+      "n_quotes": 0,
+      "complete": false,
+      "fallback_reason": null
+    },
+    {
+      "case_id": "case_027",
+      "verdict": "SUPPORTED",
+      "kind": null,
+      "source": null,
+      "attempts": null,
+      "n_quotes": 0,
+      "complete": false,
+      "fallback_reason": null
+    },
+    {
+      "case_id": "case_028",
+      "verdict": "SUPPORTED",
+      "kind": null,
+      "source": null,
+      "attempts": null,
+      "n_quotes": 0,
+      "complete": false,
+      "fallback_reason": null
+    },
+    {
+      "case_id": "case_029",
+      "verdict": "SUPPORTED",
+      "kind": null,
+      "source": null,
+      "attempts": null,
+      "n_quotes": 0,
+      "complete": false,
+      "fallback_reason": null
+    },
+    {
+      "case_id": "case_030",
+      "verdict": "SUPPORTED",
+      "kind": null,
+      "source": null,
+      "attempts": null,
+      "n_quotes": 0,
+      "complete": false,
+      "fallback_reason": null
+    }
+  ],
+  "forced_stress": [
+    {
+      "case_id": "case_013",
+      "source": "llm",
+      "attempts": 2,
+      "complete": true
+    },
+    {
+      "case_id": "case_014",
+      "source": "llm",
+      "attempts": 1,
+      "complete": true
+    },
+    {
+      "case_id": "case_015",
+      "source": "llm",
+      "attempts": 1,
+      "complete": true
+    },
+    {
+      "case_id": "case_016",
+      "source": "llm",
+      "attempts": 1,
+      "complete": true
+    },
+    {
+      "case_id": "case_017",
+      "source": "llm",
+      "attempts": 1,
+      "complete": true
+    },
+    {
+      "case_id": "case_018",
+      "source": "llm",
+      "attempts": 1,
+      "complete": true
+    },
+    {
+      "case_id": "case_019",
+      "source": "llm",
+      "attempts": 1,
+      "complete": true
+    },
+    {
+      "case_id": "case_020",
+      "source": "llm",
+      "attempts": 1,
+      "complete": true
+    },
+    {
+      "case_id": "case_027",
+      "source": "llm",
+      "attempts": 1,
+      "complete": true
+    },
+    {
+      "case_id": "case_028",
+      "source": "llm",
+      "attempts": 1,
+      "complete": true
+    },
+    {
+      "case_id": "case_029",
+      "source": "llm",
+      "attempts": 2,
+      "complete": true
+    },
+    {
+      "case_id": "case_030",
+      "source": "llm",
+      "attempts": 1,
+      "complete": true
+    }
+  ]
+}

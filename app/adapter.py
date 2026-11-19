@@ -136,6 +136,7 @@ def to_view(res: CaseResult, policy_id: str, cfg: dict[str, Any]) -> dict[str, A
         },
         "reflection_note": reflection_note(res, target),
         "appeal_draft": res.appeal_draft,
+        "appeal": res.appeal.model_dump(mode="json") if res.appeal else None,
         "tau_low": float(agent["tau_low"]),
         "tau_high": float(agent["tau_high"]),
         "aas_target": target,

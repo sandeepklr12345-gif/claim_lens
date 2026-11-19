@@ -5,6 +5,7 @@
 POST /cases                create a case from letter text and a policy id
 POST /cases/{case_id}/run  run the agent; blocks until the audit finishes
 GET  /cases/{case_id}      read a case and its result
+GET  /cases/{case_id}/appeal  the structured appeal draft (R2)
 """
 
 from __future__ import annotations
@@ -22,7 +23,15 @@ from claimlens.agent.graph import run_case
 from claimlens.agent.tools import DirectTools
 from claimlens.llm.client import OllamaClient
 from claimlens.rag.parse import list_policies
-from claimlens.schemas import Case, CaseCreate, CaseRecord, CaseResult, CaseStatus, Verdict
+from claimlens.schemas import (
+    AppealDraft,
+    Case,
+    CaseCreate,
+    CaseRecord,
+    CaseResult,
+    CaseStatus,
+    Verdict,
+)
 from claimlens.utils.config import load_config
 from claimlens.utils.storage import load_case, save_case
 
@@ -90,3 +99,16 @@ def run(case_id: str, runner: Annotated[Runner, Depends(get_runner)]) -> CaseRec
 @app.get("/cases/{case_id}")
 def get_case(case_id: str) -> CaseRecord:
     return _found(case_id)
+
+
+@app.get("/cases/{case_id}/appeal")
+def get_appeal(case_id: str) -> AppealDraft:
+    """The structured appeal (or clarification request) for a finished case."""
+    record = _found(case_id)
+    if record.result is None:
+        raise HTTPException(status.HTTP_409_CONFLICT, "this case has no result yet; run it first")
+    if record.result.appeal is None:
+        raise HTTPException(status.HTTP_404_NOT_FOUND,
+                            "no appeal for this case (drafted only for NOT_SUPPORTED and "
+                            "INSUFFICIENT_EVIDENCE verdicts)")
+    return record.result.appeal

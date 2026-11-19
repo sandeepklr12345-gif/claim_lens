@@ -269,3 +269,24 @@ def render_result(result: dict[str, Any]) -> None:
                 f'font-size:16px;line-height:1.65">{esc_multiline(result["appeal_draft"])}</div>'
                 f'<div style="font-size:13px;color:#55615E;margin-top:10px">{DISCLAIMER}. Fill in every bracketed detail yourself before sending.</div></div>'
             )
+            appeal = result.get("appeal")
+            if appeal:
+                li = lambda items: "".join(f"<li>{esc(i)}</li>" for i in items)  # noqa: E731
+                quotes = "".join(
+                    f'<li><b>{esc(c["clause_id"])}</b>: "{esc(c["quote"])}"</li>'
+                    for c in appeal["cited_clauses"])
+                kind = "Appeal" if appeal["kind"] == "appeal" else "Request for clarification"
+                src = ("checked against the clause" if appeal["source"] == "llm"
+                       else "template fallback: the model draft failed the quote check")
+                md(
+                    f'<div class="cl-card"><div class="cl-h">{kind}, in sections ({esc(src)})</div>'
+                    f'<div style="font-size:15px;line-height:1.6"><b>Facts</b><ul>{li(appeal["facts"])}</ul>'
+                    f'<b>Policy wording relied on</b><ul>{quotes or "<li>none</li>"}</ul>'
+                    f'<b>Reasoning</b><p>{esc(appeal["reasoning"])}</p>'
+                    f'<b>Relief sought</b><p>{esc(appeal["relief_sought"])}</p>'
+                    f'<b>Documents to attach</b><ul>{li(appeal["document_checklist"])}</ul>'
+                    f'<b>Timing</b><p>{esc(appeal["deadline_note"])}</p></div>'
+                    f'<div style="font-size:13px;color:#55615E">{esc(appeal["disclaimer"])}</div></div>'
+                )
+            st.download_button("Download draft (.txt)", result["appeal_draft"],
+                               file_name="claimlens_appeal.txt")

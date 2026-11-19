@@ -89,6 +89,51 @@ class Pair(BaseModel):
     verified: bool = False  # True only after the project owner checked it (data/QA.md)
 
 
+class CitedClause(BaseModel):
+    """A policy quote in an appeal; `quote` is verified verbatim against the clause text."""
+
+    clause_id: str
+    quote: str
+
+
+class AppealDraft(BaseModel):
+    """Structured appeal (SPEC.md 14.4). `kind` is "appeal" (NOT_SUPPORTED) or "clarification"
+    (INSUFFICIENT_EVIDENCE). `source` is "llm" or "template" (the grounded fallback)."""
+
+    kind: str
+    source: str
+    attempts: int = 1  # LLM tries used; a first-try pass has attempts == 1 and source "llm"
+    fallback_reason: str | None = None
+    details: dict[str, str] = Field(default_factory=dict)  # letter-sourced or [placeholder]
+    facts: list[str]
+    cited_clauses: list[CitedClause]
+    reasoning: str
+    relief_sought: str
+    document_checklist: list[str]
+    deadline_note: str
+    deadline_verified: bool = False  # Rule 14(3) checked vs the official text till 09.11.2023
+    disclaimer: str = DISCLAIMER
+    placeholders: list[str] = Field(default_factory=list)
+
+
+class DeadlineInfo(BaseModel):
+    """Output of compute_deadlines. `verified` means Rule 14(3)(a)-(b) were checked against the
+    official text as amended till 09.11.2023 (see `source`); later amendments were not checked."""
+
+    rejection_date: str
+    grievance_filed_date: str | None = None
+    insurer_reply_date: str | None = None
+    ombudsman_earliest_date: str | None = None
+    ombudsman_latest_date: str | None = None
+    basis: str
+    conservative: bool = False
+    rules: list[str]
+    source: str = ""
+    verified: bool = False
+    verify_note: str = "Rule texts are not verified. Verify with the Ombudsman office."
+    disclaimer: str = DISCLAIMER
+
+
 class CaseResult(BaseModel):
     case_id: str
     reason: str
@@ -102,7 +147,8 @@ class CaseResult(BaseModel):
     aas_history: list[tuple[str, float]] = Field(default_factory=list)  # (round, AAS)
     revisions: list[Explanation] = Field(default_factory=list)  # lines up with aas_history[1:]
     verdict: Verdict
-    appeal_draft: str | None = None
+    appeal_draft: str | None = None  # plain-text rendering of `appeal`
+    appeal: AppealDraft | None = None
 
 
 class CaseStatus(StrEnum):
