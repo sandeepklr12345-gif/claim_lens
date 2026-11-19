@@ -1,0 +1,9 @@
+{
+  "case_id": "nc_05",
+  "policy_id": "care_supreme",
+  "letter_text": "Dear Policyholder, your claim is rejected because you do not own a mobile phone connection registered in your own name, which we require for processing. The claim stands closed.",
+  "reason": "The claim is rejected because the insured does not own a mobile phone registered in their own name.",
+  "gold_clause_ids": [],
+  "gold_verdict": "INSUFFICIENT_EVIDENCE",
+  "source": "synthetic"
+}

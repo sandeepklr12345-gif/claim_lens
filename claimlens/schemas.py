@@ -3,6 +3,7 @@
 from __future__ import annotations
 
 from enum import StrEnum
+from typing import Any
 
 from pydantic import BaseModel, Field
 
@@ -151,6 +152,8 @@ class CaseResult(BaseModel):
     verdict: Verdict
     appeal_draft: str | None = None  # plain-text rendering of `appeal`
     appeal: AppealDraft | None = None
+    plan_trace: list[dict[str, Any]] = Field(default_factory=list)  # R3: one entry per decision
+    abstain_reason: str | None = None  # set when the agent stopped before matching (R3)
 
 
 class CaseStatus(StrEnum):

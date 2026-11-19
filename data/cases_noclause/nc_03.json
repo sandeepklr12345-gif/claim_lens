@@ -1,0 +1,9 @@
+{
+  "case_id": "nc_03",
+  "policy_id": "care_supreme",
+  "letter_text": "Dear Policyholder, your claim is rejected because the hospital where you were treated is located more than 500 km away from your place of birth. We are therefore unable to settle it.",
+  "reason": "The claim is rejected because the hospital is located more than 500 km from the insured person's place of birth.",
+  "gold_clause_ids": [],
+  "gold_verdict": "INSUFFICIENT_EVIDENCE",
+  "source": "synthetic"
+}

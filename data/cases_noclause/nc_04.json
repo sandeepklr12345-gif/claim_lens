@@ -1,0 +1,9 @@
+{
+  "case_id": "nc_04",
+  "policy_id": "hdfc_optima_secure",
+  "letter_text": "Dear Policyholder, we have rejected your claim since your employer did not approve leave from office for the period of your admission, so the claim is not admissible.",
+  "reason": "The claim is rejected because the insured's employer did not approve leave from office during the admission.",
+  "gold_clause_ids": [],
+  "gold_verdict": "INSUFFICIENT_EVIDENCE",
+  "source": "synthetic"
+}

@@ -1,4 +1,5 @@
-"""Linear LangGraph agent: parse -> retrieve -> match -> explain_reflect -> verdict -> draft.
+"""LangGraph agent: parse -> retrieve -> check_retrieval -> (replan ->) match -> explain_reflect
+-> verdict -> draft.
 
 Nodes are thin wrappers over tested functions; tools come through the `Tools` interface
 (MCP or direct). Named nodes keep the graph extensible for Phase 2 (SPEC.md 12.1).
@@ -12,6 +13,12 @@ from typing import Any, TypedDict
 
 from langgraph.graph import END, START, StateGraph
 
+from claimlens.agent.replan import (
+    ABSTAIN_REASON,
+    replan_retrieve,
+    retrieval_decision,
+    top_prob,
+)
 from claimlens.agent.tools import Tools
 from claimlens.agent.verdict import appeal_template, decide, stance_for
 from claimlens.appeal.draft import appeal_text, draft_appeal
@@ -57,6 +64,10 @@ class AgentState(TypedDict, total=False):
     verdict: Verdict
     appeal_draft: str | None
     appeal: AppealDraft | None
+    replanned: bool  # a re-plan has run for this case (at most one)
+    retrieval_decision: str  # "ok" | "replan" | "abstain", read by the conditional edge
+    plan_trace: list[dict[str, Any]]
+    abstain_reason: str
 
 
 def extract_reason(llm: LLM, letter_text: str) -> str:
@@ -101,8 +112,33 @@ def build_graph(
         return {"top_clauses": retrieve_rerank(
             tools, state["reason"], state["policy_id"], rag["top_k_fused"], rag["top_k_return"])}
 
+    def check_retrieval(state: AgentState) -> dict[str, Any]:
+        """Conditional-edge input (R3): is the best re-ranked clause above tau_retr?"""
+        tau = agent.get("tau_retr")  # None disables the check
+        replanned = state.get("replanned", False)
+        top = top_prob(state.get("top_clauses", []))
+        decision = retrieval_decision(top, tau, replanned)
+        entry = {"step": "check_retrieval", "top_prob": top, "tau_retr": tau,
+                 "replanned": replanned, "decision": decision}
+        update: dict[str, Any] = {"retrieval_decision": decision,
+                                  "plan_trace": [*state.get("plan_trace", []), entry]}
+        if decision == "abstain":  # the nodes after this one become no-ops; verdict abstains
+            update["abstain_reason"] = ABSTAIN_REASON
+        return update
+
+    def replan(state: AgentState) -> dict[str, Any]:
+        """Rewrite the reason into two queries, search again, merge by RRF (once per case)."""
+        before = top_prob(state.get("top_clauses", []))
+        clauses, queries = replan_retrieve(
+            tools, llm, state["reason"], state["policy_id"], rag["top_k_fused"],
+            rag["top_k_return"])
+        entry = {"step": "replan", "queries": queries, "top_prob_before": before,
+                 "top_prob_after": top_prob(clauses)}
+        return {"top_clauses": clauses, "replanned": True,
+                "plan_trace": [*state.get("plan_trace", []), entry]}
+
     def match(state: AgentState) -> dict[str, Any]:
-        if not state["top_clauses"]:  # nothing retrieved: abstain downstream
+        if not state["top_clauses"] or state.get("abstain_reason"):  # abstain downstream
             return {}
         best = state["top_clauses"][0]
         return {"match": tools.score_pair(state["reason"], best.chunk.text, best.chunk.chunk_id)}
@@ -132,7 +168,8 @@ def build_graph(
 
     def draft(state: AgentState) -> dict[str, Any]:
         """Grounded appeal (NOT_SUPPORTED) or clarification request (INSUFFICIENT_EVIDENCE)."""
-        if state["verdict"] == Verdict.SUPPORTED or not state.get("top_clauses"):
+        if (state["verdict"] == Verdict.SUPPORTED or not state.get("top_clauses")
+                or state.get("abstain_reason")):
             return {"appeal_draft": None, "appeal": None}
         partial = CaseResult(
             case_id=state["case_id"], reason=state["reason"], top_clauses=state["top_clauses"],
@@ -151,14 +188,20 @@ def build_graph(
         return {"appeal": None, "appeal_draft": None}
 
     g = StateGraph(AgentState)
-    for name, fn in [("parse", parse), ("retrieve", retrieve), ("match", match),
+    for name, fn in [("parse", parse), ("retrieve", retrieve),
+                     ("check_retrieval", check_retrieval), ("replan", replan), ("match", match),
                      ("explain_reflect", explain_reflect), ("verdict", verdict),
                      ("draft", draft)]:
         g.add_node(name, fn)
     g.add_edge(START, "parse")
-    for a, b in [("parse", "retrieve"), ("retrieve", "match"), ("match", "explain_reflect"),
+    for a, b in [("parse", "retrieve"), ("retrieve", "check_retrieval"),
+                 ("replan", "check_retrieval"), ("match", "explain_reflect"),
                  ("explain_reflect", "verdict"), ("verdict", "draft")]:
         g.add_edge(a, b)
+    # "abstain" also goes to match: it is a no-op there, so verdict and draft still run and the
+    # progress events stay complete.
+    g.add_conditional_edges("check_retrieval", lambda s: s["retrieval_decision"],
+                            {"ok": "match", "replan": "replan", "abstain": "match"})
     g.add_edge("draft", END)
     return g.compile()
 
@@ -181,4 +224,5 @@ def run_case(
         explanation_final=out.get("explanation_final"), aas_initial=out.get("aas_initial"),
         aas_final=out.get("aas_final"), aas_history=out.get("aas_history", []),
         revisions=out.get("revisions", []), verdict=out["verdict"],
-        appeal_draft=out.get("appeal_draft"), appeal=out.get("appeal"))
+        appeal_draft=out.get("appeal_draft"), appeal=out.get("appeal"),
+        plan_trace=out.get("plan_trace", []), abstain_reason=out.get("abstain_reason"))
