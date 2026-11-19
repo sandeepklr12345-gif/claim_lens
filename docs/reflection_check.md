@@ -1,54 +1,102 @@
 # Reflection check
 
-10 revised explanations (of 30 cases with a changed text), recorded at tau_aas = 0.8. Some revisions did not raise AAS, so the agent did not keep them; they are here so the check is not limited to its successes.
+10 revised explanations (of 28 cases with a changed text), recorded at tau_aas = 0.8. Some revisions did not raise AAS, so the agent did not keep them; they are here so the check is not limited to its successes.
 
 **To be marked by the project owner:** put one x per case. Judge which text explains the rejection better, not the AAS number.
+
+## case_001 (SUPPORTED)
+
+**Reason:** Not covered under your policy.
+
+**Original (AAS 0.047):** The clause does not specify whether the claim is for a condition covered by the optional benefit, nor does it directly state that the claim is not covered. It only outlines conditions for the optional benefit and the deductible.
+
+Cited: "by choosing this Optional Benefit"; "Note: The above Optional Benefit"
+
+**Revision (AAS 0.092):** The clause does not specify if the claim is for a covered condition. It only outlines optional benefits and deductibles.
+
+Cited: "The claim amount assessed by the Company for a particular claim shall be reduced by the Deductible"
+
+**AAS change:** +0.045
+
+Owner mark: [ ] better  [ ] same  [ ] worse
 
 ## case_011 (SUPPORTED)
 
 **Reason:** Claim for treatment within 30 days of policy commencement is excluded.
 
-**Original (AAS 0.000):** The claim was filed within 30 days of the policy commencement, which is excluded under the policy. Specifically, the policy states that benefits are not available for claims within 30 days of policy commencement.
+**Original (AAS 0.000):** The claim was filed within 30 days of the policy commencement, which is excluded under the policy. Specifically, the policy states that benefits are not covered for claims within 30 days of policy commencement.
 
 Cited: "Claim for treatment within 30 days of policy commencement is excluded."
 
-**Revision (AAS 0.269):** The claim for treatment within 30 days of policy commencement is excluded under the policy.
+**Revision (AAS 0.279):** The claim for treatment within 30 days of policy commencement is excluded under the policy.
 
 Cited: "Claim must be filed within 30 days from the date of discharge"
 
-**AAS change:** +0.269
+**AAS change:** +0.279
 
 Owner mark: [ ] better  [ ] same  [ ] worse
 
-## case_005 (SUPPORTED)
+## case_014 (NOT_SUPPORTED)
 
-**Reason:** The claim for orthopedic treatment in the U.S. is not covered under your policy.
+**Reason:** Your claim for home treatment is not covered under your policy.
 
-**Original (AAS 0.169):** The clause does not explicitly mention orthopedic treatments outside India, and the rejection reason is based on a specific exclusion not covered in the policy.
+**Original (AAS 0.068):** The clause specifies conditions for 'Domiciliary Hospitalization', but does not explicitly cover home treatments. The cited span 'Medical Treatment should be rendered from a registered Medical Practitioner' suggests a registered practitioner is required, but does not address home treatments directly.
 
-Cited: "vi. Medical treatment taken outside India if that is the sole reason or one of the reasons for the journey."; "v. Any treatment of orthopaedic diseases or conditions except for fractures, dislocations and / or Injuries suffered during the Policy Period."
+Cited: "Medical Treatment should be rendered from a registered Medical Practitioner"; "Such treatment taken is within the jurisdiction of India"
 
-**Revision (AAS 0.228):** The policy excludes medical treatment taken outside India if it is the sole reason for the journey. Additionally, it excludes any treatment of orthopaedic diseases or conditions except for fractures, dislocations, or injuries suffered during the Policy Period.
+**Revision (AAS 0.232):** The policy does not cover home treatments. Clause 4.2 (12) under Permanent Exclusions explicitly excludes home treatments.
 
-Cited: "Medical treatment taken outside India if that is the sole reason or one of the reasons for the journey."; "Any treatment of orthopaedic diseases or conditions except for fractures, dislocations and / or Injuries suffered during the Policy Period."
+Cited: "Such treatment taken is within the jurisdiction of India; and Clause 4.2 (12) under Permanent Exclusions, is superseded to the extent covered under this Benefit."
 
-**AAS change:** +0.059
+**AAS change:** +0.164
 
 Owner mark: [ ] better  [ ] same  [ ] worse
 
-## case_008 (SUPPORTED)
+## case_020 (NOT_SUPPORTED)
 
-**Reason:** Claim denied as pre-existing condition expenses occurred before specified wait period.
+**Reason:** Treatment was deemed not medically necessary.
 
-**Original (AAS 0.263):** The clause supports the rejection because it specifies a modified waiting period for pre-existing conditions, which means claims can only be considered after a specific coverage period, as stated in the Policy Schedule. This directly aligns with the insurer's decision to deny the claim due to pre-existing condition expenses occurring before the specified wait period.
+**Original (AAS 0.016):** The treatment was not medically necessary as it did not conform to the professional standards widely accepted in international medical practice or by the medical community in India, as stated in clause c. Additionally, it was not prescribed by a Medical Practitioner, as required by clause c.
 
-Cited: "48 months for Claims related to Pre-existing diseases"; "specific time period as mentioned in the Policy Schedule"; "claims will be admissible for any Medical Expenses incurred"; "since the inception of the first Policy with the Company"
+Cited: "c. Must have been prescribed by a Medical Practitioner"; "c. Must conform to the professional standards widely accepted"
 
-**Revision (AAS 0.889):** The claim was denied because the expenses occurred before the specified coverage period. Hence, claims for pre-existing diseases are only admissible after the specific time period of continuous coverage has elapsed.
+**Revision (AAS 0.026):** The treatment exceeded the level of care necessary to provide safe, adequate and appropriate medical care. It did not conform to professional standards widely accepted in international medical practice or by the medical community in India.
 
-Cited: "by choosing this Optional Benefit, the applicable waiting period of 48 months for Claims related to Pre-existing diseases shall be modified to specific time period as mentioned in the Policy Schedule. Hence all the provisions stated under Clause 4.1 (i) and Definition 2.1.37 holds good for this benefit as well, except that the claims will be admissible for any Medical Expenses incurred for Hospitalization in respect of diagnosis/treatment of any Pre Existing Disease after specific time period of continuous coverage has elapsed as mentioned in the Policy Schedule, since the inception of the first Policy with the Company."
+Cited: "Must not exceed the level of care necessary"; "conform to professional standards widely accepted"
 
-**AAS change:** +0.626
+**AAS change:** +0.010
+
+Owner mark: [ ] better  [ ] same  [ ] worse
+
+## case_012 (SUPPORTED)
+
+**Reason:** Exceeding maximum underwriting loading for pre-existing condition.
+
+**Original (AAS 0.315):** The policy allows for a maximum underwriting loading of 150%, which was exceeded in this case, leading to the rejection.
+
+Cited: "maximum medical underwriting loading shall not exceed 100%"; "total of 150% for each Insured Person"
+
+**Revision (AAS 0.345):** The policy applied a loading that exceeded the maximum allowed, leading to rejection.
+
+Cited: "The maximum medical underwriting loading shall not exceed 100% for each condition"
+
+**AAS change:** +0.030
+
+Owner mark: [ ] better  [ ] same  [ ] worse
+
+## case_016 (NOT_SUPPORTED)
+
+**Reason:** The claim for air ambulance services is not covered under your policy.
+
+**Original (AAS 0.046):** The policy specifically limits air ambulance coverage to situations where the insured person's illness or injury warrants such services, and these conditions were not met in this case.
+
+Cited: "The treating Medical Practitioner certifies in writing"; "The severity or the nature of the Insured Person's Illness or Injury warrants"
+
+**Revision (AAS 0.250):** The claim was rejected because the treating Medical Practitioner did not certify in writing that the severity or the nature of the Insured Person's Illness or Injury warranted the requirement for Air Ambulance services.
+
+Cited: "The treating Medical Practitioner certifies in writing that the severity or the nature of the Insured Person's Illness or Injury warrants the Insured Person's requirement for Air Ambulance"
+
+**AAS change:** +0.204
 
 Owner mark: [ ] better  [ ] same  [ ] worse
 
@@ -56,79 +104,31 @@ Owner mark: [ ] better  [ ] same  [ ] worse
 
 **Reason:** The claim for mental health consultation is not covered under your policy.
 
-**Original (AAS 0.102):** The policy clause does not mention coverage for mental health consultations, and the rejection is not supported by the clause. The clause focuses on OPD treatment and pre-existing conditions, which are unrelated to the claim for mental health consultation.
+**Original (AAS 0.313):** The policy clause does not cover mental health consultations for conditions not listed, such as general anxiety or depression. The cited span indicates the exclusions for mental health conditions.
 
-Cited: "OPD Treatment is one in which the Insured Person visits a clinic/Hospital"; "Portability means the right accorded to individual health insurance policyholders"
+Cited: "4. Exclusions"; "Mental Health wellbeing"
 
-**Revision (AAS 0.213):** The policy does not cover OPD Treatment for mental health consultations. Pre-existing Disease refers to conditions diagnosed or treated within 48 months.
+**Revision (AAS 0.512):** The policy does not cover general mental health consultations. Only specific conditions like acute depression, obsessive compulsive disorder, anxiety, and post traumatic stress disorder are covered.
 
-Cited: "OPD Treatment is one in which the Insured Person visits a clinic/Hospital or associated facility like a consultation room for diagnosis and treatment based on the advice of a Medical Practitioner."; "Pre-existing Disease means any condition, ailment, injury or disease i. That is/are diagnosed by a physician within 48 months prior to the effective date of the policy issued by the insurer or its reinstatement"
+Cited: "The Company shall indemnify the Out Patient Medical Expenses incurred by the Insured Person up to the limit specified in the Policy Schedule, through cashless facility towards Consultation, Counseling and rehabilitation of the Insured Person, within the Policy Year for the following:"; "Mental Health wellbeing"
 
-**AAS change:** +0.111
-
-Owner mark: [ ] better  [ ] same  [ ] worse
-
-## case_021 (SUPPORTED)
-
-**Reason:** Cumulative Bonus Super limit of 500% of Sum Insured exceeded.
-
-**Original (AAS 0.217):** The policy clearly states that the Cumulative Bonus Super cannot exceed 500% of the Sum Insured, which was exceeded in this case.
-
-Cited: "shall not exceed 500%"; "Cumulative Bonus Super"
-
-**Revision (AAS 0.334):** The claim exceeds the 500% Cumulative Bonus Super limit.
-
-Cited: "The Insured Person would receive a flat 100% increase in the Sum Insured on a cumulative basis as a Cumulative Bonus Super"; "shall not exceed 500% of the Sum Insured"
-
-**AAS change:** +0.117
+**AAS change:** +0.199
 
 Owner mark: [ ] better  [ ] same  [ ] worse
 
 ## case_026 (SUPPORTED)
 
-**Reason:** Your claim exceeds the authorized limit.
+**Reason:** Claim exceeds authorized limit.
 
-**Original (AAS 0.256):** The claim was rejected because the cost of Hospitalization exceeded the authorized limit, as stated in clause c).
+**Original (AAS 0.347):** The claim was rejected because the cost of hospitalization exceeded the authorized limit, as stated in clause c).
 
-Cited: "the cost of Hospitalization exceeds the authorized limit"; "the Company will verify the eligibility"
+Cited: "In the event that the cost of Hospitalization exceeds the authorized limit,"; "the Company will verify the eligibility and evaluate the request for enhancement on the availability of further limits."
 
-**Revision (AAS 0.284):** The claim was rejected because the cost of Hospitalization exceeded the authorized limit. The Company will verify the eligibility and evaluate the request for enhancement on the availability of further limits.
+**Revision (AAS 0.373):** The claim was rejected because the cost of hospitalization exceeded the authorized limit. The Company will verify the eligibility and evaluate the request for enhancement on the availability of further limits.
 
-Cited: "the cost of Hospitalization exceeds the authorized limit"; "The Company will verify the eligibility and evaluate the request for enhancement on the availability of further limits"
+Cited: "In the event that the cost of Hospitalization exceeds the authorized limit,"; "The Company will verify the eligibility and evaluate the request for enhancement on the availability of further limits."
 
-**AAS change:** +0.027
-
-Owner mark: [ ] better  [ ] same  [ ] worse
-
-## case_030 (NOT_SUPPORTED)
-
-**Reason:** Your claim for home health care expenses is not covered by your policy.
-
-**Original (AAS 0.244):** The policy explicitly states that the cover for home health care is not available on a reimbursement basis, and it requires pre-authorization by the company, which is not met in this case.
-
-Cited: "This Cover is not available on reimbursement basis."; "The treatment in normal course would require In-patient Care at a Hospital"
-
-**Revision (AAS 0.535):** The claim for home health care expenses is not covered as this cover is not available on a reimbursement basis and requires pre-authorization by the company, neither of which were met.
-
-Cited: "This Cover is not available on reimbursement basis."; "The treatment in normal course would require In-patient Care at a Hospital, and be admissible under Section B-1.1 (Hospitalization Expenses)."; "The treatment is pre-authorized by the Company as per procedure given under Claims Procedure - Section E-1."
-
-**AAS change:** +0.291
-
-Owner mark: [ ] better  [ ] same  [ ] worse
-
-## case_001 (SUPPORTED)
-
-**Reason:** Not covered under your policy.
-
-**Original (AAS 0.119):** The clause supports the rejection because it specifies conditions for the Optional Benefit, which are not met. Specifically, the policy must be issued for the first time and without a break in coverage, neither of which is applicable here.
-
-Cited: "Note: The above Optional Benefit can be opted only if this policy is issued for the first time"; "on continues renewal without break in policy."
-
-**Revision (AAS 0.094):** The policy must be issued for the first time without a break in coverage. This condition is not met here.
-
-Cited: "Note: The above Optional Benefit can be opted only if this policy is issued for the first time"
-
-**AAS change:** -0.025
+**AAS change:** +0.026
 
 Owner mark: [ ] better  [ ] same  [ ] worse
 
@@ -136,11 +136,11 @@ Owner mark: [ ] better  [ ] same  [ ] worse
 
 **Reason:** Claim exceeds policy year limits, despite unlimited recharge within the year.
 
-**Original (AAS 0.090):** The clause specifies that the recharge is valid only for that policy year, not extending beyond it, which aligns with the rejection reason.
+**Original (AAS 0.100):** The clause specifies that the recharge is valid only for that policy year, which means it cannot be carried over to the next policy year, thus supporting the rejection.
 
 Cited: "valid for that Policy Year only"
 
-**Revision (AAS 0.090):** The claim is valid only for that Policy Year, as specified in the clause.
+**Revision (AAS 0.100):** The recharge is valid only for that Policy Year, not carrying over to the next.
 
 Cited: "valid for that Policy Year only"
 
@@ -152,13 +152,13 @@ Owner mark: [ ] better  [ ] same  [ ] worse
 
 **Reason:** The claim for dental expenses is not admissible as it does not fall under the 'Hospitalization Expenses' benefit.
 
-**Original (AAS 0.443):** The claim for dental expenses is not admissible because the policy only covers 'Hospitalization Expenses', as explicitly stated in the clause: 'A Claim will be admissible under the Recharge only if the Claim is a d m i s s i b l e u n d e r B e n e f i t 'Hospitalization Expenses''.
+**Original (AAS 0.225):** The claim for dental expenses is not admissible under the 'Hospitalization Expenses' benefit as explicitly stated in the policy clause. The clause specifies that the 'Sum Insured available under this Benefit can only be utilized for Benefits – 'Hospitalization Expenses' and 'Road Ambulance Cover'.
 
-Cited: "A Claim will be admissible under the Recharge only if the Claim is a d m i s s i b l e u n d e r B e n e f i t 'Hospitalization Expenses'."
+Cited: "Sum Insured available under this Benefit can only be utilized for Benefits"; "'Hospitalization Expenses' and 'Road Ambulance Cover'"
 
-**Revision (AAS 0.443):** The claim for dental expenses is not admissible because the policy explicitly covers only 'Hospitalization Expenses'.
+**Revision (AAS 0.225):** The claim for dental expenses is not admissible as it does not fall under 'Hospitalization Expenses'. The policy explicitly states that the Sum Insured can only be utilized for 'Hospitalization Expenses' and 'Road Ambulance Cover'.
 
-Cited: "A Claim will be admissible under the Recharge only if the Claim is a d m i s s i b l e u n d e r B e n e f i t 'Hospitalization Expenses'."
+Cited: "Sum Insured available under this Benefit can only be utilized for Benefits"; "'Hospitalization Expenses' and 'Road Ambulance Cover'"
 
 **AAS change:** +0.000
 
