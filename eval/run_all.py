@@ -1,18 +1,32 @@
-"""Run every evaluation and write eval/results/summary.md (SPEC.md 8).
+"""Run every evaluation and write eval/results/summary.md (SPEC.md 8, 13.4).
 
     python -m eval.run_all              # everything; per-case e2e results are cached
-                                        # in eval/results/e2e/ (delete to rerun, ~10 min)
-    python -m eval.run_all --summary    # only rebuild summary.md from the saved JSON
+                                        # in eval/results/e2e/ (delete to rerun)
+    python -m eval.run_all --summary    # only rebuild the tables from the saved results
 
-All numbers in the README come from eval/results/. Data is synthetic and small (20 cases).
+All numbers in the README come from eval/results/. Data is synthetic and small.
+Without a saved eval/results/matcher_v2_scores.json, the matcher comparison needs the
+checkpoints in models/ (see eval.train_matcher).
 """
 
 from __future__ import annotations
 
 import argparse
 import logging
+import sys
 
-from eval import run_e2e, run_faithfulness, run_matcher, run_retrieval, tune_tau
+from claimlens.data.phase2 import write_report
+from claimlens.utils.config import ROOT
+from eval import (
+    run_e2e,
+    run_faithfulness,
+    run_faithfulness_v2,
+    run_matcher,
+    run_matcher_v2,
+    run_retrieval,
+    tune_reflection,
+    tune_tau,
+)
 from eval.common import RESULTS, read_json
 
 
@@ -28,35 +42,40 @@ def build_summary() -> str:
     max_gold = max(golds.count(g) for g in set(golds))  # majority-class baseline
     base = max_gold / len(golds)
     L = ["# Evaluation summary", "",
-         "All data is **synthetic** and small (20 cases, 80 pairs); labels are by construction "
-         "and only 5 were hand-checked (see `data/QA.md`). Treat numbers as indicative.", "",
-         "## Retrieval (query = case reason, 20 cases)", "",
+         f"All data is **synthetic** and small ({e['n_cases']} cases); labels are by construction "
+         "and only 5 were hand-checked (see `data/QA.md`). Treat numbers as indicative. Phase 2 "
+         "tables: `data_v2.md`, `matcher_v2.md`, `faithfulness_v2.md`, `reflection_v2.md`.", "",
+         f"## Retrieval (query = case reason, {e['n_cases']} cases)", "",
          "| Method | Recall@3 | MRR@10 |", "|---|---|---|"]
     for k in ("bm25", "hybrid", "hybrid+rerank"):
         L.append(f"| {k} | {r[k]['recall@3']:.3f} | {r[k]['mrr@10']:.3f} |")
-    L += ["", "## Matcher (pretrained cross-encoder, no fine-tuning, 80 pairs)", "",
+    L += ["", "## Phase 1 matcher (pretrained cross-encoder, no fine-tuning, 80 pairs)", "",
           f"Model `{m['model']}`. Threshold picked on the dev half ({m['threshold_on_dev']:.3f}), "
           "reported on the held-out half.", "",
           "| Split | n | Accuracy | F1 | ROC-AUC |", "|---|---|---|---|---|"]
     for k in ("dev", "test"):
         d = m[k]
         L.append(f"| {k} | {d['n']} | {d['accuracy']:.3f} | {d['f1']:.3f} | {d['roc_auc']:.3f} |")
+    by = e["by_split"]
     L += ["", "## Verdict thresholds and end-to-end agreement", "",
-          f"Tuned on a stratified dev split of 10 cases (SPEC asked for the first 10, but those "
-          f"are all SUPPORTED): tau_high = {t['tau_high']}, tau_low = {t['tau_low']}.", "",
-          "| Thresholds | dev (10) | held-out (10) | all 20 |", "|---|---|---|---|",
-          f"| default 0.7 / 0.3 | {t['default_0.7_0.3']['dev']:.2f} | "
-          f"{t['default_0.7_0.3']['test']:.2f} | {t['default_0.7_0.3']['all20']:.2f} |",
-          f"| tuned {t['tau_high']} / {t['tau_low']} | {t['tuned']['dev']:.2f} | "
-          f"{t['tuned']['test']:.2f} | {t['tuned']['all20']:.2f} |", "",
-          f"End-to-end (letter in, LLM-extracted reason, agent verdict) vs `gold_verdict` on all "
-          f"{e['n_cases']} cases: **agreement {e['n_agree']}/{e['n_cases']} "
-          f"({pct(e['verdict_agreement'])})**, abstain rate {pct(e['abstain_rate'])}, gold clause "
-          f"in top-3 {pct(e['gold_clause_in_top3_rate'])}. ROC-AUC of the match probability for "
-          f"SUPPORTED vs NOT_SUPPORTED: {t['prob_roc_auc_supported_vs_not_all20']:.3f}. "
-          f"Baseline: always answering SUPPORTED agrees on {pct(base)} of cases "
-          f"({max_gold}/{e['n_cases']}); compare the agreement above with this. "
-          "Thresholds were tuned on 10 of these 20 cases, so the all-20 number is optimistic. "
+          f"Tuned on {t['n_val']} validation cases: tau_high = {t['tau_high']}, "
+          f"tau_low = {t['tau_low']}. Reported once on {t['n_test']} test cases.", "",
+          "| Thresholds | validation | test |", "|---|---:|---:|",
+          f"| default 0.7 / 0.3 | {t['default_0.7_0.3']['val']:.2f} | "
+          f"{t['default_0.7_0.3']['test']:.2f} |",
+          f"| tuned {t['tau_high']} / {t['tau_low']} | {t['tuned']['val']:.2f} | "
+          f"{t['tuned']['test']:.2f} |",
+          f"| always SUPPORTED (baseline) | {t['always_supported']['val']:.2f} | "
+          f"{t['always_supported']['test']:.2f} |", "",
+          f"End-to-end (letter in, LLM-extracted reason, agent verdict) vs `gold_verdict`: "
+          f"**test {by['test']['n_agree']}/{by['test']['n']}, validation "
+          f"{by['val']['n_agree']}/{by['val']['n']}**, all {e['n_cases']} cases "
+          f"{e['n_agree']}/{e['n_cases']} ({pct(e['verdict_agreement'])}). Abstain rate "
+          f"{pct(e['abstain_rate'])}, gold clause in top-3 {pct(e['gold_clause_in_top3_rate'])}. "
+          f"ROC-AUC of the match probability for SUPPORTED vs NOT_SUPPORTED on test: "
+          f"{t['prob_roc_auc_supported_vs_not_test']:.3f}. "
+          f"Baseline: always answering SUPPORTED agrees on {pct(base)} of all cases "
+          f"({max_gold}/{e['n_cases']}). "
           "The reason is re-extracted by the LLM on every run, so these verdicts can differ "
           "slightly from the `tau.json` run.", "",
           "Confusion (gold -> predicted):", ""]
@@ -85,13 +104,21 @@ def main() -> None:
                     help="re-run threshold tuning (then copy tau_high/low into configs/app.yaml)")
     args = ap.parse_args()
     logging.basicConfig(level=logging.INFO, format="%(asctime)s %(message)s")
+    argv = sys.argv
     if not args.summary:
+        sys.argv = [argv[0]]  # the steps parse their own arguments
         run_matcher.main()
+        if not (RESULTS / run_matcher_v2.SCORES).exists():
+            run_matcher_v2.score_all()
         run_retrieval.main()
         if args.retune or not (RESULTS / "tau.json").exists():
             tune_tau.main()  # then update configs/app.yaml tau_high/tau_low by hand
         run_e2e.main()
+        tune_reflection.main()
         run_faithfulness.main()
+        run_faithfulness_v2.main()
+    (RESULTS / "matcher_v2.md").write_text(run_matcher_v2.render(), encoding="utf-8")
+    write_report(ROOT / "data", RESULTS / "data_v2.md")
     (RESULTS / "summary.md").write_text(build_summary(), encoding="utf-8")
     print("wrote", RESULTS / "summary.md")
 

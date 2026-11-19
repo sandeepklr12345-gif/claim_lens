@@ -92,6 +92,7 @@ class ReflectionResult:
     aas_initial: float
     aas_final: float
     history: list[tuple[str, float]] = field(default_factory=list)  # (label, AAS)
+    revisions: list[Explanation] = field(default_factory=list)  # every revision, kept or not
 
 
 def replay_reflection(history: list[tuple[str, float]], tau: float) -> tuple[float, int]:
@@ -135,6 +136,7 @@ def reflect(llm: LLM, attr: Attribution, reason: str, clause_id: str, clause: st
     best, best_aas = initial, res.aas
     history = [("initial", res.aas)]
     cur, cur_idx, cur_aas = initial, set(res.cited_idx), res.aas
+    revisions: list[Explanation] = []
     for r in range(1, max_rounds + 1):
         if cur_aas >= tau:
             break
@@ -147,7 +149,8 @@ def reflect(llm: LLM, attr: Attribution, reason: str, clause_id: str, clause: st
         rr = score(cur.cited_spans)
         cur_idx, cur_aas = set(rr.cited_idx), rr.aas
         history.append((f"revision_{r}", rr.aas))
+        revisions.append(cur)
         notify(f"revision_{r}", rr.aas)
         if rr.aas > best_aas:
             best, best_aas = cur, rr.aas
-    return ReflectionResult(initial, best, res.aas, best_aas, history)
+    return ReflectionResult(initial, best, res.aas, best_aas, history, revisions)

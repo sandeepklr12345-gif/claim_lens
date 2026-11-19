@@ -3,7 +3,7 @@
   "n_pairs": 80,
   "n_positive": 40,
   "source": "synthetic",
-  "threshold_on_dev": 0.22609636949866804,
+  "threshold_on_dev": 0.22609626520438428,
   "dev": {
     "n": 40,
     "accuracy": 0.6,

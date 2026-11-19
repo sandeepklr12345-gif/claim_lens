@@ -1,0 +1,51 @@
+{
+  "tau_aas": 0.4,
+  "objective": "highest mean final AAS on validation; ties go low",
+  "split_mode": "FALLBACK: held-out section groups (no third policy PDF)",
+  "validation_grid": {
+    "0.4": {
+      "n": 17,
+      "mean_aas_initial": 0.15718849103415306,
+      "mean_aas_final": 0.22961382107086595,
+      "n_improved": 6,
+      "mean_revisions": 1.9411764705882353
+    },
+    "0.5": {
+      "n": 17,
+      "mean_aas_initial": 0.15718849103415306,
+      "mean_aas_final": 0.22961382107086595,
+      "n_improved": 6,
+      "mean_revisions": 1.9411764705882353
+    },
+    "0.6": {
+      "n": 17,
+      "mean_aas_initial": 0.15718849103415306,
+      "mean_aas_final": 0.22961382107086595,
+      "n_improved": 6,
+      "mean_revisions": 2.0
+    },
+    "0.7": {
+      "n": 17,
+      "mean_aas_initial": 0.15718849103415306,
+      "mean_aas_final": 0.22961382107086595,
+      "n_improved": 6,
+      "mean_revisions": 2.0
+    },
+    "0.8": {
+      "n": 17,
+      "mean_aas_initial": 0.15718849103415306,
+      "mean_aas_final": 0.22961382107086595,
+      "n_improved": 6,
+      "mean_revisions": 2.0
+    }
+  },
+  "test_at_tau": {
+    "n": 13,
+    "mean_aas_initial": 0.17574518955378268,
+    "mean_aas_final": 0.19640927443407413,
+    "n_improved": 1,
+    "mean_revisions": 1.6923076923076923
+  },
+  "test_chance_aas": 0.12956211019308753,
+  "source": "synthetic"
+}

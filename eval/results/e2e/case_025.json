@@ -1,0 +1,338 @@
+{
+  "case_id": "case_025",
+  "reason": "This benefit is not covered under your policy.",
+  "top_clauses": [
+    {
+      "chunk": {
+        "chunk_id": "hdfc_optima_secure-0027",
+        "doc_id": "hdfc_optima_secure",
+        "text": "Protect Benefit The Company shall indemnify the Insured Person for the Non-Medical Expenses listed under Annexure B to this Policy incurred in relation to a claim admissible under Section B-1 (Base Coverage) during the Policy Year. Exclusion (k) of Section C.2 – Specific Exclusions shall not apply to this Cover. In plans where in Protect Benefit is available as an optional cover, this benefit can be opted only at inception or at renewals and once opted the same can be opted out at renewals only.",
+        "section_path": "SECTION B. BENEFITS > 2.3 Protect Benefit",
+        "page": 10
+      },
+      "score": 6.3899760246276855,
+      "bm25_rank": 11,
+      "dense_rank": 1
+    },
+    {
+      "chunk": {
+        "chunk_id": "hdfc_optima_secure-0094",
+        "doc_id": "hdfc_optima_secure",
+        "text": "Lakhs 10 Lakhs 15 Lakhs 20 & 25 Lakhs 50 & 75 Lakhs 100 & 200 Lakhs Individual Policy** 1,500 1,500 2,000 4,000 5,000 5,000 8,000 Floater Policy** 2,500 2,500 5,000 8,000 10,000 10,000 15,000 Key to read above table d. ‘Covered’ means that particular benefit is an inbuilt feature in that particular plan- and the premium of such benefits are included in the premium of the respective Plan. e. ‘Not Covered’ means that particular benefit is NOT available either as an inbuilt feature or as an optional feature in that particular plan f. ‘Optional’ means that particular benefit is NOT an inbuilt feature BUT can be opted by the Proposer/Policyholder either at inception or at renewal. However, ‘PED wait period modification’ optional cover is allowed to be opted at channel level only. Individual customer will not be able to opt for the same. Notes: a. Preventive Health Check-up benefit will not be available under the policy if Aggregate Deductible of INR 5 Lakhs is in force. b. Preventive Health Check-up, Secure Benefit, Cumulative Bonus / Plus Benefit, Automatic Restore Benefit, Daily Cash for Shared Room and Unlimited Restore (Add-on) benefits will not be available under the policy if Aggregate Deductible of INR 10 Lakhs or more is in force. c. **For Individual policy sum insured and limits mentioned in the table are applicable on per Insured Person per Policy Year basis and for Family Floater policy sum insured and limits apply on per policy per Policy Year basis d. ^Claims shall be payable as per geography mentioned in the above table unless explicitly stated otherwise in a specific cover. e. # Aggregate Deductible if opted, shall apply only for claims arising in India. However, a Per Claim Deductible of Rs.",
+        "section_path": "SECTION D. GENERAL TERMS AND CLAUSES > 7.5 Lakhs",
+        "page": 32
+      },
+      "score": 5.803318023681641,
+      "bm25_rank": 10,
+      "dense_rank": 2
+    },
+    {
+      "chunk": {
+        "chunk_id": "hdfc_optima_secure-0033",
+        "doc_id": "hdfc_optima_secure",
+        "text": "Hence, coverage under Section B-2.8 (E-opinion for Critical Illness), Section B-3 (Preventive Health Check Up), Section B-2.9 (Global Health Cover (Emergency Treatments Only)), Section B-2.10 (Global Health Cover (Emergency and Planned Treatments Only)) and Section B-2.11 (Overseas Travel Secure) can be availed irrespective of whether the chosen Aggregate Deductible limit is breached or not, during the Policy Year. e. Preventive Health Check-up benefit will not be available under the policy if Aggregate Deductible of INR 5 Lakhs is in force. f. Preventive Health Check-up benefit, Secure Benefit, Cumulative Bonus / Plus Benefit, Automatic Restore Benefit, Daily Cash for Shared Room and Unlimited Restore (Add-on) benefits will not be available under the policy if Aggregate Deductible of INR 10 Lakhs or more is in force.",
+        "section_path": "SECTION B. BENEFITS > 2.7 Aggregate Deductible",
+        "page": 11
+      },
+      "score": 5.7685394287109375,
+      "bm25_rank": 16,
+      "dense_rank": 6
+    }
+  ],
+  "match": {
+    "clause_id": "hdfc_optima_secure-0027",
+    "score": 6.3899760246276855,
+    "prob": 0.9983245155209455
+  },
+  "attribution": {
+    "clause_id": "hdfc_optima_secure-0027",
+    "method": "integrated_gradients",
+    "tokens": [
+      "protect",
+      "benefit",
+      "the",
+      "company",
+      "shall",
+      "indemnify",
+      "the",
+      "insured",
+      "person",
+      "for",
+      "the",
+      "non",
+      "-",
+      "medical",
+      "expenses",
+      "listed",
+      "under",
+      "annexure",
+      "b",
+      "to",
+      "this",
+      "policy",
+      "incurred",
+      "in",
+      "relation",
+      "to",
+      "a",
+      "claim",
+      "admissible",
+      "under",
+      "section",
+      "b",
+      "-",
+      "1",
+      "(",
+      "base",
+      "coverage",
+      ")",
+      "during",
+      "the",
+      "policy",
+      "year",
+      ".",
+      "exclusion",
+      "(",
+      "k",
+      ")",
+      "of",
+      "section",
+      "c",
+      ".",
+      "2",
+      "–",
+      "specific",
+      "exclusions",
+      "shall",
+      "not",
+      "apply",
+      "to",
+      "this",
+      "cover",
+      ".",
+      "in",
+      "plans",
+      "where",
+      "in",
+      "protect",
+      "benefit",
+      "is",
+      "available",
+      "as",
+      "an",
+      "optional",
+      "cover",
+      ",",
+      "this",
+      "benefit",
+      "can",
+      "be",
+      "opted",
+      "only",
+      "at",
+      "inception",
+      "or",
+      "at",
+      "renewals",
+      "and",
+      "once",
+      "opted",
+      "the",
+      "same",
+      "can",
+      "be",
+      "opted",
+      "out",
+      "at",
+      "renewals",
+      "only",
+      "."
+    ],
+    "scores": [
+      0.2547185719013214,
+      0.33946549892425537,
+      0.05469907447695732,
+      0.164366215467453,
+      0.2702625095844269,
+      0.18123611994087696,
+      -0.017242951318621635,
+      0.1656800452619791,
+      0.1137094721198082,
+      0.005207177717238665,
+      -0.010962761007249355,
+      0.2809911072254181,
+      -0.03717174753546715,
+      -0.11148851364850998,
+      0.18972478806972504,
+      0.03155066445469856,
+      0.05607637017965317,
+      -0.06607682257890701,
+      -0.0688605010509491,
+      -0.00019380063167773187,
+      0.02409960888326168,
+      0.06888514757156372,
+      0.022552412003278732,
+      0.010502460412681103,
+      -0.0005742360954172909,
+      0.018650323152542114,
+      -0.01874682307243347,
+      0.015842201188206673,
+      0.0838995985686779,
+      0.03257932513952255,
+      0.027069302275776863,
+      0.02855689451098442,
+      0.016701867803931236,
+      0.036472346633672714,
+      0.08805578947067261,
+      0.004861514549702406,
+      0.006964573170989752,
+      -0.0411190465092659,
+      -0.010888101533055305,
+      -0.017562462016940117,
+      0.15692535042762756,
+      -0.0003753730561584234,
+      -0.07954893261194229,
+      0.17094826698303223,
+      0.0014075461076572537,
+      0.013662186451256275,
+      -0.05776750668883324,
+      0.04714292660355568,
+      0.04362649843096733,
+      0.04816964641213417,
+      -0.055715128779411316,
+      0.04749958589673042,
+      0.05923157185316086,
+      0.03614377602934837,
+      0.05743008479475975,
+      -0.015108301304280758,
+      0.25211572647094727,
+      0.044706858694553375,
+      0.024769708514213562,
+      0.11196482181549072,
+      0.3143228590488434,
+      0.04074062034487724,
+      0.14747117459774017,
+      0.061869509518146515,
+      0.0317855067551136,
+      0.06706158816814423,
+      -0.15844619274139404,
+      0.10812883079051971,
+      0.05796876922249794,
+      -0.07314092665910721,
+      0.04282345250248909,
+      0.03302996978163719,
+      0.00024592765839770436,
+      0.1975448876619339,
+      0.03524283692240715,
+      0.12286337465047836,
+      0.21343566477298737,
+      -0.011461400426924229,
+      0.1384533792734146,
+      -0.006992261856794357,
+      0.041098278015851974,
+      -0.012664152309298515,
+      0.03676444664597511,
+      0.05562327429652214,
+      0.018391110002994537,
+      0.008199397474527359,
+      0.02496868558228016,
+      0.01339508593082428,
+      -0.026927484199404716,
+      0.008294259198009968,
+      0.057002048939466476,
+      0.00853296834975481,
+      0.042286135256290436,
+      -0.049061018973588943,
+      0.003843149868771434,
+      -0.01007998175919056,
+      -0.006958707352168858,
+      0.019632605835795403,
+      -0.0369909442961216
+    ]
+  },
+  "explanation_initial": {
+    "text": "The clause specifies that the Protect Benefit covers Non-Medical Expenses under Base Coverage, and since the benefit in question is not medical, it falls under the exclusion.",
+    "cited_spans": [
+      {
+        "text": "Protect Benefit the Company shall indemnify",
+        "source": "clause",
+        "clause_id": null
+      },
+      {
+        "text": "Non-Medical Expenses listed under Annexure B",
+        "source": "clause",
+        "clause_id": null
+      },
+      {
+        "text": "incurred in relation to a claim admissible",
+        "source": "clause",
+        "clause_id": null
+      }
+    ]
+  },
+  "explanation_final": {
+    "text": "The clause specifies that the Protect Benefit covers Non-Medical Expenses under Base Coverage, and since the benefit in question is not medical, it falls under the exclusion.",
+    "cited_spans": [
+      {
+        "text": "Protect Benefit the Company shall indemnify",
+        "source": "clause",
+        "clause_id": null
+      },
+      {
+        "text": "Non-Medical Expenses listed under Annexure B",
+        "source": "clause",
+        "clause_id": null
+      },
+      {
+        "text": "incurred in relation to a claim admissible",
+        "source": "clause",
+        "clause_id": null
+      }
+    ]
+  },
+  "aas_initial": 0.12540136047216424,
+  "aas_final": 0.12540136047216424,
+  "aas_history": [
+    [
+      "initial",
+      0.12540136047216424
+    ],
+    [
+      "revision_1",
+      0.12540136047216424
+    ],
+    [
+      "revision_2",
+      0.0658033734045504
+    ]
+  ],
+  "revisions": [
+    {
+      "text": "The policy covers Non-Medical Expenses under Base Coverage. The benefit in question is not medical, thus it is excluded.",
+      "cited_spans": [
+        {
+          "text": "Non-Medical Expenses listed under Annexure B",
+          "source": "clause",
+          "clause_id": null
+        },
+        {
+          "text": "incurred in relation to a claim admissible",
+          "source": "clause",
+          "clause_id": null
+        }
+      ]
+    },
+    {
+      "text": "The policy excludes this benefit as it is not within the Non-Medical Expenses listed in Annexure B.",
+      "cited_spans": [
+        {
+          "text": "Exclusion (k) of Section C.2",
+          "source": "clause",
+          "clause_id": null
+        }
+      ]
+    }
+  ],
+  "verdict": "SUPPORTED",
+  "appeal_draft": null
+}

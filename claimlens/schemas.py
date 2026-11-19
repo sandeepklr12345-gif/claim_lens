@@ -6,6 +6,8 @@ from enum import StrEnum
 
 from pydantic import BaseModel, Field
 
+DISCLAIMER = "Decision support, not legal advice."
+
 
 class Verdict(StrEnum):
     SUPPORTED = "SUPPORTED"
@@ -98,5 +100,32 @@ class CaseResult(BaseModel):
     aas_initial: float | None = None
     aas_final: float | None = None
     aas_history: list[tuple[str, float]] = Field(default_factory=list)  # (round, AAS)
+    revisions: list[Explanation] = Field(default_factory=list)  # lines up with aas_history[1:]
     verdict: Verdict
     appeal_draft: str | None = None
+
+
+class CaseStatus(StrEnum):
+    CREATED = "created"
+    RUNNING = "running"
+    DONE = "done"
+    FAILED = "failed"
+
+
+class CaseCreate(BaseModel):
+    """Body of POST /cases."""
+
+    letter_text: str = Field(min_length=1, max_length=20000)
+    policy_id: str = Field(min_length=1)
+
+
+class CaseRecord(BaseModel):
+    """A case as the API stores and returns it."""
+
+    case_id: str
+    policy_id: str
+    letter_text: str
+    status: CaseStatus = CaseStatus.CREATED
+    result: CaseResult | None = None
+    error: str | None = None
+    disclaimer: str = DISCLAIMER

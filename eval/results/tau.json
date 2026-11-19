@@ -1,30 +1,23 @@
 {
-  "tau_high": 0.8,
-  "tau_low": 0.4,
-  "dev_case_ids": [
-    "case_001",
-    "case_002",
-    "case_003",
-    "case_004",
-    "case_005",
-    "case_006",
-    "case_013",
-    "case_014",
-    "case_015",
-    "case_016"
-  ],
+  "tau_high": 0.96,
+  "tau_low": 0.82,
+  "n_val": 17,
+  "n_test": 13,
   "default_0.7_0.3": {
-    "dev": 0.6,
-    "test": 0.6,
-    "all20": 0.6
+    "val": 0.6470588235294118,
+    "test": 0.46153846153846156
   },
   "tuned": {
-    "dev": 0.7,
-    "test": 0.5,
-    "all20": 0.6
+    "val": 0.7647058823529411,
+    "test": 0.46153846153846156
   },
-  "abstain_rate_all20": 0.05,
-  "prob_roc_auc_supported_vs_not_all20": 0.6145833333333334,
-  "top1_gold_clause_hit_rate_all20": 0.45,
-  "note": "tuned on the stratified dev split only; test and all20 reported as is"
+  "always_supported": {
+    "val": 0.7058823529411765,
+    "test": 0.46153846153846156
+  },
+  "abstain_rate_test": 0.0,
+  "prob_roc_auc_supported_vs_not_test": 0.6309523809523809,
+  "prob_roc_auc_supported_vs_not_all": 0.6504629629629629,
+  "top1_gold_clause_hit_rate_test": 0.46153846153846156,
+  "note": "tuned on validation cases only; test reported once"
 }

@@ -51,6 +51,7 @@ class AgentState(TypedDict, total=False):
     aas_initial: float
     aas_final: float
     aas_history: list[tuple[str, float]]
+    revisions: list[Explanation]
     verdict: Verdict
     appeal_draft: str | None
 
@@ -118,7 +119,8 @@ def build_graph(
             on_aas=lambda label, aas: emit("aas", {"label": label, "aas": aas}))
         return {"attribution": attr, "explanation_initial": res.initial,
                 "explanation_final": res.final, "aas_initial": res.aas_initial,
-                "aas_final": res.aas_final, "aas_history": res.history}
+                "aas_final": res.aas_final, "aas_history": res.history,
+                "revisions": res.revisions}
 
     def verdict(state: AgentState) -> dict[str, Any]:
         if "match" not in state:
@@ -163,5 +165,5 @@ def run_case(
         explanation_initial=out.get("explanation_initial"),
         explanation_final=out.get("explanation_final"), aas_initial=out.get("aas_initial"),
         aas_final=out.get("aas_final"), aas_history=out.get("aas_history", []),
-        verdict=out["verdict"],
+        revisions=out.get("revisions", []), verdict=out["verdict"],
         appeal_draft=out.get("appeal_draft"))
