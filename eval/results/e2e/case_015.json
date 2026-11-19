@@ -10,7 +10,7 @@
         "section_path": "SECTION D. GENERAL TERMS AND CLAUSES > 1.16 Nomination",
         "page": 22
       },
-      "score": 1.4255754947662354,
+      "score": -1.4425594806671143,
       "bm25_rank": 1,
       "dense_rank": 10
     },
@@ -22,27 +22,27 @@
         "section_path": "SECTION B. BENEFITS > 2.3 Protect Benefit",
         "page": 10
       },
-      "score": 1.094551682472229,
+      "score": -1.9971345663070679,
       "bm25_rank": 15,
       "dense_rank": 1
     },
     {
       "chunk": {
-        "chunk_id": "hdfc_optima_secure-0030",
+        "chunk_id": "hdfc_optima_secure-0094",
         "doc_id": "hdfc_optima_secure",
-        "text": "In plans where in Plus Benefit is available as an optional cover, this benefit can be opted only at inception or at renewals and once opted the same can be opted out only at renewals. Upon opting for this benefit, any accrued CB amount shall be carried forward to the renewed Policy and thereafter CB benefit shall cease to exist. Secure Benefit An additional amount as specified in the Policy Schedule will be available to the Insured Person as Sum Insured for all claims admissible under Section B (Base Coverage) and Section B-2.3 (Protect Benefit) during the Policy Year, subject to the following conditions: a. This Secure Benefit shall be applied only once during each Policy Year and any unutilized amount, in whole or in part, will not be carried forward to the subsequent Policy Year. b. The Secure Benefit can be utilized for any number of claims admissible under the Policy during the Policy Year. c. The Secure Benefit will be applicable only after exhaustion of Base Sum Insured. d. In case of family floater policy, the Secure Benefit will be available on floater basis for all Insured Persons covered under the Policy and will operate in accordance with the above conditions.",
-        "section_path": "SECTION B. BENEFITS > 2.5 Secure Benefit",
-        "page": 10
+        "text": "Lakhs 10 Lakhs 15 Lakhs 20 & 25 Lakhs 50 & 75 Lakhs 100 & 200 Lakhs Individual Policy** 1,500 1,500 2,000 4,000 5,000 5,000 8,000 Floater Policy** 2,500 2,500 5,000 8,000 10,000 10,000 15,000 Key to read above table d. ‘Covered’ means that particular benefit is an inbuilt feature in that particular plan- and the premium of such benefits are included in the premium of the respective Plan. e. ‘Not Covered’ means that particular benefit is NOT available either as an inbuilt feature or as an optional feature in that particular plan f. ‘Optional’ means that particular benefit is NOT an inbuilt feature BUT can be opted by the Proposer/Policyholder either at inception or at renewal. However, ‘PED wait period modification’ optional cover is allowed to be opted at channel level only. Individual customer will not be able to opt for the same. Notes: a. Preventive Health Check-up benefit will not be available under the policy if Aggregate Deductible of INR 5 Lakhs is in force. b. Preventive Health Check-up, Secure Benefit, Cumulative Bonus / Plus Benefit, Automatic Restore Benefit, Daily Cash for Shared Room and Unlimited Restore (Add-on) benefits will not be available under the policy if Aggregate Deductible of INR 10 Lakhs or more is in force. c. **For Individual policy sum insured and limits mentioned in the table are applicable on per Insured Person per Policy Year basis and for Family Floater policy sum insured and limits apply on per policy per Policy Year basis d. ^Claims shall be payable as per geography mentioned in the above table unless explicitly stated otherwise in a specific cover. e. # Aggregate Deductible if opted, shall apply only for claims arising in India. However, a Per Claim Deductible of Rs.",
+        "section_path": "SECTION D. GENERAL TERMS AND CLAUSES > 7.5 Lakhs",
+        "page": 32
       },
-      "score": 0.24435265362262726,
-      "bm25_rank": 9,
-      "dense_rank": 4
+      "score": -2.695948362350464,
+      "bm25_rank": 3,
+      "dense_rank": 11
     }
   ],
   "match": {
     "clause_id": "hdfc_optima_secure-0068",
-    "score": 1.4255754947662354,
-    "prob": 0.8062109903476722
+    "score": -1.4425594806671143,
+    "prob": 0.1911493112006935
   },
   "attribution": {
     "clause_id": "hdfc_optima_secure-0068",
@@ -180,140 +180,140 @@
       "."
     ],
     "scores": [
-      -0.1786186695098877,
-      -0.3974806070327759,
-      0.01184295117855072,
-      0.12227073311805725,
-      -0.0555589385330677,
-      0.00859205611050129,
-      0.06584929674863815,
-      -0.09174461662769318,
-      -0.006776075344532728,
-      -0.10074380040168762,
-      0.055848538875579834,
-      0.08652974665164948,
-      -0.0794563889503479,
-      0.02497096173465252,
-      -0.2548295259475708,
-      0.031953681260347366,
-      0.037680480629205704,
-      -0.11913105845451355,
-      -0.025163982063531876,
-      -0.0012845761375501752,
-      -0.3943648338317871,
-      0.16248255968093872,
-      0.051025230437517166,
-      -0.07429132610559464,
-      0.018949178978800774,
-      -0.0313841812312603,
-      -0.03568468242883682,
-      -0.01826315186917782,
-      0.0013026038650423288,
-      -0.08822924643754959,
-      -0.008547049947082996,
-      -0.10721422731876373,
-      -0.011074500347604044,
-      -0.11127409338951111,
-      -0.07234310358762741,
-      -0.05635920539498329,
-      -0.06009470298886299,
-      -0.14770740270614624,
-      0.05259774997830391,
-      -0.05307726189494133,
-      -0.06347590684890747,
-      -0.026066377758979797,
-      -0.07253821194171906,
-      0.08697778731584549,
-      0.01645420864224434,
-      0.026359768584370613,
-      0.0008971539791673422,
-      0.015769146382808685,
-      -0.025176381692290306,
-      0.0312382522970438,
-      0.037831857800483704,
-      -0.017383283004164696,
-      0.01741200126707554,
-      -0.009677035734057426,
-      -0.08059743046760559,
-      -0.11992175132036209,
-      -0.041353702545166016,
-      -0.040500055998563766,
-      -0.03290107473731041,
-      0.060673486441373825,
-      0.012693840079009533,
-      -0.049290042370557785,
-      0.07091164588928223,
-      0.02123153768479824,
-      0.05534540116786957,
-      0.003876176429912448,
-      -0.01932801678776741,
-      0.015107371844351292,
-      -0.11081624776124954,
-      -0.12429286353290081,
-      -0.023434976115822792,
-      0.017464468255639076,
-      0.044936615973711014,
-      -0.027233194559812546,
-      -0.0678272694349289,
-      -0.07332639396190643,
-      -0.0006260021473281085,
-      -0.16790315508842468,
-      0.058747660368680954,
-      -0.07641473412513733,
-      -0.04517485201358795,
-      -0.03798741474747658,
-      -0.059301912784576416,
-      -0.056135375052690506,
-      -0.06586726754903793,
-      -0.04471960291266441,
-      -0.024033600464463234,
-      -0.07057926803827286,
-      -0.08448365330696106,
-      -0.007439000997692347,
-      -0.03519800305366516,
-      0.037534892559051514,
-      -0.07046357542276382,
-      0.04298926889896393,
-      -0.020086409524083138,
-      -0.0048108031041920185,
-      0.044103316962718964,
-      0.11567875742912292,
-      -0.07709868252277374,
-      0.16122131049633026,
-      -0.20226554945111275,
-      0.08762996643781662,
-      -0.064667247235775,
-      0.05410420894622803,
-      -0.057582225650548935,
-      0.04209714010357857,
-      -0.1568700522184372,
-      -0.10940606147050858,
-      0.013776066713035107,
-      -0.01194125134497881,
-      -0.07590800523757935,
-      -0.1270161122083664,
-      -0.05996797792613506,
-      -0.06028793379664421,
-      0.017811570316553116,
-      -0.026164589449763298,
-      -0.009830732829868793,
-      0.03700989484786987,
-      0.003572740824893117,
-      -0.08545605838298798,
-      0.03212020918726921,
-      0.006588033866137266,
-      0.01798354461789131,
-      0.000498182896990329,
-      -0.09371040016412735,
-      -0.08594924211502075,
-      0.20656268298625946,
-      -0.040903858840465546,
-      0.016947779804468155,
-      -0.05113479867577553
+      -0.20436729490756989,
+      -0.2891450822353363,
+      -0.03234078362584114,
+      0.03736972063779831,
+      -0.07713779807090759,
+      -0.00923762284219265,
+      0.031115606427192688,
+      -0.09657151997089386,
+      -0.02541792392730713,
+      -0.13518720865249634,
+      0.012553693726658821,
+      0.023078715428709984,
+      -0.09567319601774216,
+      0.016647303476929665,
+      -0.19557248055934906,
+      0.021001888439059258,
+      -0.01174616813659668,
+      -0.09326855093240738,
+      -0.041961826384067535,
+      -0.01666865684092045,
+      -0.36187246441841125,
+      0.33669090270996094,
+      0.14076730608940125,
+      -0.06008981913328171,
+      0.011688405647873878,
+      -0.037039026618003845,
+      -0.06287860125303268,
+      -0.032951075583696365,
+      -0.028819791972637177,
+      -0.04641193896532059,
+      -0.02341833896934986,
+      -0.11424919962882996,
+      -0.07800079137086868,
+      -0.15581704676151276,
+      -0.0389099158346653,
+      -0.05500062555074692,
+      -0.05996274948120117,
+      -0.16816163063049316,
+      0.0699126198887825,
+      -0.031157875433564186,
+      -0.06392647325992584,
+      -0.029328010976314545,
+      -0.06062932312488556,
+      0.0612885057926178,
+      0.013049587607383728,
+      0.0054801818914711475,
+      -0.011981331743299961,
+      0.0276785995811224,
+      -0.01787470653653145,
+      0.04769591987133026,
+      0.006745455786585808,
+      -0.03646274283528328,
+      0.038155462592840195,
+      -0.0013836140278726816,
+      -0.04879262298345566,
+      -0.06875845789909363,
+      -0.01614837534725666,
+      -0.016582025215029716,
+      -0.029585184529423714,
+      0.04820052906870842,
+      -0.040666598826646805,
+      -0.11764918267726898,
+      0.036929577589035034,
+      0.019661853089928627,
+      0.04098363593220711,
+      -0.01628846488893032,
+      -0.0026917378418147564,
+      0.020919403061270714,
+      -0.0899791345000267,
+      -0.11422417126595974,
+      -0.015362064354121685,
+      0.02856103889644146,
+      0.058970414102077484,
+      -0.014049108140170574,
+      0.011632678098976612,
+      -0.057425640523433685,
+      0.055180568248033524,
+      -0.0735853835940361,
+      0.06250309944152832,
+      -0.014902614988386631,
+      -0.056275833398103714,
+      -0.023123623803257942,
+      -0.03011641465127468,
+      -0.017744136974215508,
+      0.006790066137909889,
+      -0.008627010509371758,
+      -0.025855455547571182,
+      -0.0018232307629659772,
+      -0.021114028990268707,
+      0.023694023489952087,
+      0.02348390966653824,
+      0.04622336104512215,
+      -0.03463691473007202,
+      0.06000985950231552,
+      0.0022932225838303566,
+      0.02763904072344303,
+      0.10783259570598602,
+      0.1100597083568573,
+      0.003663984127342701,
+      0.3870449662208557,
+      -0.09558642655611038,
+      0.1275595724582672,
+      -0.012629608623683453,
+      0.05038582906126976,
+      -0.04017827659845352,
+      0.059563636779785156,
+      -0.09278396517038345,
+      -0.06119491532444954,
+      0.042602211236953735,
+      0.014043076895177364,
+      -0.0721968337893486,
+      -0.1177813708782196,
+      -0.019464312121272087,
+      -0.04669254645705223,
+      0.031640540808439255,
+      0.04305028170347214,
+      0.020504524931311607,
+      0.06578512489795685,
+      0.03371479734778404,
+      -0.011540018022060394,
+      0.04502027854323387,
+      0.014238978736102581,
+      0.04234188422560692,
+      -0.009367816150188446,
+      -0.05444088205695152,
+      0.022091569378972054,
+      0.2305505871772766,
+      0.0006980311591178179,
+      0.06276528537273407,
+      -0.004406495485454798
     ]
   },
   "explanation_initial": {
-    "text": "The clause does not address the coverage of nomination benefits directly. It only outlines the process of making a nomination and how claims are paid to the nominee. The rejection is about the coverage of the nomination benefit, not the process of nomination.",
+    "text": "The clause does not address the coverage of nomination benefits, focusing instead on the process of nominating beneficiaries. Therefore, it does not support the rejection of the claim.",
     "cited_spans": [
       {
         "text": "The Policyholder is required at the inception",
@@ -338,7 +338,7 @@
     ]
   },
   "explanation_final": {
-    "text": "The clause does not address the coverage of nomination benefits directly. It only outlines the process of making a nomination and how claims are paid to the nominee. The rejection is about the coverage of the nomination benefit, not the process of nomination.",
+    "text": "The clause does not address the coverage of nomination benefits, focusing instead on the process of nominating beneficiaries. Therefore, it does not support the rejection of the claim.",
     "cited_spans": [
       {
         "text": "The Policyholder is required at the inception",
@@ -362,25 +362,25 @@
       }
     ]
   },
-  "aas_initial": 0.14348443798430016,
-  "aas_final": 0.14348443798430016,
+  "aas_initial": 0.09791530787157707,
+  "aas_final": 0.09791530787157707,
   "aas_history": [
     [
       "initial",
-      0.14348443798430016
+      0.09791530787157707
     ],
     [
       "revision_1",
-      0.09269110507156839
+      0.07453123388353308
     ],
     [
       "revision_2",
-      0.09269110507156839
+      0.07873013965182535
     ]
   ],
   "revisions": [
     {
-      "text": "The clause does not cover the nomination benefit. It only describes the nomination process and payment to the nominee.",
+      "text": "The clause does not cover nomination benefits. It focuses on the nomination process and payment to nominees.",
       "cited_spans": [
         {
           "text": "The Policyholder is required at the inception",
@@ -389,21 +389,31 @@
         },
         {
           "text": "In the event of death of the Policyholder",
+          "source": "clause",
+          "clause_id": null
+        },
+        {
+          "text": "the Company will pay the nominee",
           "source": "clause",
           "clause_id": null
         }
       ]
     },
     {
-      "text": "The clause does not cover the nomination benefit. It only describes the nomination process and payment to the nominee.",
+      "text": "The policy does not cover nomination benefits. There is no mention of coverage for such benefits.",
       "cited_spans": [
         {
-          "text": "The Policyholder is required at the inception",
+          "text": "The Policyholder is required at the inception of the Policy",
           "source": "clause",
           "clause_id": null
         },
         {
           "text": "In the event of death of the Policyholder",
+          "source": "clause",
+          "clause_id": null
+        },
+        {
+          "text": "the Company will pay the nominee",
           "source": "clause",
           "clause_id": null
         }
@@ -411,5 +421,58 @@
     }
   ],
   "verdict": "NOT_SUPPORTED",
-  "appeal_draft": "To,\nThe Grievance Officer / Claims Review Committee\n\nSubject: Appeal against rejection of my health insurance claim\n\nI received a rejection of my claim on the following ground: Claim CLM-89840 for the nomination benefit is not covered under your policy.\n\nI have reviewed the policy wording (clause hdfc_optima_secure-0068). In my understanding, the cited ground is not supported by it. The clause does not address the coverage of nomination benefits directly. It only outlines the process of making a nomination and how claims are paid to the nominee. The rejection is about the coverage of the nomination benefit, not the process of nomination.\n\nRelevant policy wording:\n  - \"The Policyholder is required at the inception\"\n  - \"Any change of nomination shall be communicated\"\n  - \"In the event of death of the Policyholder\"\n  - \"the Company will pay the nominee\"\n\nI request that you reconsider the claim and settle it, or give a clause-wise written explanation for the rejection.\n\nYours faithfully,\n[Policyholder name and policy number]\n\n---\nDecision support, not legal advice. This is a template draft; check it against the full policy and applicable rules before sending."
+  "appeal_draft": "To,\nThe Grievance Officer / Claims Review Committee\n\nSubject: Appeal against rejection of my health insurance claim\nPolicy: [policy number]   Claim: CLM-89840   Date of rejection: [date of rejection]\n\nFacts:\n  - We regret to inform you that claim CLM-89840 for the nomination benefit is not covered under your policy.\n  - The audit found the clause does not support the ground given.\n\nPolicy wording relied on:\n  - Clause hdfc_optima_secure-0068: \"Nomination The Policyholder is required at the inception of the Policy to make a nomination for the purpose of payment of claims under the Policy in the event of death of the Policyholder.\"\n  - Clause hdfc_optima_secure-0068: \"In the event of death of the Policyholder, the Company will pay the nominee {as named in the Policy Schedule/ Policy Certificate/Endorsement (if any)} and in case there is no subsisting nominee, to the legal heirs or legal representatives of the Policyholder whose discharge shall be treated as full and final discharge of its liability under the Policy.\"\n\nReasoning:\n  The policy clause focuses on the process of nominating beneficiaries rather than addressing the coverage of nomination benefits, thus not supporting the rejection of the claim.\n\nRelief sought:\n  We request the insurer to reconsider the claim and cover the nomination benefit as per the policy terms.\n\nDocuments to attach:\n  - Copy of the claim rejection letter\n  - Policy wording and policy schedule\n  - Claim form and discharge summary\n  - Medical bills, prescriptions and investigation reports\n  - Earlier correspondence with the insurer, including any grievance acknowledgement\n  - Identity proof of the policyholder\n\nYours faithfully,\nMs. B. Rao\n\nNote on timing: A complaint to the Insurance Ombudsman needs a written representation to the insurer first; it must then be made within one year of the insurer's rejection, or of one month after the representation was sent (Insurance Ombudsman Rules, 2017, Rule 14(3), checked against the published text as amended till 09.11.2023; later amendments not checked). Confirm with the Ombudsman office before relying on a date, and compute dates with the deadline tool.\n\n---\nDecision support, not legal advice. Source: llm (LLM draft, quotes checked against the clause).",
+  "appeal": {
+    "kind": "appeal",
+    "source": "llm",
+    "attempts": 1,
+    "fallback_reason": null,
+    "details": {
+      "policyholder_name": "Ms. B. Rao",
+      "policy_number": "[policy number]",
+      "claim_number": "CLM-89840",
+      "rejection_date": "[date of rejection]"
+    },
+    "facts": [
+      "We regret to inform you that claim CLM-89840 for the nomination benefit is not covered under your policy.",
+      "The audit found the clause does not support the ground given."
+    ],
+    "cited_clauses": [
+      {
+        "clause_id": "hdfc_optima_secure-0068",
+        "quote": "Nomination The Policyholder is required at the inception of the Policy to make a nomination for the purpose of payment of claims under the Policy in the event of death of the Policyholder."
+      },
+      {
+        "clause_id": "hdfc_optima_secure-0068",
+        "quote": "In the event of death of the Policyholder, the Company will pay the nominee {as named in the Policy Schedule/ Policy Certificate/Endorsement (if any)} and in case there is no subsisting nominee, to the legal heirs or legal representatives of the Policyholder whose discharge shall be treated as full and final discharge of its liability under the Policy."
+      }
+    ],
+    "reasoning": "The policy clause focuses on the process of nominating beneficiaries rather than addressing the coverage of nomination benefits, thus not supporting the rejection of the claim.",
+    "relief_sought": "We request the insurer to reconsider the claim and cover the nomination benefit as per the policy terms.",
+    "document_checklist": [
+      "Copy of the claim rejection letter",
+      "Policy wording and policy schedule",
+      "Claim form and discharge summary",
+      "Medical bills, prescriptions and investigation reports",
+      "Earlier correspondence with the insurer, including any grievance acknowledgement",
+      "Identity proof of the policyholder"
+    ],
+    "deadline_note": "A complaint to the Insurance Ombudsman needs a written representation to the insurer first; it must then be made within one year of the insurer's rejection, or of one month after the representation was sent (Insurance Ombudsman Rules, 2017, Rule 14(3), checked against the published text as amended till 09.11.2023; later amendments not checked). Confirm with the Ombudsman office before relying on a date, and compute dates with the deadline tool.",
+    "deadline_verified": true,
+    "disclaimer": "Decision support, not legal advice.",
+    "placeholders": [
+      "[date of rejection]",
+      "[policy number]"
+    ]
+  },
+  "plan_trace": [
+    {
+      "step": "check_retrieval",
+      "top_prob": 0.1911493112006935,
+      "tau_retr": null,
+      "replanned": false,
+      "decision": "ok"
+    }
+  ],
+  "abstain_reason": null
 }

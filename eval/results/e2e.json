@@ -2,36 +2,37 @@
   "n_cases": 30,
   "verdict_agreement": 0.6333333333333333,
   "n_agree": 19,
-  "abstain_rate": 0.0,
+  "abstain_rate": 0.06666666666666667,
   "gold_clause_in_top3_rate": 0.8,
   "confusion_gold_to_pred": {
     "SUPPORTED": {
-      "SUPPORTED": 17,
-      "NOT_SUPPORTED": 1
+      "INSUFFICIENT_EVIDENCE": 1,
+      "SUPPORTED": 17
     },
     "NOT_SUPPORTED": {
-      "SUPPORTED": 10,
+      "SUPPORTED": 9,
+      "INSUFFICIENT_EVIDENCE": 1,
       "NOT_SUPPORTED": 2
     }
   },
   "by_split": {
     "val": {
       "n": 17,
-      "n_agree": 13
+      "n_agree": 14
     },
     "test": {
       "n": 13,
-      "n_agree": 6
+      "n_agree": 5
     }
   },
-  "tau_high": 0.96,
-  "tau_low": 0.82,
+  "tau_high": 0.46,
+  "tau_low": 0.2,
   "source": "synthetic",
   "per_case": [
     {
       "case_id": "case_001",
       "gold": "SUPPORTED",
-      "pred": "SUPPORTED",
+      "pred": "INSUFFICIENT_EVIDENCE",
       "split": "test",
       "gold_clause_in_top3": false
     },
@@ -59,9 +60,9 @@
     {
       "case_id": "case_005",
       "gold": "SUPPORTED",
-      "pred": "NOT_SUPPORTED",
+      "pred": "SUPPORTED",
       "split": "val",
-      "gold_clause_in_top3": true
+      "gold_clause_in_top3": false
     },
     {
       "case_id": "case_006",
@@ -122,9 +123,9 @@
     {
       "case_id": "case_014",
       "gold": "NOT_SUPPORTED",
-      "pred": "SUPPORTED",
+      "pred": "INSUFFICIENT_EVIDENCE",
       "split": "test",
-      "gold_clause_in_top3": false
+      "gold_clause_in_top3": true
     },
     {
       "case_id": "case_015",

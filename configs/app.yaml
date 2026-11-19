@@ -13,11 +13,11 @@ rag:
   rrf_k: 60
 
 matcher:
-  model: models/matcher_v2   # git-ignored; build with eval.train_matcher (see README)
+  model: models/matcher_v3_s42   # seed-42 v3 run (pre-declared agent checkpoint, R1b); git-ignored
   fallback_model: cross-encoder/ms-marco-MiniLM-L-6-v2   # used when a models/ checkpoint is absent
 
 agent:
-  tau_high: 0.96   # SUPPORTED if match prob >= tau_high (tuned on validation cases, see eval/results/tau.json)
-  tau_low: 0.82    # NOT_SUPPORTED if match prob < tau_low; otherwise INSUFFICIENT_EVIDENCE
+  tau_high: 0.46   # SUPPORTED if match prob >= tau_high (tuned on validation cases for the v3 seed-42 matcher, eval/results/tau.json)
+  tau_low: 0.2     # NOT_SUPPORTED if match prob < tau_low; otherwise INSUFFICIENT_EVIDENCE
   tau_aas: 0.4     # reflect while AAS < this (tuned on validation, see eval/results/reflection_v2.md)
   max_rounds: 2

@@ -60,3 +60,48 @@ Other known weaknesses: letters are short (about 40 words, not the 80-120 asked 
 The labels above come from an AI-assisted review (six independent checks by Claude research tools against the policy PDFs). The project owner read the review and the notes on 2026-11-13 and confirmed all 20 labels as their own, including the nine medium-confidence "OWNER CALL" pairs, which stand with the review's mixed literal/charitable readings. Every note therefore reads `owner-confirmed (Claude note, conf)`: the label is the owner's, the reasoning text was written by Claude. An earlier pass (labels for v2_005_pos, v2_010_pos, v2_012_neg differed) was superseded.
 
 Known issues found by the review, handled in R1a: 17 of the 20 pairs use Care Supreme (48-month PED wording) and 3 use HDFC Optima Secure (36 months); several chunks are cut mid-clause (care_supreme-0031, 0038, 0042, 0043, 0064); v2_006, v2_029, v2_070 have garbled or self-contradictory reasons; v2_008_pos (same clause as v2_007_pos) looks mislabelled and is outside the 20. The verified subset is a small, non-random sample from the test split only.
+
+<!-- review:start -->
+## Review-queue decisions (R1a/R1b, owner)
+
+| Pair | Generated label | Judge label | Owner label | Changed | Note |
+|---|---|---|---|---|---|
+| v2_050_pos | 1 | 0 | 1 | no | CLAUDE (high): HDFC B-1.3: 'the condition of the Insured Person is such that he/she could not be removed/admitted to a Hospital.' Staying home by choice fails this condition. |
+| v2_057_pos | 1 | 0 | 1 | no | CLAUDE (medium): HDFC B-2.3: indemnifies 'Non-Medical Expenses listed under Annexure B'. OWNER CALL: 1 if listing is the condition; 0 if only exclusion-type clauses (C.2(k)) count. Reason wording is garbled. |
+| v2_002_pos | 1 | 0 | 1 | no | CLAUDE (medium): Care 3.1.1(iv) pre-hospitalization must relate 'to the same Illness/Injury'. OWNER CALL: reason does not say the expenses were pre-hospitalization; as a generic hospitalization denial, 0. |
+| v2_037_pos | 1 | 0 | 1 | no | CLAUDE (medium): Care 5.6(b): 'The active concealment of a fact by the Insured Person'. OWNER CALL: chunk lacks the forfeiture sentence (in the start of 5.6); strict reading 0. |
+| v2_047_pos | 1 | 0 | 0 | yes | CLAUDE (medium): disagree with generated 1. Care 6.1.2(a): procedural authorization clause; does not say what is covered. OWNER CALL: as the procedural basis of a cashless rejection, 1. |
+| v2_054_pos | 1 | 0 | 1 | no | CLAUDE (high): HDFC B-2.2 Daily Cash: 'Hospitalised in shared accommodation in a Network Provider Hospital'. Justifies rejecting this benefit only, not the hospital claim. |
+| v2_090_neg | 0 | 0 | 0 | no | CLAUDE (high): Chunk is Global Health Cover terms; never mentions oxygen. The real rule is Annexure B item 35 'Oxygen Cylinder (For Usage outside Hospital)'. |
+| v2_035_neg | 0 | 0 | 0 | no | CLAUDE (high): Definitions chunk only. The non-disclosure rule sits at 2.1.13, 4.1(a)(i)(d) and 5.1, not here. |
+| v2_075_neg | 0 | 0 | 0 | no | CLAUDE (high): Chunk is the PRE-hospitalization days option (Lite only). The post-hospitalization option is a separate clause 2.15, so this does not establish the reason. |
+| v2_043_pos | 1 | 1 | 1 | no | CLAUDE (high): Care 5.22 same rule; unawareness of the deadline is not a reason beyond control. |
+| v2_028_pos | 1 | 0 | 0 | yes | CLAUDE (medium): disagree with generated 1. Care 3.2.12 has only a minimum age ('above 12 years'); no upper limit exists. OWNER CALL: if 'exceeded' loosely means 'failed the age criterion', 1. |
+| v2_015_pos | 1 | 0 | 1 | no | CLAUDE (medium): Care 3.2.4 Named Ailment wait modified to the Schedule period. OWNER CALL: reason does not name an ailment, and says 'filed' while the clause turns on when expenses were incurred; strict = 0. |
+| v2_016_pos | 1 | 0 | 0 | yes | CLAUDE (medium): Care 3.2.4 is a time-bound wait, not a 'not covered' rule, and the reason has no time facts. OWNER CALL: if 'not covered' means 'still inside the wait', 1. |
+| v2_063_neg | 0 | 0 | 0 | no | CLAUDE (high): Chunk is the cashless procedure in India; nothing on treatment abroad. |
+| v2_058_neg | 0 | 1 | 1 | yes | CLAUDE (high): disagree with generated 0. HDFC plan-chart note b (inside the chunk): preventive check-up 'will not be available under the policy if Aggregate Deductible of INR 10 Lakhs or more is in force.' |
+| v2_012_pos | 1 | 0 | 1 | no | CLAUDE (medium): Care 3.1.4(ii) same gate. OWNER CALL: 'same illness as well as different Illnesses' in (iii)/(v) can be read as contradicting an illness-based rejection (then 0). |
+| v2_051_pos | 1 | 0 | 1 | no | CLAUDE (high): HDFC B-1.3 proviso (a)/(b): home treatment only if patient could not be admitted, or no hospital room was available. Reason says neither applied. |
+| v2_055_pos | 1 | 0 | 1 | no | CLAUDE (high): HDFC B-2.2: 'such Hospitalization exceeds 48 consecutive hours'. Under 48 hours fails it. |
+| v2_011_pos | 1 | 0 | 1 | no | CLAUDE (medium): Care 3.1.4(ii): Recharge claim 'admissible ... only if ... admissible under Benefit Hospitalization Expenses'. OWNER CALL: reason never mentions the Recharge. |
+| v2_065_neg | 0 | 0 | 0 | no | CLAUDE (high): Chunk is Geography/Loadings (underwriting waiting periods). The migration waiting-period rule is B-2.10 term x, a different clause. |
+| v2_013_pos | 1 | 0 | 1 | no | CLAUDE (medium): Care 3.2.3: PED claims admissible only after the Schedule period of continuous coverage. OWNER CALL: reason never says PED-related; if reasons must state every fact, 0. |
+| v2_025_pos | 1 | 0 | 1 | no | CLAUDE (medium): Care 3.2.11: Health check-up 'available only once during a Policy Year per Insured Person', on request. OWNER CALL: minor; requiring express lapse wording gives 0. |
+| v2_016_neg | 0 | 0 | 0 | no | CLAUDE (high): Definitions chunk only (Pre-existing Disease 2.1.36). The operative rules are 4.1(a)(i)-(ii). |
+| v2_053_pos | 1 | 0 | 1 | no | CLAUDE (high): HDFC B-1.7(c)(ii): 'Expenses related to organ transportation or preservation' are excluded. |
+| v2_042_pos | 1 | 0 | 1 | no | CLAUDE (high): Care 5.22: claims notified 12 calendar months after the event are not admissible unless the delay was beyond his control; a busy schedule is within his control. |
+| v2_021_neg | 0 | 0 | 0 | no | CLAUDE (medium): Care general note 6: the EVENT must be within the Policy Period; reason says the claim was FILED after the year. OWNER CALL: same decision as v2_009_pos. |
+| v2_027_pos | 1 | 0 | 1 | no | CLAUDE (high): Care 3.2.12(a): 'The services will be provided through an empanelled Fitness center only.' |
+| v2_038_pos | 1 | 0 | 1 | no | CLAUDE (medium): Care 5.10(iv): policy terminates at end of period; 'Coverage is not available during the grace period'. OWNER CALL: read literally as late filing of an in-period event, 0. |
+| v2_008_pos | 1 | 0 | 0 | yes | CLAUDE (high): disagree with generated 1. Care 3.1.4(i): Recharge is used only after base SI and bonus are exhausted, so it cannot use up the bonus. Same pair as earlier review. |
+| v2_063_pos | 1 | 1 | 1 | no | CLAUDE (high): HDFC B-2.9 exclusion iv: 'Medical treatment taken outside India if that is the sole reason or one of the reasons for the journey.' |
+| v2_004_neg | 0 | 0 | 0 | no | CLAUDE (high): Chunk is organ-donor exclusion plus room/ICU 'No limit'; nothing on tonsillitis (tonsillectomy sits in the 24-month named-ailment list). |
+| v2_014_pos | 1 | 0 | 1 | no | CLAUDE (medium): Care 3.2.3 'continuous coverage ... since the inception of the first Policy'. OWNER CALL: relies on inferring a 6-month lapse breaks continuity; the better clause is 4.1(a)(i). |
+| v2_052_pos | 1 | 0 | 0 | yes | CLAUDE (medium): HDFC B-1.7: no rule on admission timing; admission is itself Hospitalization, so 2 early days are not donor pre-hospitalization (c.i). OWNER CALL: reason does not say donor or recipient; BLANK is defensible. |
+| v2_059_neg | 0 | 1 | 1 | yes | CLAUDE (high): disagree with generated 0. HDFC plan-chart note a (inside the chunk): preventive check-up 'will not be available ... if Aggregate Deductible of INR 5 Lakhs is in force.' |
+| v2_017_pos | 1 | 0 | 1 | no | CLAUDE (medium): Care 3.2.5 Instant Cover: 'can be opted only if this policy is issued for the first time with the Company'. OWNER CALL: opt-in condition, and the reason does not name the benefit. |
+| v2_040_pos | 1 | 0 | 0 | yes | CLAUDE (medium): Care 5.11(ii) 'without a break' applies only to migration on product withdrawal; moratorium 5.12 limits contesting. OWNER CALL: if any no-break continuity condition counts, 1. |
+| v2_009_pos | 1 | 0 | 0 | yes | CLAUDE (medium): disagree with generated 1. Care 3.1.4 'valid for that Policy Year only'; nothing on when a claim must be submitted. OWNER CALL: same decision as v2_021_neg (submission vs event timing). |
+
+<!-- review:end -->
