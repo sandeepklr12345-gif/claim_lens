@@ -14,7 +14,7 @@ import numpy as np
 from claimlens.matcher.metrics import accuracy, best_threshold, f1, roc_auc, split_groups
 from claimlens.matcher.scorer import Matcher, sigmoid
 from claimlens.schemas import Pair
-from claimlens.utils.config import ROOT
+from claimlens.utils.config import ROOT, load_config
 
 RESULTS = ROOT / "eval" / "results"
 
@@ -28,7 +28,7 @@ def load_pairs() -> list[Pair]:
 def main() -> None:
     logging.basicConfig(level=logging.INFO)
     pairs = load_pairs()
-    matcher = Matcher()
+    matcher = Matcher(load_config()["matcher"]["fallback_model"])  # always the Phase 1 model
     logits = matcher.logits([(p.reason, p.clause_text) for p in pairs])
     prob = np.asarray(sigmoid(logits))
     y = np.array([p.label for p in pairs])

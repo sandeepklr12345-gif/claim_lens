@@ -7,6 +7,7 @@ import pytest
 
 pytestmark = pytest.mark.model
 APP = str(Path(__file__).resolve().parents[1] / "app" / "streamlit_app.py")
+N_CASES = len(list((Path(__file__).resolve().parents[1] / "data" / "cases").glob("*.json")))
 
 
 def page(at) -> str:
@@ -20,8 +21,8 @@ def test_page_loads_and_lists_sample_cases():
     assert not at.exception
     html = page(at)
     assert "ClaimLens" in html and "not legal advice" in html
-    assert html.count("Synthetic data") == 20
-    assert sum(b.key.startswith("case_") for b in at.button) == 20
+    assert html.count("Synthetic data") == N_CASES
+    assert sum(b.key.startswith("case_") for b in at.button) == N_CASES
     assert "care_supreme" in at.selectbox(key="policy").options
     assert all(s in html for s in ("Read the letter", "Find clauses", "Explain and check"))
 
