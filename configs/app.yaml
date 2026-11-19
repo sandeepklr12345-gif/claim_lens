@@ -21,3 +21,6 @@ agent:
   tau_low: 0.2     # NOT_SUPPORTED if match prob < tau_low; otherwise INSUFFICIENT_EVIDENCE
   tau_aas: 0.4     # reflect while AAS < this (tuned on validation, see eval/results/reflection_v2.md)
   max_rounds: 2
+  # tau_retr: 0.936   # RULE OFF BY DEFAULT. 0.936 is the validation-tuned value (eval/results/tau_retr.json), but it made the agent
+  #                    abstain on 20 of 30 real cases and cut verdict agreement from 19/30 to 7/30 (eval/results/replan_v3.md).
+  #                    Uncomment to reproduce replan_v3.md or to use the re-plan.

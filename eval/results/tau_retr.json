@@ -1,0 +1,9 @@
+{
+  "n_val": 17,
+  "n_val_gold_in_top3": 15,
+  "tau_retr": 0.9364086201414379,
+  "j": 0.33333333333333326,
+  "reason": "max Youden J on validation",
+  "source": "validation cases only",
+  "note": "tau_retr compares the best re-ranked clause's matcher probability"
+}
