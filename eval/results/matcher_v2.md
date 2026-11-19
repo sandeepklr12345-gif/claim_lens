@@ -4,12 +4,12 @@ All data is synthetic. Split: FALLBACK: held-out section groups (no third policy
 
 | System | Threshold | Val acc | Val F1 | Val AUC | Test acc | Test F1 | Test AUC |
 |---|---:|---:|---:|---:|---:|---:|---:|
-| BM25 score (baseline) | 15.359 | 0.731 | 0.741 | 0.744 | 0.600 | 0.619 | 0.618 |
-| Phase 1 pretrained cross-encoder (baseline) | 0.024 | 0.846 | 0.862 | 0.834 | 0.600 | 0.680 | 0.755 |
-| zero-shot Ollama LLM (baseline) | 0.050 | 0.500 | 0.667 | 0.627 | 0.500 | 0.667 | 0.799 |
-| fine-tuned legal-bert | 0.496 | 0.692 | 0.667 | 0.620 | 0.525 | 0.537 | 0.412 |
-| fine-tuned InLegalBERT | 0.519 | 0.750 | 0.711 | 0.664 | 0.525 | 0.486 | 0.560 |
-| fine-tuned ms-marco-MiniLM | 0.132 | 0.808 | 0.833 | 0.833 | 0.625 | 0.706 | 0.772 |
+| BM25 score (baseline) | 15.359 | 0.731 | 0.741 | 0.744 | 0.550 | 0.526 | 0.547 |
+| Phase 1 pretrained cross-encoder (baseline) | 0.024 | 0.846 | 0.862 | 0.834 | 0.500 | 0.565 | 0.685 |
+| zero-shot Ollama LLM (baseline) | 0.050 | 0.500 | 0.667 | 0.627 | 0.400 | 0.571 | 0.824 |
+| fine-tuned legal-bert | 0.496 | 0.692 | 0.667 | 0.620 | 0.525 | 0.486 | 0.451 |
+| fine-tuned InLegalBERT | 0.519 | 0.750 | 0.711 | 0.664 | 0.575 | 0.485 | 0.617 |
+| fine-tuned ms-marco-MiniLM | 0.132 | 0.808 | 0.833 | 0.833 | 0.525 | 0.596 | 0.698 |
 
 n: validation 52, test 40. Test sets this small make small differences unreliable.
 
@@ -19,4 +19,13 @@ The fine-tuned model does NOT beat the best baseline on validation.
 
 ## Owner-verified subset
 
-PENDING: 0 pairs verified so far.
+n = 20.
+
+| System | Accuracy | F1 | ROC-AUC |
+|---|---:|---:|---:|
+| BM25 score (baseline) | 0.550 | 0.526 | 0.667 |
+| Phase 1 pretrained cross-encoder (baseline) | 0.450 | 0.476 | 0.679 |
+| zero-shot Ollama LLM (baseline) | 0.300 | 0.462 | 0.881 |
+| fine-tuned legal-bert | 0.500 | 0.375 | 0.405 |
+| fine-tuned InLegalBERT | 0.600 | 0.333 | 0.488 |
+| fine-tuned ms-marco-MiniLM | 0.450 | 0.522 | 0.679 |

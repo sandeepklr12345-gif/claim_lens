@@ -239,3 +239,88 @@ Cut order if behind: (1) IG baseline sensitivity, (2) attention rollout, (3) Doc
 - [ ] The 20 pairs to hand-verify (done by the user in P1)
 - [ ] Confirm Hugging Face model IDs in 13.3
 - [ ] Fix `gold_clause_ids` placeholders in the t01 to t06 cases
+
+## 14. Phase 2b: remaining work, 4-hour cut
+
+This is the part of section 12.2 and 13.6 built next, in about 4 hours of Claude Code time. The order is fixed: data quality first, because the label audit showed that a large share of the generated "positive" labels are wrong, and that limits every model result. Everything not listed here stays deferred (14.6). Same integrity rules as before: every number comes from `eval/results/`, negative results are reported as they are, nothing is tuned on test.
+
+Branch: `phase2b`, created from `main` after the Phase 0 check. Milestones: R1a, R2, R1b, R3, R4.
+
+### 14.1 Time plan
+
+T0 is the moment R1a starts. Write T0 into `docs/PROGRESS.md` and compute the targets from it.
+
+| Milestone | Target window | Deliverable |
+|---|---|---|
+| R1a Label audit | T0 to T0+0:45 | LLM-judge audit of all pairs, review queue for the owner |
+| R2 Appeal | T0+0:45 to T0+1:50 | Full appeal drafter, appeal MCP server, API and UI hook (owner reviews the queue in parallel) |
+| R1b Retrain | T0+1:50 to T0+2:40 | Cleaned labels, hard negatives, retrained matcher, re-evaluation |
+| R3 Re-plan | T0+2:40 to T0+3:15 | Low-confidence re-plan, then abstain |
+| R4 Packaging | T0+3:15 to T0+3:50 | README, tests, CI, merge, final report |
+| Buffer | T0+3:50 to T0+4:00 | Fixes |
+
+Hard stop: T0+4:00. At T0+3:30 stop new work and finish R4. If more than 20 minutes behind at any target, apply the cut order in 14.6 without asking.
+
+### 14.2 Owner steps before T0 (Claude Code does not do these)
+
+1. Decide on the 20 pair-verification labels. Only the owner's statement counts. If the owner says they reviewed all 20 and agree, Claude Code commits the five pending files and rewrites every note prefix from `CLAUDE (conf)` to `owner-confirmed (Claude note, conf)`. If the owner changed labels, rerun `python -m claimlens.data.phase2 apply-verify`. If not reviewed, stop and wait.
+2. Mark the 10 explanations in `docs/reflection_check.md`.
+3. Add name and USN to `README.md` (replace `[TODO: name, USN]`).
+4. Decide the case_003 (questionable) and case_009 (wrong) labels.
+5. Have Ollama running with the model in `.env` pulled.
+
+Claude Code never fills `your_label` or any `verified` field itself.
+
+### 14.3 R1 Data quality
+
+**R1a: audit (T0 to T0+0:45)**
+- Add `claimlens/data/audit.py` and `eval/run_audit.py`. Judge every pair in `data/pairs_v2.jsonl` with the local LLM (`qwen2.5:7b`), using this rubric: label 1 only if the clause contains the operative rule the reason relies on, so that if the facts in the reason are true the rejection is justified; label 0 if the clause is on another topic, shares only keywords, or contradicts or does not establish the reason's ground. The judge returns JSON `{label, confidence: high|medium|low, rationale}` with a rationale of at most 30 words.
+- Two passes per pair (the second with the clause and reason order changed). A pair is flagged if either pass disagrees with the generated label or reports low confidence.
+- Write `data/label_audit.csv` (`pair_id, generated_label, judge_label_1, judge_label_2, confidence, rationale, flagged`). Judge labels are stored with `source: "llm_audit"` and never `verified: true`.
+- Calibration: report the judge's agreement with the owner-verified 20 pairs. With n = 20 this is only a sanity check, and the report says so. Note the limitation that the judge and the generator are the same model family, so their errors may be correlated.
+- Write `data/review_queue.csv` for the owner: all flagged pairs (cap 30) plus 10 random unflagged pairs, with columns `pair_id, reason, clause_text, generated_label, judge_label, rationale, your_label, note`. The 10 random ones estimate how many errors the judge misses.
+- Acceptance: both files exist, the calibration number is in `eval/results/audit_v3.md`, the queue has at most 40 rows, tests cover the flagging rule.
+
+**R1b: retrain and re-evaluate (T0+1:50 to T0+2:40)**
+- Apply the owner's `your_label` values from `data/review_queue.csv` (`python -m claimlens.data.audit apply-review`), recorded as `verified: true`. If the owner has not returned the queue by T0+1:50, use the judge labels for flagged pairs, record them as `source: "llm_audit", verified: false`, and say so in every table that uses them. Never change a label silently.
+- Splits are frozen: do not move any pair between train, validation and test. Corrected labels apply inside the same splits. Report old-label and new-label results side by side.
+- Add up to 60 hard negatives: for each positive reason take top-5 retrieved clauses that are not gold, keep those the judge labels 0 with high confidence. They are `hard_negative: true`, split by clause group, added to train and validation only. Evaluate them on a separate hard-negative test file built from test-group clauses.
+- Retrain the cross-encoder with `eval/train_matcher.py` (same settings as 13.3) on seeds 42, 43 and 44. Report mean and standard deviation, and 95% bootstrap confidence intervals (1000 resamples, seed 42) for test accuracy, F1 and ROC-AUC, against the pretrained baseline.
+- Re-tune `tau_high` and `tau_low` on validation only (`eval.tune_tau`), rerun `eval.run_e2e` on the 30 cases, and rerun faithfulness on a 10-case subset (state it as a subset). Write `eval/results/matcher_v3.md`.
+- Acceptance: tables show old vs new labels, confidence intervals are present, the leakage test still passes, nothing was tuned on test, and the README text is unchanged until R4.
+
+### 14.4 R2 Appeal (T0+0:45 to T0+1:50)
+
+- New package `claimlens/appeal/`. The current template in `claimlens/agent/verdict.py` (`appeal_template`) stays as the fallback.
+- `draft_appeal(case_result)` returns an `AppealDraft` (pydantic, in `claimlens/schemas.py`) with: facts, cited clauses (`clause_id` and quote), reasoning, relief sought, document checklist, deadline note, disclaimer. It is generated for NOT_SUPPORTED, and for INSUFFICIENT_EVIDENCE it produces a request-for-clarification letter instead. It is not generated for SUPPORTED.
+- Grounding rules: every quote must appear verbatim (after whitespace normalisation) in the retrieved clause text, or the draft is retried once, then replaced by the template with `source: "template"`. Facts come only from the letter; anything missing becomes a visible placeholder like `[date of rejection]`. No invented policy numbers, dates or amounts.
+- New MCP server `claimlens/mcp_servers/appeal_server.py` (FastMCP, stdio, thin wrapper) with tools `list_templates`, `get_template(name)` and `compute_deadlines(rejection_date, grievance_filed_date=None, insurer_reply_date=None)`. Deadline logic uses stdlib `datetime` only. The filing-window rules must be checked against the Insurance Ombudsman Rules, 2017 text from an official source; if it cannot be reached, ship with `verified: false` on those rules and show "verify with the Ombudsman office" in the UI and README. Do not state the rules as fact without that check.
+- API: `GET /cases/{id}/appeal`. UI: an appeal section with the structured draft and a text download. Every draft shows "decision support, not legal advice".
+- Tests (no model needed): verbatim-quote check and fallback with a mocked LLM, schema, deadline arithmetic at month ends and on 29 February, the three tool outputs.
+- Evaluation: over the 30 cases, report the share of drafts whose quotes pass on the first try, the share that fall back to the template, and the share of NOT_SUPPORTED cases with a complete draft. Write `eval/results/appeal_v3.md`.
+- Acceptance: tests pass, the MCP server starts, `appeal_v3.md` exists, CI green.
+
+### 14.5 R3 Re-plan (T0+2:40 to T0+3:15)
+
+- Add two named nodes to the LangGraph agent in `claimlens/agent/graph.py`: `check_retrieval` (a conditional edge after `retrieve`) and `replan`.
+- Rule: if the top re-ranked clause score is below `tau_retr`, run `replan` once: the LLM rewrites the reason into two alternative search queries, retrieval runs on each, results are merged by reciprocal rank fusion. If the score is still below `tau_retr`, stop and return INSUFFICIENT_EVIDENCE with `abstain_reason: "no clause above confidence threshold"`. At most one re-plan per case.
+- Calibrate `tau_retr` on validation cases only, choosing the value that best separates cases whose gold clause is in the top 3 from those whose gold clause is not. Add 5 synthetic "no matching clause" cases (reasons with no basis in the policy, `source: "synthetic"`, gold verdict INSUFFICIENT_EVIDENCE, labelled by construction) so abstention can be tested.
+- Add `plan_trace` to `CaseResult` recording each decision. Put `tau_retr` in `configs/app.yaml`.
+- Tests: the conditional edge with a mocked retriever and LLM, abstain path, at-most-once rule.
+- Evaluation: gold-clause-in-top-3 before and after re-plan on validation and test, the abstain rate on the 5 no-clause cases, and any regression on the 30-case run. Write `eval/results/replan_v3.md`.
+- Acceptance: the graph has the new nodes, tests pass, results file exists, and no previous test breaks.
+
+### 14.6 R4 Packaging, cut order, deferred
+
+R4: update `README.md` with a new results section copied from `eval/results/` only, append `docs/PROGRESS.md`, run `ruff check .`, `pytest -q -m "not model"`, `pytest -q -m model`, `python -m eval.run_all`, push `phase2b`, run CI with `gh workflow run` and wait for success, merge to `main` only after green, tag `phase2b`, and write the final report in the MASTER_PROMPT format.
+
+Cut order if behind: (1) R3 re-plan, (2) the appeal MCP server (keep the drafter), (3) hard negatives (keep the audit and retrain), (4) faithfulness rerun on the 10-case subset, (5) bootstrap intervals down to 500 resamples. Never cut: R1a, R1b retrain and re-evaluation, the appeal drafter's quote check, R4.
+
+Deferred, do not build: orchestrator and worker refactor of the agent, PostgreSQL memory and long-term store, the regulations (IRDAI circular) MCP server, RAGAS, MLflow or W&B, OCR, Hindi and Kannada, counterfactual explanations, a vector-database swap, a third policy PDF and more policies (optional if the owner supplies one). No new dependencies.
+
+### 14.7 Open items
+
+- [ ] Owner steps in 14.2
+- [ ] Insurance Ombudsman Rules, 2017: confirm the filing-window rules from an official source (R2)
+- [ ] README name and USN
+- [ ] CLAUDE.md says RTX 4060, the machine reports RTX 4050 6 GB: correct it
