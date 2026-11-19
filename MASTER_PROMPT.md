@@ -4,9 +4,9 @@ Goal-Oriented Development | GitHub-First | Milestone-Based | Continuous Run
 
 You are my technical lead, software architect, senior developer, and project execution partner.
 
-We are starting this project from scratch. The repository must be created on GitHub before implementation begins.
+The project already exists on GitHub (Phase 1 is done). We are now building Phase 2.
 
-Two project documents are available in the project directory:
+Two project documents are available in the project directory (both updated for Phase 2):
 
 * CLAUDE.md – Project working rules.
 * SPEC.md – Complete project specification.
@@ -17,7 +17,7 @@ These documents are the primary source of truth. Read CLAUDE.md completely, then
 
 1. PRIMARY OBJECTIVE
 
-Build the project described in SPEC.md into a functional, tested, documented, and deployable application.
+Extend the existing Phase 1 application, following SPEC.md section 13, into a better-evaluated, documented and deployable Phase 2 version.
 
 Your development approach must be:
 
@@ -31,41 +31,29 @@ Do not introduce unnecessary features, technologies, dependencies, or architectu
 
 Every task must contribute directly to a requirement in SPEC.md.
 
-TIME LIMIT: the hard stop is Thu 5 Nov 2026, 05:00 IST. Check the clock at the start of each milestone against the targets in SPEC.md section 3. If more than 30 minutes behind, apply the cut line immediately without asking. At 04:30, stop new work, make sure the README and final push are done, and write the final report.
+TIME LIMIT: the hard stop is Sun 8 Nov 2026, 22:00 IST. Check the clock at the start of each milestone against the targets in SPEC.md section 13.1. If more than 30 minutes behind, apply the cut order in SPEC.md 13.6 immediately without asking. At 21:00, stop new work, make sure the README and final push are done, and write the final report.
 
-SCOPE OF THIS RUN: Phase 1 only (SPEC.md sections 1-11). Follow the Phase 2 design rules in SPEC.md 12.1, but do not build any Phase 2 feature. After the Phase 1 final report, stop; Phase 2 starts in a new session after the presentation.
+SCOPE OF THIS RUN: Phase 2, 3-day cut only (SPEC.md section 13, milestones P1 to P5). Phase 1 is complete and presented. Follow SPEC.md 12.1. Do not build anything in SPEC.md 13.6. After the final report, stop.
 
-2. PHASE 0: CREATE GITHUB REPOSITORY FIRST
+2. PHASE 0: CHECK THE EXISTING REPOSITORY (do not recreate it)
 
-Before writing application code:
+The repository claim_lens already exists on GitHub with the Phase 1 work. Before any code:
 
-1. Inspect the existing project directory.
-2. Read CLAUDE.md and SPEC.md.
-3. Identify the project name, description, technology stack, and initial repository structure.
-4. Check whether Git is already initialized.
-5. Check whether GitHub CLI (gh) is installed and authenticated.
-6. If necessary, guide me through GitHub authentication, including `gh auth refresh -s workflow` so the CI workflow file can be pushed.
-7. The repository name is claim_lens (already decided).
-8. Ask me to confirm:
-    * Public or private visibility.
-    * That Ollama is running and the model in CLAUDE.md is pulled.
-9. Create the GitHub repository.
-10. Initialize Git if required.
-11. Configure the remote origin.
-12. Prepare .gitignore and ensure no API keys, credentials, secrets, or environment files are committed.
-13. Make the initial commit containing the approved project documentation and configuration.
-14. Push the initial commit to GitHub.
-15. Verify that the remote repository and initial commit exist.
+1. Inspect the project directory and run git status, git log -5 --oneline, git remote -v.
+2. Read CLAUDE.md and SPEC.md sections 12.1 and 13.
+3. Confirm gh is authenticated (`gh auth status`) and the Phase 1 CI run on the latest commit (`gh run list --limit 1`).
+4. Report leftovers from Phase 1: uncommitted changes, any streamlit process still running on port 8599, and open items from SPEC.md 13.7. Do not discard anything without asking.
+5. Ask me to confirm: Ollama is running and the model in .env is pulled; `torch.cuda.is_available()` is True; and whether I can supply the third policy PDF now.
+6. After I confirm, tag the current commit `phase1-presented` and push the tag (`git tag phase1-presented ; git push origin phase1-presented`).
+7. Create a branch `phase2` and work there. Merge to main only at the end, after CI is green.
 
-IMPORTANT: Do not start M0 implementation until the GitHub repository has been successfully created and the initial push has been verified.
+IMPORTANT: Do not start P1 until steps 1 to 6 are done and I have confirmed.
 
-Never claim a repository was created or code was pushed without verifying the result.
-
-Phase 0 is the only planned pause. After the initial push is verified, proceed through all milestones without waiting for approval.
+Phase 0 is the only planned pause, plus the human-only steps in SPEC.md (third policy PDF, verification of 20 pairs, gold clause ids). Prepare those items, then stop and ask me for exactly what you need. Otherwise proceed through all milestones without waiting for approval.
 
 3. MILESTONE-BASED DEVELOPMENT
 
-Follow the milestones defined in SPEC.md in their original order.
+Follow the milestones P1 to P5 defined in SPEC.md section 13 in order.
 
 For every milestone, use this execution cycle:
 
@@ -224,18 +212,18 @@ Begin with PHASE 0 only.
 
 Your first response must:
 
-1. Confirm that you have inspected CLAUDE.md and SPEC.md.
-2. Summarize the final project objective in 3–5 bullet points.
-3. Identify the required repository name and description.
-4. Explain whether Git and GitHub CLI are ready.
-5. Ask me to confirm the GitHub repository name and visibility.
+1. Confirm that you have inspected CLAUDE.md and SPEC.md (sections 12.1 and 13).
+2. Summarize the Phase 2 objective in 3–5 bullet points.
+3. Report the state of the repository, git, gh and the last CI run.
+4. List Phase 1 leftovers and the open items in SPEC.md 13.7.
+5. Ask me the confirmations from Phase 0 step 5.
 
 Do not write application code yet.
 
-After the GitHub repository is created and the initial push is verified, begin M0 and continue through every milestone.
+After I confirm and the tag is pushed, begin P1 and continue through every milestone.
 
 Remember:
 
-PHASE 0 → CONFIRM → THEN FOR EACH MILESTONE: IMPLEMENT → TEST → COMMIT → PUSH → VERIFY → LOG → CONTINUE → FINAL REPORT AND STOP.
+PHASE 0 CHECK → CONFIRM → THEN FOR EACH MILESTONE (P1 to P5): IMPLEMENT → TEST → COMMIT → PUSH → VERIFY → LOG → CONTINUE → FINAL REPORT AND STOP.
 
-The final objective is a working project on GitHub, not merely code that runs on my local machine.
+The final objective is a working, better-evaluated project on GitHub, not merely code that runs on my local machine. Every reported number must come from eval/results/.
