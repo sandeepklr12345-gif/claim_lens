@@ -258,3 +258,5 @@ Written ahead of the labels because it does not depend on them; nothing here has
 **Known issues:** the Phase 2 pretrained-baseline row in `matcher_v2.md` is re-rendered under the current (owner-reviewed) labels, so its numbers differ from the Phase 2 README; `matcher_v3.md` shows old and new labels side by side. Re-chunking and `v2_008_pos` untouched. Local `main` has an unpushed docs commit `39ba4be` that diverges from `origin/main`.
 
 **Update (2026-11-13):** README author and team members filled in by the owner (no USN, as requested).
+
+**Update (2026-11-13):** `docs/reflection_check.md` marked by the owner (set A, AI-assisted review confirmed by the owner): 4 better, 4 worse, 2 same. README sentence updated.
