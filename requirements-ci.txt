@@ -6,3 +6,6 @@ rank_bm25
 PyMuPDF
 pyyaml
 langgraph
+pytest-cov
+fastapi
+httpx

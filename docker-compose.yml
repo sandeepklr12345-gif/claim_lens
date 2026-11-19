@@ -1,0 +1,31 @@
+# API on http://localhost:8000/docs, UI on http://localhost:8501
+# Ollama runs on the host. models/ is optional: without a checkpoint the matcher falls back to
+# the pretrained model.
+x-claimlens: &claimlens
+  build: .
+  image: claimlens:local
+  environment:
+    OLLAMA_HOST: http://host.docker.internal:11434
+    CLAIMLENS_STATE_DIR: /state
+  extra_hosts:
+    - "host.docker.internal:host-gateway"
+  volumes:
+    - ./models:/app/models:ro
+    - hf-cache:/cache/huggingface
+    - case-state:/state
+
+services:
+  api:
+    <<: *claimlens
+    ports:
+      - "8000:8000"
+  ui:
+    <<: *claimlens
+    command: ["streamlit", "run", "app/streamlit_app.py", "--server.port", "8501",
+              "--server.address", "0.0.0.0"]
+    ports:
+      - "8501:8501"
+
+volumes:
+  hf-cache:
+  case-state:
