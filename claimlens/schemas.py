@@ -84,6 +84,7 @@ class Pair(BaseModel):
     clause_text: str
     label: int = Field(ge=0, le=1)
     source: str = "synthetic"
+    verified: bool = False  # True only after the project owner checked it (data/QA.md)
 
 
 class CaseResult(BaseModel):

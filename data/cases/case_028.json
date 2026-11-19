@@ -1,0 +1,11 @@
+{
+  "case_id": "case_028",
+  "policy_id": "care_supreme",
+  "letter_text": "Subject: Rejection of Claim (CLM-91070) Dear Ms. B. Rao, Unfortunately, your claim for AYUSH treatment expenses is not covered under your policy. Please review your policy document for details. Sincerely, [Insurer Name]",
+  "reason": "Claim for AYUSH treatment not covered under policy.",
+  "gold_clause_ids": [
+    "care_supreme-0034"
+  ],
+  "gold_verdict": "NOT_SUPPORTED",
+  "source": "synthetic"
+}

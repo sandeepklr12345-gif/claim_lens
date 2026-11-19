@@ -1,0 +1,11 @@
+{
+  "case_id": "case_022",
+  "policy_id": "care_supreme",
+  "letter_text": "Dear Mr. A. Kumar, We regret to inform you that your claim for CLM-26361 has been rejected due to the reduced Sum Insured at your policy renewal. The accrued bonus cannot be utilized. Best regards, [Insurer Name]",
+  "reason": "Claim exceeds reduced Sum Insured at renewal, no bonus applicable.",
+  "gold_clause_ids": [
+    "care_supreme-0042"
+  ],
+  "gold_verdict": "SUPPORTED",
+  "source": "synthetic"
+}

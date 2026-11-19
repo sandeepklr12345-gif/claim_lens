@@ -1,0 +1,11 @@
+{
+  "case_id": "case_024",
+  "policy_id": "hdfc_optima_secure",
+  "letter_text": "Dear Mr. A. Kumar, We regret to inform you that your claim for pre-hospitalization expenses incurred in India has been rejected as such expenses are not covered under your policy. For further details, please contact our claims department. Sincerely, [Insurer Name]",
+  "reason": "Pre-hospitalization expenses incurred in India not covered under policy.",
+  "gold_clause_ids": [
+    "hdfc_optima_secure-0040"
+  ],
+  "gold_verdict": "SUPPORTED",
+  "source": "synthetic"
+}

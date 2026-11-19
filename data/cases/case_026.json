@@ -1,0 +1,11 @@
+{
+  "case_id": "case_026",
+  "policy_id": "care_supreme",
+  "letter_text": "CLM-48427: Regret to inform you that your claim for hospitalization expenses has been rejected as it exceeds the authorized limit. Please contact us to request an enhancement of authorization limit if the circumstances warrant it.",
+  "reason": "Claim exceeds authorized limit without prior approval for enhancement.",
+  "gold_clause_ids": [
+    "care_supreme-0096"
+  ],
+  "gold_verdict": "SUPPORTED",
+  "source": "synthetic"
+}

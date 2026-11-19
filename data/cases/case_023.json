@@ -1,0 +1,11 @@
+{
+  "case_id": "case_023",
+  "policy_id": "care_supreme",
+  "letter_text": "Dear Mr. A. Kumar, Unfortunately, your claim for treatment related to a pre-existing condition is not covered as it falls under the 48-month waiting period. Kindly refer to your policy document for details. Sincerely, [Insurer Name]",
+  "reason": "Claim for pre-existing condition not covered within 48-month waiting period.",
+  "gold_clause_ids": [
+    "care_supreme-0062"
+  ],
+  "gold_verdict": "SUPPORTED",
+  "source": "synthetic"
+}

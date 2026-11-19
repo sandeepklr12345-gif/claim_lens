@@ -1,0 +1,11 @@
+{
+  "case_id": "case_025",
+  "policy_id": "hdfc_optima_secure",
+  "letter_text": "Dear Mr. A. Kumar, We regret to inform you that your claim for daily cash benefit for shared accommodation under CLM-82357 has been denied as this benefit is not covered under your policy. Sincerely, [Insurer Name]",
+  "reason": "Daily cash benefit for shared accommodation not covered under your policy.",
+  "gold_clause_ids": [
+    "hdfc_optima_secure-0089"
+  ],
+  "gold_verdict": "SUPPORTED",
+  "source": "synthetic"
+}
