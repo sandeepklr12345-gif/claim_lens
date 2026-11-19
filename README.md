@@ -262,7 +262,7 @@ data/        policies/  cases/  cases_noclause/  pairs_v2.jsonl  hard_negatives*
              label_audit.csv  review_queue.csv  verify_pairs.csv  QA.md
 eval/        run_*.py  train_matcher.py  tune_*.py  results/
 docs/        PROGRESS.md (build log, bugs, deviations)  reflection_check.md
-tests/       .github/workflows/blank.yml   Dockerfile   docker-compose.yml   SPEC.md   CLAUDE.md
+tests/       .github/workflows/blank.yml   Dockerfile   docker-compose.yml
 ```
 
-Deferred work (planner agent, PostgreSQL, more MCP servers and others) is listed in `SPEC.md` 13.6.
+Deferred work (planner agent, PostgreSQL, more MCP servers and others) is not part of this release.
