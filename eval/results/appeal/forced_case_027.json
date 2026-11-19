@@ -4,14 +4,14 @@
   "attempts": 1,
   "fallback_reason": null,
   "details": {
-    "policyholder_name": "[policyholder name]",
+    "policyholder_name": "Ms. B. Rao",
     "policy_number": "[policy number]",
     "claim_number": "CLM-92397",
     "rejection_date": "[date of rejection]"
   },
   "facts": [
-    "We regret to inform you that claim CLM-92397 for nomination payment is not covered under your policy.",
-    "For further inquiries, please contact our claims department."
+    "Claim CLM-92397 for nomination payment is not covered under your policy.",
+    "The audit found the clause does not support the ground given."
   ],
   "cited_clauses": [
     {
@@ -23,8 +23,8 @@
       "quote": "In the event of death of the policyholder, the Company will pay the nominee {as named in the Policy Schedule/ Policy Certificate/ Endorsement (if any)} and in case there is no subsisting nominee, to the legal heirs or legal representatives of the policyholder whose discharge shall be treated as full and final discharge of its liability under the policy."
     }
   ],
-  "reasoning": "The policy clearly states that the company will pay the nominee as named, and if no nominee is named, it will pay the legal heirs. Since the claim was for a nomination payment and no valid nomination was found, the claim is not covered.",
-  "relief_sought": "We respectfully request that the claim be reconsidered and honored as per the policy terms.",
+  "reasoning": "The policy clearly states that the nomination must be made at the inception and any change must be communicated in writing. Since the claim was for a nomination payment and there is no existing nominee, the payment is not covered as per the policy wording.",
+  "relief_sought": "We respectfully request the insurer to reconsider the claim and cover the nomination payment as per the policy terms.",
   "document_checklist": [
     "Copy of the claim rejection letter",
     "Policy wording and policy schedule",
@@ -38,7 +38,6 @@
   "disclaimer": "Decision support, not legal advice.",
   "placeholders": [
     "[date of rejection]",
-    "[policy number]",
-    "[policyholder name]"
+    "[policy number]"
   ]
 }

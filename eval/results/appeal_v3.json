@@ -1,26 +1,27 @@
 {
   "n_cases": 30,
   "verdicts": {
-    "SUPPORTED": 27,
-    "NOT_SUPPORTED": 3
+    "INSUFFICIENT_EVIDENCE": 2,
+    "SUPPORTED": 26,
+    "NOT_SUPPORTED": 2
   },
-  "n_drafts": 3,
-  "first_try_pass": 3,
+  "n_drafts": 4,
+  "first_try_pass": 4,
   "pass_after_retry": 0,
   "template_fallback": 0,
-  "not_supported_cases": 3,
-  "not_supported_complete": 3,
+  "not_supported_cases": 2,
+  "not_supported_complete": 2,
   "supported_with_draft": 0,
   "source": "synthetic",
   "per_case": [
     {
       "case_id": "case_001",
-      "verdict": "SUPPORTED",
-      "kind": null,
-      "source": null,
-      "attempts": null,
-      "n_quotes": 0,
-      "complete": false,
+      "verdict": "INSUFFICIENT_EVIDENCE",
+      "kind": "clarification",
+      "source": "llm",
+      "attempts": 1,
+      "n_quotes": 3,
+      "complete": true,
       "fallback_reason": null
     },
     {
@@ -55,12 +56,12 @@
     },
     {
       "case_id": "case_005",
-      "verdict": "NOT_SUPPORTED",
-      "kind": "appeal",
-      "source": "llm",
-      "attempts": 1,
-      "n_quotes": 3,
-      "complete": true,
+      "verdict": "SUPPORTED",
+      "kind": null,
+      "source": null,
+      "attempts": null,
+      "n_quotes": 0,
+      "complete": false,
       "fallback_reason": null
     },
     {
@@ -145,12 +146,12 @@
     },
     {
       "case_id": "case_014",
-      "verdict": "SUPPORTED",
-      "kind": null,
-      "source": null,
-      "attempts": null,
-      "n_quotes": 0,
-      "complete": false,
+      "verdict": "INSUFFICIENT_EVIDENCE",
+      "kind": "clarification",
+      "source": "llm",
+      "attempts": 1,
+      "n_quotes": 2,
+      "complete": true,
       "fallback_reason": null
     },
     {
@@ -189,7 +190,7 @@
       "kind": "appeal",
       "source": "llm",
       "attempts": 1,
-      "n_quotes": 2,
+      "n_quotes": 1,
       "complete": true,
       "fallback_reason": null
     },
@@ -318,13 +319,13 @@
     {
       "case_id": "case_013",
       "source": "llm",
-      "attempts": 2,
+      "attempts": 1,
       "complete": true
     },
     {
       "case_id": "case_014",
-      "source": "llm",
-      "attempts": 1,
+      "source": "template",
+      "attempts": 2,
       "complete": true
     },
     {
@@ -360,7 +361,7 @@
     {
       "case_id": "case_020",
       "source": "llm",
-      "attempts": 1,
+      "attempts": 2,
       "complete": true
     },
     {
@@ -378,7 +379,7 @@
     {
       "case_id": "case_029",
       "source": "llm",
-      "attempts": 2,
+      "attempts": 1,
       "complete": true
     },
     {

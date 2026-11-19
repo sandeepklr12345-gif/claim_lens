@@ -11,7 +11,7 @@
   },
   "facts": [
     "Unfortunately, your claim for AYUSH treatment expenses is not covered under your policy.",
-    "Your claim for AYUSH treatment expenses is not covered under your policy."
+    "Since the claim was for AYUSH treatment expenses, but not at an AYUSH facility, the claim is not covered."
   ],
   "cited_clauses": [
     {
@@ -19,7 +19,7 @@
       "quote": "Benefit : AYUSH Treatment The Company will indemnify the Insured P e r s o n , t h r o u g h C a s h l e s s o r Reimbursement Facility, up to the Sum Insured, as specified in the Policy Schedule, towards Medical Expenses incurred with respect to the Insured Person's medical treatment undergone at any AYUSH Hospitals or health care facilities for any of the listed AYUSH treatments namely Ayurveda, Sidha , Unani and Homeopathy, subject to the conditions specified below: A Claim will be admissible under this Benefit only if the Claim is a d m i s s i b l e u n d e r B e n e f i t 'Hospitalization Expenses'."
     }
   ],
-  "reasoning": "The policy explicitly limits coverage to 'AYUSH Hospitals or health care facilities for any of the listed AYUSH treatments', which does not include general AYUSH treatment expenses. Therefore, the claim is not covered.",
+  "reasoning": "The policy explicitly limits coverage to AYUSH treatments at AYUSH facilities, and the claim was for treatment expenses not at such a facility.",
   "relief_sought": "I request that the claim be reconsidered and approved.",
   "document_checklist": [
     "Copy of the claim rejection letter",

@@ -11,8 +11,7 @@
   },
   "facts": [
     "Claim #CLM-42087 for hospitalization expenses is not covered under your policy.",
-    "The cover is not available for the time spent by the Insured Person in an Intensive Care Unit (ICU).",
-    "The claim for the same Hospitalization is not admissible under Section B-1.1 (Hospitalization Expenses)."
+    "The policy clause explicitly states that the cover is not available for the time spent in an Intensive Care Unit (ICU), and the claim for the same hospitalization is not admissible under Section B-1.1 (Hospitalization Expenses)."
   ],
   "cited_clauses": [
     {
@@ -24,7 +23,7 @@
       "quote": "The claim for the same Hospitalization is not admissible under Section B-1.1 (Hospitalization Expenses)."
     }
   ],
-  "reasoning": "These clauses directly support the rejection of the claim for hospitalization expenses.",
+  "reasoning": "These clauses from the policy clearly state that ICU stay and hospitalization expenses are not covered, which aligns with the rejection ground.",
   "relief_sought": "We request that the claim be reconsidered and honored as per the policy terms.",
   "document_checklist": [
     "Copy of the claim rejection letter",

@@ -1,30 +1,26 @@
 {
   "kind": "appeal",
-  "source": "llm",
-  "attempts": 1,
-  "fallback_reason": null,
+  "source": "template",
+  "attempts": 2,
+  "fallback_reason": "these quotes are not word-for-word in the clause: \"The Company will indemnify the Insured Person, only through Reimbursement Facility, up to the Sum Insured, as specified in the Policy Schedule, for the Medical Expenses incurred towards Domiciliary Hospitalization, i.e., Coverage extended when Medically Necessary treatment is taken at home (as explained in Definition 2.1.14), subject to the conditions specified below:\"",
   "details": {
-    "policyholder_name": "Ms. B. Rao",
+    "policyholder_name": "[policyholder name]",
     "policy_number": "[policy number]",
     "claim_number": "[claim number]",
     "rejection_date": "[date of rejection]"
   },
   "facts": [
-    "Unfortunately, your claim for home treatment is not covered under your policy.",
-    "The clause supports the rejection because it specifies conditions for the Optional Benefit, which are not met."
+    "The insurer rejected the claim on this ground: Your claim for home treatment is not covered under your policy.",
+    "Date of rejection: [date of rejection]; claim number: [claim number]; policy number: [policy number]."
   ],
   "cited_clauses": [
     {
-      "clause_id": "care_supreme-0051",
-      "quote": "Instant Cover Notwithstanding anything to the contrary in the Policy, by choosing this Optional Benefit the Company shall waive off the applicable PED waiting period on Diabetes/ Hypertension/ Hyperlipidemia/ Asthma at the time of issuance of first Policy with the Company."
-    },
-    {
-      "clause_id": "care_supreme-0051",
-      "quote": "The claim amount assessed by the Company for a particular claim shall be reduced by the Deductible as specified in the Policy Schedule and the Company shall be liable to make payment under the Policy for any Claim only when the Deductible on that Claim is exhausted."
+      "clause_id": "care_supreme-0035",
+      "quote": "Such treatment taken is within the jurisdiction of India; and Clause 4.2 (12) under Permanent Exclusions, is superseded to the extent covered under this Benefit."
     }
   ],
-  "reasoning": "The clause specifies conditions for the Optional Benefit, including that the policy must be issued for the first time and without a break in coverage, neither of which is applicable here.",
-  "relief_sought": "We request that you reconsider the rejection and cover the claim as it is within the terms of the policy.",
+  "reasoning": "In my understanding the cited ground is not supported by clause care_supreme-0035. The policy does not cover home treatments. Clause 4.2 (12) under Permanent Exclusions explicitly excludes home treatments.",
+  "relief_sought": "I request that you reconsider the claim and settle it, or give a clause-wise written explanation of the ground for rejection.",
   "document_checklist": [
     "Copy of the claim rejection letter",
     "Policy wording and policy schedule",
@@ -39,6 +35,7 @@
   "placeholders": [
     "[claim number]",
     "[date of rejection]",
-    "[policy number]"
+    "[policy number]",
+    "[policyholder name]"
   ]
 }

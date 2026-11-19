@@ -4,14 +4,14 @@
   "attempts": 1,
   "fallback_reason": null,
   "details": {
-    "policyholder_name": "Ms. B. Rao",
+    "policyholder_name": "[policyholder name]",
     "policy_number": "[policy number]",
     "claim_number": "CLM-85674",
     "rejection_date": "[date of rejection]"
   },
   "facts": [
     "Unfortunately, your claim for home health care expenses is not covered by your policy.",
-    "The claim for home health care expenses is not covered as this cover is not available on a reimbursement basis and requires pre-authorization by the company, neither of which were met."
+    "The policy explicitly states that the cover for home health care expenses is not available on a reimbursement basis, and requires pre-authorization by the company, which is not met in this case."
   ],
   "cited_clauses": [
     {
@@ -19,8 +19,8 @@
       "quote": "Home Health Care The Company shall indemnify the Medical Expenses incurred by the Insured Person on availing treatment at Home during the Policy Year, if prescribed in writing by the treating Medical Practitioner, provided that: a. The treatment in normal course would require In-patient Care at a Hospital, and be admissible under Section B-1.1 (Hospitalization Expenses). b. The treatment is pre-authorized by the Company as per procedure given under Claims Procedure - Section E-1. c. Records of the treatment administered, duly signed by the treating Medical Practitioner, are maintained for each day of the Home treatment. This Cover is not available on reimbursement basis."
     }
   ],
-  "reasoning": "The policy clause clearly states that the home health care cover is not available on a reimbursement basis and requires pre-authorization, which were not met in this case.",
-  "relief_sought": "We request the insurer to reconsider the claim and cover the home health care expenses as the policy clause does not support the ground given for rejection.",
+  "reasoning": "The policy explicitly states that the cover for home health care expenses is not available on a reimbursement basis, and requires pre-authorization by the company, which is not met in this case.",
+  "relief_sought": "I respectfully request that the claim be reconsidered and honored.",
   "document_checklist": [
     "Copy of the claim rejection letter",
     "Policy wording and policy schedule",
@@ -34,6 +34,7 @@
   "disclaimer": "Decision support, not legal advice.",
   "placeholders": [
     "[date of rejection]",
-    "[policy number]"
+    "[policy number]",
+    "[policyholder name]"
   ]
 }

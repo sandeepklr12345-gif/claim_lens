@@ -1,1 +1,48 @@
-null
+{
+  "kind": "clarification",
+  "source": "llm",
+  "attempts": 1,
+  "fallback_reason": null,
+  "details": {
+    "policyholder_name": "[policyholder name]",
+    "policy_number": "[policy number]",
+    "claim_number": "CLM-59823",
+    "rejection_date": "[date of rejection]"
+  },
+  "facts": [
+    "We regret to inform you that the claim for the donor's medical expenses, referenced in CLM-59823, is not covered under your policy.",
+    "The clause does not specify if the claim is for a covered condition. It only outlines optional benefits and deductibles."
+  ],
+  "cited_clauses": [
+    {
+      "clause_id": "care_supreme-0051",
+      "quote": "Instant Cover Notwithstanding anything to the contrary in the Policy, by choosing this Optional Benefit the Company shall waive off the applicable PED waiting period on Diabetes/ Hypertension/ Hyperlipidemia/ Asthma at the time of issuance of first Policy with the Company."
+    },
+    {
+      "clause_id": "care_supreme-0051",
+      "quote": "Note: The above Optional Benefit can be opted only if this policy is issued for the first time with the Company and on continues renewal without break in policy."
+    },
+    {
+      "clause_id": "care_supreme-0051",
+      "quote": "Deductible If this Optional Benefit is opted, then Policyholder is entitled for a discount on the Premium payable. The claim amount assessed by the Company for a particular claim shall be reduced by the Deductible as specified in the Policy Schedule and the Company shall be liable to make payment under the Policy for any Claim only when the Deductible on that Claim is exhausted."
+    }
+  ],
+  "reasoning": "The clause does not clearly establish whether the donor's medical expenses fall under the covered conditions. It only details optional benefits and deductibles.",
+  "relief_sought": "We kindly request the insurer to clarify if the donor's medical expenses are covered under the policy.",
+  "document_checklist": [
+    "Copy of the claim rejection letter",
+    "Policy wording and policy schedule",
+    "Claim form and discharge summary",
+    "Medical bills, prescriptions and investigation reports",
+    "Earlier correspondence with the insurer, including any grievance acknowledgement",
+    "Identity proof of the policyholder"
+  ],
+  "deadline_note": "A complaint to the Insurance Ombudsman needs a written representation to the insurer first; it must then be made within one year of the insurer's rejection, or of one month after the representation was sent (Insurance Ombudsman Rules, 2017, Rule 14(3), checked against the published text as amended till 09.11.2023; later amendments not checked). Confirm with the Ombudsman office before relying on a date, and compute dates with the deadline tool.",
+  "deadline_verified": true,
+  "disclaimer": "Decision support, not legal advice.",
+  "placeholders": [
+    "[date of rejection]",
+    "[policy number]",
+    "[policyholder name]"
+  ]
+}

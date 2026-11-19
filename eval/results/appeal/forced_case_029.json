@@ -1,7 +1,7 @@
 {
   "kind": "appeal",
   "source": "llm",
-  "attempts": 2,
+  "attempts": 1,
   "fallback_reason": null,
   "details": {
     "policyholder_name": "Ms. B. Rao",
@@ -15,12 +15,16 @@
   ],
   "cited_clauses": [
     {
-      "clause_id": "care_supreme-0029",
-      "quote": "Any Claim paid for Benefits namely Hospitalization Expenses (i.e. In-Patient Care , Day Care Treatment , Advance Technology Methods , Pre –Hospitalization Medical Expenses , Post-Hospitalization Medical Expenses ,Organ Donor , Ayush Treatment and Domiciliary Hospitalization ) , Road Ambulance Cover , Air Ambulance Cover shall reduce the Sum Insured for the Policy Year and only the balance shall be available for all the future claims for that Policy Year."
+      "clause_id": "care_supreme-0006",
+      "quote": "Day Care Treatment means medical treatment, and/ or Surgical Procedure which is: a. undertaken under general or local anesthesia in a Hospital/ Day Care Centre in less than 24 consecutive hours because of technological advancement, and b. which would have otherwise required a Hospitalization of more than 24 hours."
+    },
+    {
+      "clause_id": "care_supreme-0006",
+      "quote": "Treatment normally taken on an out-patient basis is not included in the scope of this definition."
     }
   ],
-  "reasoning": "The clause explicitly includes Day Care Treatment under Hospitalization Expenses, which contradicts the rejection ground.",
-  "relief_sought": "We request that you reconsider the rejection and cover the claim for Day Care Treatment as per the policy.",
+  "reasoning": "The policy defines Day Care Treatment as a procedure that requires less than 24 consecutive hours and would otherwise need a hospital stay of more than 24 hours. The claim for Day Care Treatment does not meet these criteria.",
+  "relief_sought": "We request that the claim be reconsidered and covered as per the policy.",
   "document_checklist": [
     "Copy of the claim rejection letter",
     "Policy wording and policy schedule",

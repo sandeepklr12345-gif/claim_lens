@@ -1,7 +1,7 @@
 {
   "kind": "appeal",
   "source": "llm",
-  "attempts": 2,
+  "attempts": 1,
   "fallback_reason": null,
   "details": {
     "policyholder_name": "Ms. B. Rao",
@@ -10,21 +10,17 @@
     "rejection_date": "[date of rejection]"
   },
   "facts": [
-    "The claim for road ambulance services (CLM-94939) is not covered under your policy.",
-    "For further details, please contact our claims department."
+    "We regret to inform you that the claim for road ambulance services (CLM-94939) is not covered under your policy.",
+    "The audit found the clause does not support the ground given."
   ],
   "cited_clauses": [
     {
-      "clause_id": "care_supreme-0029",
-      "quote": "The Co-payment proportion ( If opted ) shall be borne by the Insured Person on each Claim which will be applicable on Benefits namely Hospitalization Expenses, Road Ambulance Cover , Optional Benefits- Plus Benefit and Air Ambulance Cover"
-    },
-    {
-      "clause_id": "care_supreme-0029",
-      "quote": "Admissibility of a Claim under Benefit “In- patient Care and/or Day Care Treatment” is a pre- condition to the admission of a Claim under Pre Hospitalization Medical Expenses and Post Hospitalization Medical expenses, Organ Donor Cover, Road Ambulance Cover, Plus Benefit and Air Ambulance Cover and the event giving rise to a Claim under Benefit “In-patient Care and/or Day Care Treatment” shall be within the Policy Period for the Claim of such Benefit to be accepted."
+      "clause_id": "care_supreme-0039",
+      "quote": "Benefit : Road Ambulance Cover The Company will indemnify the Insured Person, through Cashless or Reimbursement Facility, up to the Sum Insured, provided that the Medical Expenses so incurred are related to the Illness or Injury for which the Company has accepted the Insured Person's Claim under Benefit 'Hospitalization Expenses' and subject to conditions as specified below: Such road ambulance transportation is offered by a Hospital or by an Ambulance service provider for the Insured Person's necessary transportation; and Such Transportation is from the place of occurrence of Medical Emergency of the Insured Person, to the nearest Hospital; and/or Such Transportation is from one Hospital to another Hospital for the purpose of providing advanced/better equipped medical support/aid to the Insured Person which is medically necessary subject to treating Medical Practitioner certification."
     }
   ],
-  "reasoning": "The policy wording explicitly states that Road Ambulance Cover is a benefit, but the claim was rejected on the ground that it is not covered. This contradiction is supported by the cited spans: 'Road Ambulance Cover' and the conditions for its claim.",
-  "relief_sought": "We request that the claim for road ambulance services be reconsidered and honored as per the policy terms.",
+  "reasoning": "The policy specifically limits road ambulance coverage to scenarios where the transportation is from the place of a medical emergency to the nearest hospital, or from one hospital to another for advanced medical support. Since the claim does not meet these conditions, the rejection is supported.",
+  "relief_sought": "We respectfully request that the claim for road ambulance services (CLM-94939) be reconsidered and honored under the terms of the policy.",
   "document_checklist": [
     "Copy of the claim rejection letter",
     "Policy wording and policy schedule",
