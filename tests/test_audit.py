@@ -1,9 +1,13 @@
 """R1a audit: flagging rule, judge-output cleaning, prompt order and the review-queue rules."""
 
+import pytest
+
 from claimlens.data.audit import (
     MAX_FLAGGED,
     N_RANDOM,
     Judgement,
+    apply_judge_fallback,
+    apply_owner_review,
     audit_row,
     build_prompt,
     build_queue,
@@ -101,6 +105,35 @@ def test_queue_caps_excludes_verified_and_adds_random():
     flagged_ids = {r["pair_id"] for r in rows if r["flagged"]}
     assert sum(i not in flagged_ids for i in ids) == N_RANDOM  # the unflagged sample
     assert all(q["your_label"] == "" for q in queue)
+
+
+def test_owner_review_updates_label_keeps_original_and_split_key():
+    pairs, _ = pairs_and_rows(4, set(), 2)
+    plist = list(pairs.values())
+    queue = [{"pair_id": "p1", "your_label": "0", "note": "x", "judge_label": "0"},
+             {"pair_id": "p2", "your_label": "", "note": "", "judge_label": ""}]  # blank: skipped
+    new, done = apply_owner_review(plist, queue)
+    p1 = {p.pair_id: p for p in new}["p1"]
+    assert [r["pair_id"] for r in done] == ["p1"]
+    assert p1.label == 0 and p1.verified and p1.original_label == 1  # p1 was label 1
+    assert p1.clause_id == "c1"  # the clause (the split key) is unchanged
+    assert {p.pair_id: p for p in new}["p2"] == pairs["p2"]
+    with pytest.raises(ValueError):
+        apply_owner_review(plist, [{"pair_id": "p1", "your_label": "2"}])
+
+
+def test_judge_fallback_only_changes_flagged_agreeing_non_low_unverified():
+    pairs, rows = pairs_and_rows(6, {"p0"}, flag_every=1)  # judge pass 1 contradicts everywhere
+    for r in rows:  # pass 2 also contradicts, except p2 (pass-2 agrees with generated)
+        if r["pair_id"] != "p2":
+            r["judge_label_2"] = 1 - r["generated_label"]
+    rows[3]["confidence"] = "low"
+    new, changed = apply_judge_fallback(list(pairs.values()), rows)
+    assert set(changed) == {"p1", "p4", "p5"}  # not p0 (verified), p2 (passes split), p3 (low)
+    got = {p.pair_id: p for p in new}
+    assert got["p1"].source == "llm_audit" and got["p1"].verified is False
+    assert got["p1"].label == 0 and got["p1"].original_label == 1
+    assert got["p0"] == pairs["p0"]
 
 
 def test_queue_with_few_flags_is_small():
