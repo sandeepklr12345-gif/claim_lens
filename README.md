@@ -266,3 +266,14 @@ tests/       .github/workflows/blank.yml   Dockerfile   docker-compose.yml
 ```
 
 Deferred work (planner agent, PostgreSQL, more MCP servers and others) is not part of this release.
+
+## 👨‍💻 Authors
+
+1. **Manish N Jog** — [GitHub Profile](https://github.com/manishjog1628-creator)
+2. **Sandeep K** — [GitHub Profile](https://github.com/sandeepklr12345-gif)
+3. **Thanush M** — [GitHub Profile](https://github.com/Thanush8147)
+4. **Poorvikha M**
+
+---
+
+*Developed collaboratively by the team.*
